@@ -15,11 +15,10 @@ class AvroDecoderTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        Decoder = AvroDecoder([0x4, 0x96, 0xde, 0x87, 0x3, 0x3])
+        Decoder = AvroDecoder([0x4, 0x96, 0xde, 0x87, 0x3, 0xcd, 0xcc, 0x4c, 0x40, 0x96, 0xde, 0x87, 0x3])
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
@@ -33,4 +32,17 @@ class AvroDecoderTests: XCTestCase {
     func testDecodeLong() {
         XCTAssert(true, "Pass")
     }
+
+    func testDecodeFloat() {
+        XCTAssert(true, "Pass")
+    }
+
+    func testDecodeDouble() {
+        XCTAssert(true, "Pass")
+    }
+
+    func testDecodeString() {
+        XCTAssert(true, "Pass")
+    }
+
 }
