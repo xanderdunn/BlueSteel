@@ -23,24 +23,43 @@ public class AvroDecoder {
         bytes = data
     }
 
-    public func decodeDouble() -> Double {
-        var bitpattern = self.decodeLong()
+    public func decodeDouble() -> Double? {
+        if (bytes.count < 8) {
+            return .None
+        }
 
-        var result = withUnsafePointer(&bitpattern, { (ptr: UnsafePointer<Int64>) -> Double in
+        let slice = bytes[0...7]
+        var bits: UInt64 = UInt64(slice[0]) << 56 |
+            UInt64(slice[1]) << 48 |
+            UInt64(slice[2]) << 40 |
+            UInt64(slice[3]) << 32 |
+            UInt64(slice[4]) << 24 |
+            UInt64(slice[5]) << 16 |
+            UInt64(slice[6]) << 8 |
+            UInt64(slice[7])
+
+        let result = withUnsafePointer(&bits, { (ptr: UnsafePointer<UInt64>) -> Double in
             return UnsafePointer<Double>(ptr).memory
         })
-
         return result
     }
 
 
-    public func decodeFloat() -> Float {
-        var bitpattern = self.decodeInt()
+    public func decodeFloat() -> Float? {
 
-        var result = withUnsafePointer(&bitpattern, { (ptr: UnsafePointer<Int32>) -> Float in
+        if (bytes.count < 4) {
+            return .None
+        }
+
+        let slice = bytes[0...3]
+        var bits: UInt32 = UInt32(slice[0]) << 24 |
+            UInt32(slice[1]) << 16 |
+            UInt32(slice[2]) << 8 |
+            UInt32(slice[3])
+
+        let result = withUnsafePointer(&bits, { (ptr: UnsafePointer<UInt32>) -> Float in
             return UnsafePointer<Float>(ptr).memory
         })
-
         return result
     }
 
