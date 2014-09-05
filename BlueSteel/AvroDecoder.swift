@@ -38,6 +38,8 @@ public class AvroDecoder {
             UInt64(slice[6]) << 8 |
             UInt64(slice[7])
 
+        bytes.removeRange(0...7)
+
         let result = withUnsafePointer(&bits, { (ptr: UnsafePointer<UInt64>) -> Double in
             return UnsafePointer<Double>(ptr).memory
         })
@@ -56,6 +58,8 @@ public class AvroDecoder {
             UInt32(slice[1]) << 16 |
             UInt32(slice[2]) << 8 |
             UInt32(slice[3])
+
+        bytes.removeRange(0...3)
 
         let result = withUnsafePointer(&bits, { (ptr: UnsafePointer<UInt32>) -> Float in
             return UnsafePointer<Float>(ptr).memory
@@ -99,6 +103,7 @@ public class AvroDecoder {
                 }
 
                 var tmp: [Byte] = [Byte](bytes[0...x - 1])
+                bytes.removeRange(0...x - 1)
                 return tmp
 
             case .None:
