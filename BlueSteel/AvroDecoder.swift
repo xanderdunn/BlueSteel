@@ -89,9 +89,21 @@ public class AvroDecoder {
         return 0.0
     }
 
-    public func decodeBytes() -> [UInt8]? {
-        // Stub
-        return nil
+    public func decodeBytes() -> [Byte]? {
+        let size = decodeLong()
+
+        switch size {
+            case let .Some(x):
+                if (Int64(bytes.count) < size) {
+                    return nil
+                }
+
+                var tmp: [Byte] = [Byte](bytes[0...x - 1])
+                return tmp
+
+            case .None:
+                return nil
+        }
     }
 
     public func decodeString() -> String? {
