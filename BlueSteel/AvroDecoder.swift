@@ -24,11 +24,19 @@ public class AvroDecoder {
     }
 
     public func decodeNull() {
-        // Stub
+        // Nulls aren't actually encoded.
+        return
     }
 
-    public func decodeBoolean() {
-        // Stub
+    public func decodeBoolean() -> Bool? {
+        if (bytes.count == 0) {
+            return nil
+        }
+
+        let result: Bool = bytes[0] > 0
+        bytes.removeAtIndex(0)
+
+        return result
     }
 
     public func decodeDouble() -> Double? {
@@ -37,6 +45,7 @@ public class AvroDecoder {
         }
 
         let slice = bytes[0...7]
+
         var bits: UInt64 = UInt64(slice[0]) << 56 |
             UInt64(slice[1]) << 48 |
             UInt64(slice[2]) << 40 |
