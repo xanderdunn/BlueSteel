@@ -23,6 +23,14 @@ public class AvroDecoder {
         bytes = data
     }
 
+    public func decodeNull() {
+        // Stub
+    }
+
+    public func decodeBoolean() {
+        // Stub
+    }
+
     public func decodeDouble() -> Double? {
         if (bytes.count < 8) {
             return .None
