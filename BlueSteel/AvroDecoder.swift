@@ -107,8 +107,12 @@ public class AvroDecoder {
     }
 
     public func decodeString() -> String? {
-        // Stub
-        return nil
+
+        if let rawString = decodeBytes()? {
+            return String.stringWithBytes(rawString, encoding: NSUTF8StringEncoding)
+        } else {
+            return nil
+        }
     }
 
 }
