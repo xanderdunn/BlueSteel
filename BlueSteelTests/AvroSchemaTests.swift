@@ -88,6 +88,53 @@ class AvroSchemaTests: XCTestCase {
         }
     }
 
+    func testUnion() {
+        let jsonSchema = "{ \"type\" : [ \"double\", \"int\", \"long\", \"float\" ] }"
+        let expected: [AvroType] = [.ADouble, .AInt, .ALong, .AFloat]
+        var schema = Schema(jsonSchema)
+
+        switch schema {
+        case .UnionSchema(let schemas):
+            XCTAssert(schemas.count == 4, "Wrong number of schemas in union.")
+            for idx in 0...3 {
+                switch schemas[idx] {
+                case .PrimitiveSchema(expected[idx]) :
+                    XCTAssert(true, "Passed")
+                default :
+                    XCTAssert(false, "Wrong schema type in union.")
+                }
+            }
+        default:
+            XCTAssert(false, "Failed.")
+        }
+    }
+
+    func testUnionMap() {
+        let jsonSchema = "{ \"type\" : [ { \"type\" : \"map\", \"values\" : \"int\" }, { \"type\" : \"map\", \"values\" : \"double\" } ] }"
+        let expected: [AvroType] = [.AInt, .ADouble]
+        var schema = Schema(jsonSchema)
+
+        switch schema {
+        case .UnionSchema(let schemas):
+            XCTAssert(schemas.count == 2, "Wrong number of schemas in union.")
+            for idx in 0...1 {
+                switch schemas[idx] {
+                case .MapSchema(let box) :
+                    switch box.value {
+                    case .PrimitiveSchema(expected[idx]) :
+                        XCTAssert(true, "Passed")
+                    default :
+                        XCTAssert(false, "Experted primitive schema type in map.")
+                    }
+                default :
+                    XCTAssert(false, "Experted map schema type in union.")
+                }
+            }
+        default:
+            XCTAssert(false, "Failed.")
+        }
+    }
+
     func testPerformanceExample() {
         self.measureBlock() {
 
