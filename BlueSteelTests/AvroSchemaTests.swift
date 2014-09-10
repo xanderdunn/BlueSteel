@@ -66,6 +66,28 @@ class AvroSchemaTests: XCTestCase {
         }
     }
 
+    func testArrayMap() {
+        let jsonSchema = "{ \"type\" : \"array\", \"items\" : { \"type\" : \"map\", \"values\" : \"int\" } }"
+        var schema = Schema(jsonSchema)
+
+        switch schema {
+        case .ArraySchema(let arrayBox) :
+            switch arrayBox.value {
+            case .MapSchema(let mapBox) :
+                switch mapBox.value {
+                case .PrimitiveSchema(.AInt):
+                    XCTAssert(true, "Passed.")
+                default:
+                    XCTAssert(false, "Failed: Map of wrong type.")
+                }
+            default :
+                XCTAssert(false, "Failed: Array of wrong type.")
+            }
+        default:
+            XCTAssert(false, "Failed.")
+        }
+    }
+
     func testPerformanceExample() {
         self.measureBlock() {
 
