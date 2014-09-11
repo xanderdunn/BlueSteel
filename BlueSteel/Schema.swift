@@ -163,7 +163,7 @@ public enum Schema {
                 self = .InvalidSchema
             }
 
-        case .JObject(let subSchema):
+        case .JObject(_):
             self = Schema(json[key], typeKey: "type")
 
         // Union
@@ -179,7 +179,7 @@ public enum Schema {
                     } else {
                         schema = .InvalidSchema
                     }
-                case .JArray(let ignored) :
+                case .JArray(_) :
                     // Nested unions not permitted
                     schema = .InvalidSchema
                 default :
