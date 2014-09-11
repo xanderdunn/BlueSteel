@@ -122,8 +122,37 @@ public enum Schema {
                 }
 
             case .ARecord :
-                // Record stub
-                self = .InvalidSchema
+                // Records must be named
+                if let recordName = json["name"].string {
+                    switch json["fields"] {
+                    case .JArray(let fields) :
+                        var recordFields: [Schema] = []
+
+                        for field in fields {
+                            // Fields must be named
+                            if let fieldName = field["name"].string {
+                                let schema = Schema(field, typeKey: "type")
+
+                                switch schema {
+                                case .InvalidSchema :
+                                    self = .InvalidSchema
+                                    return
+
+                                default :
+                                    recordFields.append(.FieldSchema(fieldName, Box(schema)))
+                                }
+                            } else {
+                                self = .InvalidSchema
+                                return
+                            }
+                        }
+                        self = .RecordSchema(recordName, recordFields)
+                    default :
+                        self = .InvalidSchema
+                    }
+                } else {
+                    self = .InvalidSchema
+                }
 
             case .AEnum :
                 // Enum stub
