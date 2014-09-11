@@ -71,8 +71,8 @@ public enum Schema {
     case UnionSchema(Array<Schema>)
 
     // Named Types
-    case FixedSchema(String)
-    case EnumSchema(String)
+    case FixedSchema(String, Int)
+    case EnumSchema(String, Array<String>)
     case RecordSchema(String, Array<Schema>)
     case FieldSchema(String, Box<Schema>)
 
@@ -156,6 +156,29 @@ public enum Schema {
 
             case .AEnum :
                 // Enum stub
+                if let enumName = json["name"].string {
+                    switch json["symbols"] {
+                    case .JArray(let symbols) :
+                        var symbolStrings: [String] = []
+                        for sym in symbols {
+                            if let symbol = sym.string {
+                                symbolStrings.append(symbol)
+                            } else {
+                                self = .InvalidSchema
+                                return
+                            }
+                        }
+
+                        self = .EnumSchema(enumName, symbolStrings)
+                    default :
+                        self = .InvalidSchema
+                    }
+                } else {
+                    self = .InvalidSchema
+                }
+
+            case .AFixed :
+                // Fixed Stub
                 self = .InvalidSchema
 
             default:
