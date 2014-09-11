@@ -155,7 +155,6 @@ public enum Schema {
                 }
 
             case .AEnum :
-                // Enum stub
                 if let enumName = json["name"].string {
                     switch json["symbols"] {
                     case .JArray(let symbols) :
@@ -178,7 +177,12 @@ public enum Schema {
                 }
 
             case .AFixed :
-                // Fixed Stub
+                if let fixedName = json["name"].string {
+                    if let size = json["size"].integer {
+                        self = .FixedSchema(fixedName, size)
+                        return
+                    }
+                }
                 self = .InvalidSchema
 
             default:
