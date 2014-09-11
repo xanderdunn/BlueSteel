@@ -14,7 +14,7 @@
 		C5C483C619B7B1AD008E3F4C /* AvroDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483C419B7B1AD008E3F4C /* AvroDecoderTests.swift */; };
 		C5C483C719B7B1AD008E3F4C /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483C519B7B1AD008E3F4C /* VarintTests.swift */; };
 		C5C483CA19B7B2EE008E3F4C /* BlueSteel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C483A519B7B12B008E3F4C /* BlueSteel.framework */; };
-		C5C483CC19B8C6A5008E3F4C /* BoxedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483CB19B8C6A5008E3F4C /* BoxedArray.swift */; };
+		C5C483CC19B8C6A5008E3F4C /* Boxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483CB19B8C6A5008E3F4C /* Boxes.swift */; };
 		C5C483DF19BA1D41008E3F4C /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483DE19BA1D41008E3F4C /* Schema.swift */; };
 		C5C483ED19BE232D008E3F4C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483EC19BE232D008E3F4C /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 		C5C483C019B7B19F008E3F4C /* Varint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Varint.swift; sourceTree = "<group>"; };
 		C5C483C419B7B1AD008E3F4C /* AvroDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroDecoderTests.swift; sourceTree = "<group>"; };
 		C5C483C519B7B1AD008E3F4C /* VarintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarintTests.swift; sourceTree = "<group>"; };
-		C5C483CB19B8C6A5008E3F4C /* BoxedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxedArray.swift; sourceTree = "<group>"; };
+		C5C483CB19B8C6A5008E3F4C /* Boxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boxes.swift; sourceTree = "<group>"; };
 		C5C483DE19BA1D41008E3F4C /* Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
 		C5C483EC19BE232D008E3F4C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,7 +89,7 @@
 				C5C483BE19B7B19F008E3F4C /* AvroDecoder.swift */,
 				C5C483DE19BA1D41008E3F4C /* Schema.swift */,
 				C5C483C019B7B19F008E3F4C /* Varint.swift */,
-				C5C483CB19B8C6A5008E3F4C /* BoxedArray.swift */,
+				C5C483CB19B8C6A5008E3F4C /* Boxes.swift */,
 				C5C483AA19B7B12B008E3F4C /* BlueSteel.h */,
 				C5C483A819B7B12B008E3F4C /* Supporting Files */,
 			);
@@ -250,7 +250,7 @@
 				C5C483C119B7B19F008E3F4C /* AvroDecoder.swift in Sources */,
 				C5C483C319B7B19F008E3F4C /* Varint.swift in Sources */,
 				C5C483ED19BE232D008E3F4C /* SwiftyJSON.swift in Sources */,
-				C5C483CC19B8C6A5008E3F4C /* BoxedArray.swift in Sources */,
+				C5C483CC19B8C6A5008E3F4C /* Boxes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
