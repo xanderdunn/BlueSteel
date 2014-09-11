@@ -124,10 +124,10 @@ class AvroSchemaTests: XCTestCase {
                     case .PrimitiveSchema(expected[idx]) :
                         XCTAssert(true, "Passed")
                     default :
-                        XCTAssert(false, "Experted primitive schema type in map.")
+                        XCTAssert(false, "Expected primitive schema type in map.")
                     }
                 default :
-                    XCTAssert(false, "Experted map schema type in union.")
+                    XCTAssert(false, "Expected map schema type in union.")
                 }
             }
         default:
