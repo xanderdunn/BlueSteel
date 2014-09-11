@@ -79,21 +79,21 @@ public enum Schema {
     // TODO: Report errors for invalid schemas.
     case InvalidSchema
 
-
     init(_ json: Dictionary<String, JSONValue>) {
+        // Stub
         self = .InvalidSchema
     }
 
-    public init(_ json:String) {
-        self = Schema(JSONValue(json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)))
+    public init(_ json: NSData) {
+        self = Schema(JSONValue(json), typeKey:"type")
     }
 
-    public init(_ json: JSONValue) {
-        var schemaType = json["type"]
-        var schemaName = json["name"]
-        println(schemaType.description)
-        switch json["type"] {
+    public init(_ json: String) {
+        self = Schema(JSONValue(json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)), typeKey:"type")
+    }
 
+    init(_ json: JSONValue, typeKey key: String) {
+        switch json[key] {
         case .JString(let typeString) :
             let avroType = AvroType(typeString)
 
@@ -102,42 +102,23 @@ public enum Schema {
                 self = .PrimitiveSchema(AvroType(typeString))
 
             case .AMap :
-                switch json["values"] {
-                case .JString(let valueType) :
-                    if AvroType(valueType) != .AInvalidType {
-                        self = .MapSchema(Box(.PrimitiveSchema(AvroType(valueType))))
-                    } else {
-                        self = .InvalidSchema
-                    }
+                let schema = Schema(json, typeKey: "values")
 
-                case .JObject(let subSchema) :
-                    self = .MapSchema(Box(Schema(json["values"])))
-
-                case .JArray(let unionSchema) :
-                    // TODO: Map of union.
+                switch schema {
+                case .InvalidSchema :
                     self = .InvalidSchema
-
-                default:
-                    self = .InvalidSchema
+                default :
+                    self = .MapSchema(Box(schema))
                 }
 
             case .AArray :
-                switch json["items"] {
-                case .JString(let valueType) :
-                    if AvroType(valueType) != .AInvalidType {
-                        self = .ArraySchema(Box(.PrimitiveSchema(AvroType(valueType))))
-                    } else {
-                        self = .InvalidSchema
-                    }
+                let schema = Schema(json, typeKey: "items")
 
-                case .JObject(let subSchema) :
-                    self = .ArraySchema(Box(Schema(json["items"])))
-
-                case .JArray(let unionSchema) :
+                switch schema {
+                case .InvalidSchema :
                     self = .InvalidSchema
-
-                default:
-                    self = .InvalidSchema
+                default :
+                    self = .ArraySchema(Box(schema))
                 }
 
             case .ARecord :
@@ -154,28 +135,39 @@ public enum Schema {
             }
 
         case .JObject(let subSchema):
-            self = Schema(schemaType)
+            self = Schema(json[key], typeKey: "type")
 
         // Union
         case .JArray(let unionSchema):
-            self = .UnionSchema([.InvalidSchema])
             var schemas: [Schema] = []
             for def in unionSchema {
-                let schema = Schema(def)
+                var schema: Schema
+                switch def {
+                case .JString(let typeString) :
+                    let avroType = AvroType(typeString)
+                    if  avroType != .AInvalidType {
+                        schema = .PrimitiveSchema(avroType)
+                    } else {
+                        schema = .InvalidSchema
+                    }
+                case .JArray(let ignored) :
+                    // Nested unions not permitted
+                    schema = .InvalidSchema
+                default :
+                    schema = Schema(def, typeKey: "type")
+                }
+
                 switch schema {
-                    case .InvalidSchema:
-                        self = .InvalidSchema
-                        return
-                    default:
-                        schemas.append(schema)
+                case .InvalidSchema:
+                    self = .InvalidSchema
+                default:
+                    schemas.append(schema)
                 }
             }
             self = .UnionSchema(schemas)
 
         default:
             self = .InvalidSchema
-
-            return
         }
     }
 
