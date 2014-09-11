@@ -135,6 +135,52 @@ class AvroSchemaTests: XCTestCase {
         }
     }
 
+    func testRecord() {
+        let jsonSchema = "{ \"type\" : \"record\", \"name\" : \"AddToCartActionEvent\", " +
+                        "\"doc\" : \"This event is fired when a user taps on the add to cart button.\"," +
+                        "\"fields\" : [ { \"name\" : \"lookId\", \"type\" : \"long\" }," +
+                        "{ \"name\" : \"productId\", \"type\" : \"long\" }," +
+                        "{ \"name\" : \"quantity\", \"type\" : \"int\" }," +
+                        "{ \"name\" : \"saleId\", \"type\" : [ \"null\", \"long\" ], \"default\" : null }," +
+                        "{ \"name\" : \"skuId\",\"type\" : \"long\" }]}"
+
+        let fieldNames = ["lookId", "productId", "quantity", "saleId", "skuId"]
+        let fieldType: [AvroType] = [.ALong, .ALong, .AInt, .AInvalidType, .ALong]
+        let unionFieldTypes: [AvroType] = [.ANull, .ALong]
+        var schema = Schema(jsonSchema)
+
+        switch schema {
+        case .RecordSchema("AddToCartActionEvent", let fields) :
+            XCTAssert(fields.count == 5, "Record schema should consist of 5 fields.")
+            for idx in 0...4 {
+                switch fields[idx] {
+                case .FieldSchema(fieldNames[idx], let typeSchema) :
+                    switch typeSchema.value {
+                    case .PrimitiveSchema(fieldType[idx]) :
+                        XCTAssert(true, "")
+                    case .UnionSchema(let unionSchemas) :
+                        XCTAssert(unionSchemas.count == 2, "Union schema should consist of 2 fields.")
+                        for uidx in 0...1 {
+                            switch unionSchemas[uidx] {
+                            case .PrimitiveSchema(unionFieldTypes[uidx]) :
+                                XCTAssert(true, "")
+                            default :
+                                XCTAssert(false, "Wrong type in union")
+                            }
+                        }
+                    default :
+                        XCTAssert(false, "Wrong field type.")
+                    }
+                    XCTAssert(true, "")
+                default :
+                    XCTAssert(false, "Failed.")
+                }
+            }
+        default:
+            XCTAssert(false, "Failed.")
+        }
+    }
+
     func testPerformanceExample() {
         self.measureBlock() {
 
