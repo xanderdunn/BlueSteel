@@ -181,6 +181,21 @@ class AvroSchemaTests: XCTestCase {
         }
     }
 
+    func testEnum() {
+        let jsonSchema = "{ \"type\" : \"enum\", \"name\" : \"ChannelKey\", \"doc\" : \"Enum of valid channel keys.\", \"symbols\" : [ \"CityIphone\", \"CityMobileWeb\", \"GiltAndroid\", \"GiltcityCom\", \"GiltCom\", \"GiltIpad\", \"GiltIpadSafari\", \"GiltIphone\", \"GiltMobileWeb\", \"NoChannel\" ]}"
+
+        let expectedSymbols = ["CityIphone", "CityMobileWeb", "GiltAndroid", "GiltcityCom", "GiltCom", "GiltIpad", "GiltIpadSafari", "GiltIphone", "GiltMobileWeb", "NoChannel"]
+        var schema = Schema(jsonSchema)
+
+        switch schema {
+        case .EnumSchema(let enumName, let symbols) :
+            XCTAssert(enumName == "ChannelKey", "Unexpected enum name.")
+            XCTAssertEqual(symbols, expectedSymbols, "Symbols dont match.")
+        default :
+            XCTAssert(false, "Failed")
+        }
+    }
+
     func testPerformanceExample() {
         self.measureBlock() {
 
