@@ -115,8 +115,8 @@
 				C5C483C419B7B1AD008E3F4C /* AvroDecoderTests.swift */,
 				C5C483C519B7B1AD008E3F4C /* VarintTests.swift */,
 				C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */,
-				C5C483B219B7B12B008E3F4C /* Supporting Files */,
 				C5DA98AA19C778A200CA9F41 /* AvroValueTests.swift */,
+				C5C483B219B7B12B008E3F4C /* Supporting Files */,
 			);
 			path = BlueSteelTests;
 			sourceTree = "<group>";

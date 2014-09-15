@@ -9,7 +9,7 @@
 import Foundation
 
 
-enum AvroValue {
+public enum AvroValue {
     // Primitives
     case AvroNullValue
     case AvroBooleanValue(Bool)
@@ -27,7 +27,16 @@ enum AvroValue {
 
     case AvroInvalidValue
 
-    var string: String? {
+    public var boolean: Bool? {
+        switch self {
+        case .AvroBooleanValue(let value) :
+            return value
+        default :
+            return nil
+            }
+    }
+
+    public var string: String? {
         switch self {
         case .AvroStringValue(let value) :
             return value
@@ -36,7 +45,7 @@ enum AvroValue {
         }
     }
 
-    var integer: Int32? {
+    public var integer: Int32? {
         switch self {
         case .AvroIntValue(let value) :
             return value
@@ -45,7 +54,7 @@ enum AvroValue {
         }
     }
 
-    var long: Int64? {
+    public var long: Int64? {
         switch self {
         case .AvroLongValue(let value) :
             return value
@@ -54,7 +63,7 @@ enum AvroValue {
             }
     }
 
-    var float: Float? {
+    public var float: Float? {
         switch self {
         case .AvroFloatValue(let value) :
             return value
@@ -63,7 +72,7 @@ enum AvroValue {
         }
     }
 
-    var double: Double? {
+    public var double: Double? {
         switch self {
         case .AvroDoubleValue(let value) :
             return value
@@ -72,7 +81,7 @@ enum AvroValue {
         }
     }
 
-    var bytes: [Byte]? {
+    public var bytes: [Byte]? {
         switch self {
         case .AvroBytesValue(let value) :
             return value
@@ -81,8 +90,13 @@ enum AvroValue {
         }
     }
 
-    init(jsonSchema: JSONValue, withData data: NSData) {
-        let schema = Schema(jsonSchema, typeKey: "type")
+    public init(jsonSchema: String, withBytes bytes:[Byte]) {
+        let schema = Schema(jsonSchema)
+        let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
+        self = AvroValue(schema, withData: avroData)
+    }
+
+    init(_ schema: Schema, withData data: NSData) {
         let decoder = AvroDecoder(data)
 
         switch schema {
