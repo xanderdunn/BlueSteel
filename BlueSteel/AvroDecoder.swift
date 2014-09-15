@@ -41,7 +41,7 @@ public class AvroDecoder {
 
     public func decodeDouble() -> Double? {
         if (bytes.count < 8) {
-            return .None
+            return nil
         }
 
         let slice = bytes[0...7]
@@ -67,7 +67,7 @@ public class AvroDecoder {
     public func decodeFloat() -> Float? {
 
         if (bytes.count < 4) {
-            return .None
+            return nil
         }
 
         let slice = bytes[0...3]
@@ -90,7 +90,7 @@ public class AvroDecoder {
                 bytes.removeRange(0...x.count - 1)
                 return Int32(x.toUInt().decodeZigZag())
             case .None:
-                return .None
+                return nil
         }
     }
 
@@ -100,7 +100,7 @@ public class AvroDecoder {
                 bytes.removeRange(0...x.count - 1)
                 return Int64(x.toUInt().decodeZigZag())
             case .None:
-                return .None
+                return nil
         }
     }
 
