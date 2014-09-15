@@ -9,23 +9,105 @@
 import UIKit
 import XCTest
 
+import BlueSteel
+
 class AvroValueTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
 
-    func testStub() {
-        XCTAssert(false, "Not implemented.")
+    func testStringValue() {
+        var avroBytes: [Byte] = [0x06, 0x66, 0x6f, 0x6f]
+        let jsonSchema = "{ \"type\" : \"string\" }"
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).string {
+            XCTAssertEqual(value, "foo", "Strings don't match.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
+    func testByteValue() {
+        var avroBytes: [Byte] = [0x06, 0x66, 0x6f, 0x6f]
+        let jsonSchema = "{ \"type\" : \"bytes\" }"
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).bytes {
+            XCTAssertEqual(value, [0x66, 0x6f, 0x6f], "Byte arrays don't match.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
+    func testIntValue() {
+        let avroBytes: [Byte] = [0x96, 0xde, 0x87, 0x3]
+        let jsonSchema = "{ \"type\" : \"int\" }"
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).integer {
+            XCTAssertEqual(value, 3209099, "Byte arrays don't match.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
+    func testLongValue() {
+        let avroBytes: [Byte] = [0x96, 0xde, 0x87, 0x3]
+        let jsonSchema = "{ \"type\" : \"long\" }"
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).long {
+            XCTAssertEqual(value, 3209099, "Byte arrays don't match.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
+    func testFloatValue() {
+        let avroBytes: [Byte] = [0x40, 0x48, 0xf5, 0xc3]
+        let jsonSchema = "{ \"type\" : \"float\" }"
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).float {
+            XCTAssertEqual(value, 3.14, "Byte arrays don't match.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
+    func testDoubleValue() {
+        let avroBytes: [Byte] = [0x40,0x09, 0x1e, 0xb8, 0x51, 0xeb, 0x85, 0x1f]
+        let jsonSchema = "{ \"type\" : \"double\" }"
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).double {
+            XCTAssertEqual(value, 3.14, "Byte arrays don't match.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
+    func testBooleanValue() {
+        var avroFalseBytes: [Byte] = [0x0]
+        var avroTrueBytes: [Byte] = [0x1]
+
+        let jsonSchema = "{ \"type\" : \"boolean\" }"
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroTrueBytes).boolean {
+            XCTAssert(value, "Value should be true.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroFalseBytes).boolean {
+            XCTAssert(!value, "Value should be false.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
     }
 
     func testPerformanceStub() {
         self.measureBlock() {
         }
     }
-
 }
