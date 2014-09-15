@@ -15,7 +15,7 @@ class AvroSchemaTests: XCTestCase {
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
@@ -137,12 +137,12 @@ class AvroSchemaTests: XCTestCase {
 
     func testRecord() {
         let jsonSchema = "{ \"type\" : \"record\", \"name\" : \"AddToCartActionEvent\", " +
-                        "\"doc\" : \"This event is fired when a user taps on the add to cart button.\"," +
-                        "\"fields\" : [ { \"name\" : \"lookId\", \"type\" : \"long\" }," +
-                        "{ \"name\" : \"productId\", \"type\" : \"long\" }," +
-                        "{ \"name\" : \"quantity\", \"type\" : \"int\" }," +
-                        "{ \"name\" : \"saleId\", \"type\" : [ \"null\", \"long\" ], \"default\" : null }," +
-                        "{ \"name\" : \"skuId\",\"type\" : \"long\" }]}"
+            "\"doc\" : \"This event is fired when a user taps on the add to cart button.\"," +
+            "\"fields\" : [ { \"name\" : \"lookId\", \"type\" : \"long\" }," +
+            "{ \"name\" : \"productId\", \"type\" : \"long\" }," +
+            "{ \"name\" : \"quantity\", \"type\" : \"int\" }," +
+            "{ \"name\" : \"saleId\", \"type\" : [ \"null\", \"long\" ], \"default\" : null }," +
+        "{ \"name\" : \"skuId\",\"type\" : \"long\" }]}"
 
         let fieldNames = ["lookId", "productId", "quantity", "saleId", "skuId"]
         let fieldType: [AvroType] = [.ALong, .ALong, .AInt, .AInvalidType, .ALong]
@@ -200,11 +200,11 @@ class AvroSchemaTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"fixed\", \"name\" : \"Uuid\", \"size\" : 16 }"
         var schema = Schema(jsonSchema)
         switch schema {
-            case .FixedSchema(let fixedName, let size) :
-                XCTAssertEqual("Uuid", fixedName, "Unexpected fixed name.")
-                XCTAssertEqual(16, size, "Unexpected fixed size.")
-            default :
-                XCTAssert(false, "Failed.")
+        case .FixedSchema(let fixedName, let size) :
+            XCTAssertEqual("Uuid", fixedName, "Unexpected fixed name.")
+            XCTAssertEqual(16, size, "Unexpected fixed size.")
+        default :
+            XCTAssert(false, "Failed.")
         }
     }
 
@@ -213,5 +213,4 @@ class AvroSchemaTests: XCTestCase {
 
         }
     }
-
 }
