@@ -189,10 +189,22 @@ class AvroSchemaTests: XCTestCase {
 
         switch schema {
         case .EnumSchema(let enumName, let symbols) :
-            XCTAssert(enumName == "ChannelKey", "Unexpected enum name.")
+            XCTAssertEqual(enumName, "ChannelKey", "Unexpected enum name.")
             XCTAssertEqual(symbols, expectedSymbols, "Symbols dont match.")
         default :
             XCTAssert(false, "Failed")
+        }
+    }
+
+    func testFixed() {
+        let jsonSchema = "{ \"type\" : \"fixed\", \"name\" : \"Uuid\", \"size\" : 16 }"
+        var schema = Schema(jsonSchema)
+        switch schema {
+            case .FixedSchema(let fixedName, let size) :
+                XCTAssertEqual("Uuid", fixedName, "Unexpected fixed name.")
+                XCTAssertEqual(16, size, "Unexpected fixed size.")
+            default :
+                XCTAssert(false, "Failed.")
         }
     }
 
