@@ -125,6 +125,25 @@ class AvroValueTests: XCTestCase {
         }
     }
 
+    func testMapValue() {
+        let avroBytes: [Byte] = [0x02, 0x06, 0x66, 0x6f, 0x6f, 0x36, 0x00]
+        let expected: [Int64] = [27]
+        let jsonSchema = "{ \"type\" : \"map\", \"values\" : \"long\" }"
+
+        if let pairs = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).map {
+            XCTAssertEqual(pairs.count, 1, "Wrong number of elements in map.")
+
+            if let value = pairs["foo"]?.long {
+                    XCTAssertEqual(value, expected[0], "Unexpected value.")
+            } else {
+                XCTAssert(false, "Failed. Nil value")
+            }
+
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
     func testPerformanceStub() {
         self.measureBlock() {
         }
