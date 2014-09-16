@@ -35,6 +35,8 @@ public enum AvroValue {
     case AvroArrayValue([AvroValue])
     case AvroMapValue(Dictionary<String, AvroValue>)
     case AvroRecordValue(Dictionary<String, AvroValue>)
+    case AvroEnumValue(String)
+    case AvroFixedValue([Byte])
 
     case AvroInvalidValue
 
@@ -112,22 +114,39 @@ public enum AvroValue {
 
     public var map: Dictionary<String, AvroValue>? {
         switch self {
-        case .AvroMapValue(let values) :
-            return values
+        case .AvroMapValue(let pairs) :
+            return pairs
         default :
             return nil
         }
     }
 
     public var record: Dictionary<String, AvroValue>? {
-        return nil
+        switch self {
+        case .AvroRecordValue(let fields) :
+            return fields
+        default :
+            return nil
+        }
     }
 
     public var enumeration: String? {
-        return nil
+        switch self {
+        case .AvroEnumValue(let value) :
+            return value
+        default :
+            return nil
+        }
     }
 
-    // TODO: Deal with fixed.
+    public var fixed: [Byte]? {
+        switch self {
+        case .AvroFixedValue(let bytes) :
+            return bytes
+        default :
+            return nil
+        }
+    }
 
     static func decodeArrayBlock(schema: Schema, count:Int64, decoder: AvroDecoder) -> [AvroValue]? {
         var values: [AvroValue] = []
