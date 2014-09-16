@@ -288,8 +288,18 @@ public enum AvroValue {
             }
             self = .AvroInvalidValue
 
-        case .RecordSchema(let boxedSchema) :
-            self = .AvroInvalidValue
+        case .RecordSchema(_, let fields) :
+            var pairs: Dictionary<String, AvroValue> = [:]
+            for field in fields {
+                switch field {
+                case .FieldSchema(let key, let box) :
+                    pairs[key] = AvroValue(box.value, withDecoder: decoder)
+                default :
+                    self = .AvroInvalidValue
+                    return
+                }
+            }
+            self = .AvroRecordValue(pairs)
 
         case .FixedSchema(let name, let size) :
             self = .AvroInvalidValue
