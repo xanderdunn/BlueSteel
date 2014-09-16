@@ -279,7 +279,13 @@ public enum AvroValue {
             self = .AvroInvalidValue
 
 
-        case .EnumSchema(let boxedSchema) :
+        case .EnumSchema(_, let enumValues) :
+            if let index = decoder.decodeInt() {
+                if Int(index) > enumValues.count - 1 {
+                    self = .AvroEnumValue(enumValues[Int(index)])
+                    return
+                }
+            }
             self = .AvroInvalidValue
 
         case .RecordSchema(let boxedSchema) :
