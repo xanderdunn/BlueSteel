@@ -129,6 +129,38 @@ public enum AvroValue {
 
     // TODO: Deal with fixed.
 
+    static func decodeArrayBlock(schema: Schema, count:Int64, decoder: AvroDecoder) -> [AvroValue]? {
+        var values: [AvroValue] = []
+        for idx in 0...count - 1 {
+            let value = AvroValue(schema, withDecoder: decoder)
+            switch value {
+            case .AvroInvalidValue :
+                return nil
+            default :
+                values.append(value)
+            }
+        }
+        return values
+    }
+
+    static func decodeMapBlock(schema: Schema, count:Int64, decoder: AvroDecoder) -> Dictionary<String, AvroValue>? {
+        var pairs: Dictionary<String, AvroValue> = Dictionary()
+        for idx in 0...count - 1 {
+            if let key = AvroValue(.PrimitiveSchema(.AString), withDecoder: decoder).string {
+                let value = AvroValue(schema, withDecoder: decoder)
+                switch value {
+                case .AvroInvalidValue :
+                    return nil
+                default :
+                    pairs[key] = value
+                }
+            } else {
+                return nil
+            }
+        }
+        return pairs
+    }
+
     public init(jsonSchema: String, withBytes bytes:[Byte]) {
         let schema = Schema(jsonSchema)
         let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
@@ -192,28 +224,41 @@ public enum AvroValue {
                 self = .AvroInvalidValue
             }
 
+        // TODO: Collections negative count support.
         case .ArraySchema(let boxedSchema) :
-            if let count = decoder.decodeLong() {
-                var values: [AvroValue] = []
-                for idx in 0...count - 1 {
-                    let value = AvroValue(boxedSchema.value, withDecoder: decoder)
-                    switch value {
-                    default :
-                        values.append(value)
-                    }
+            var values: [AvroValue] = []
+            while let count = decoder.decodeLong() {
+                if count == 0 {
+                    self = .AvroArrayValue(values)
+                    return
                 }
-                if let terminator = decoder.decodeLong() {
-                    if terminator == 0 {
-                        self = .AvroArrayValue(values)
-                        return
-                    }
+
+                if let block = AvroValue.decodeArrayBlock(boxedSchema.value, count: count, decoder: decoder) {
+                    values += block
+                } else {
+                    self = .AvroInvalidValue
+                    return
                 }
             }
             self = .AvroInvalidValue
 
 
         case .MapSchema(let boxedSchema) :
+            var pairs: Dictionary<String, AvroValue> = [:]
+            while let count = decoder.decodeLong() {
+                if count == 0 {
+                    self = .AvroMapValue(pairs)
+                    return
+                }
+                if let block = AvroValue.decodeMapBlock(boxedSchema.value, count: count, decoder: decoder) {
+                    pairs += block
+                } else {
+                    self = .AvroInvalidValue
+                    return
+                }
+            }
             self = .AvroInvalidValue
+
 
         case .EnumSchema(let boxedSchema) :
             self = .AvroInvalidValue
