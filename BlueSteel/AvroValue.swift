@@ -21,9 +21,9 @@ public enum AvroValue {
     case AvroStringValue(String)
 
     // Complex Types
-    case array([AvroValue])
-    case map(Dictionary<String, AvroValue>)
-    case record(Dictionary<String, AvroValue>)
+    case AvroArrayValue([AvroValue])
+    case AvroMapValue(Dictionary<String, AvroValue>)
+    case AvroRecordValue(Dictionary<String, AvroValue>)
 
     case AvroInvalidValue
 
@@ -33,7 +33,7 @@ public enum AvroValue {
             return value
         default :
             return nil
-            }
+        }
     }
 
     public var string: String? {
@@ -60,7 +60,7 @@ public enum AvroValue {
             return value
         default :
             return nil
-            }
+        }
     }
 
     public var float: Float? {
@@ -90,14 +90,43 @@ public enum AvroValue {
         }
     }
 
+    public var array: Array<AvroValue>? {
+        switch self {
+        case .AvroArrayValue(let values) :
+            return values
+        default :
+            return nil
+        }
+    }
+
+    public var map: Dictionary<String, AvroValue>? {
+        switch self {
+        case .AvroMapValue(let values) :
+            return values
+        default :
+            return nil
+        }
+    }
+
+    public var record: Dictionary<String, AvroValue>? {
+        return nil
+    }
+
+    public var enumeration: String? {
+        return nil
+    }
+
+    // TODO: Deal with fixed.
+
     public init(jsonSchema: String, withBytes bytes:[Byte]) {
         let schema = Schema(jsonSchema)
         let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
-        self = AvroValue(schema, withData: avroData)
+        let decoder = AvroDecoder(avroData)
+
+        self = AvroValue(schema, withDecoder: decoder)
     }
 
-    init(_ schema: Schema, withData data: NSData) {
-        let decoder = AvroDecoder(data)
+    init(_ schema: Schema, withDecoder decoder: AvroDecoder) {
 
         switch schema {
         case .PrimitiveSchema(.ANull) :
@@ -110,47 +139,79 @@ public enum AvroValue {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.AInt):
+        case .PrimitiveSchema(.AInt) :
             if let decoded = decoder.decodeInt() {
                 self = .AvroIntValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.ALong):
+        case .PrimitiveSchema(.ALong) :
             if let decoded = decoder.decodeLong() {
                 self = .AvroLongValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.AFloat):
+        case .PrimitiveSchema(.AFloat) :
             if let decoded = decoder.decodeFloat() {
                 self = .AvroFloatValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.ADouble):
+        case .PrimitiveSchema(.ADouble) :
             if let decoded = decoder.decodeDouble() {
                 self = .AvroDoubleValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.AString):
+        case .PrimitiveSchema(.AString) :
             if let decoded = decoder.decodeString() {
                 self = .AvroStringValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.ABytes):
+        case .PrimitiveSchema(.ABytes) :
             if let decoded = decoder.decodeBytes() {
                 self = .AvroBytesValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
+
+        case .ArraySchema(let boxedSchema) :
+            if let count = decoder.decodeLong() {
+                var values: [AvroValue] = []
+                for idx in 0...count - 1 {
+                    let value = AvroValue(boxedSchema.value, withDecoder: decoder)
+                    switch value {
+                    default :
+                        values.append(value)
+                    }
+                }
+                if let terminator = decoder.decodeLong() {
+                    if terminator == 0 {
+                        self = .AvroArrayValue(values)
+                        return
+                    }
+                }
+            }
+            self = .AvroInvalidValue
+
+
+        case .MapSchema(let boxedSchema) :
+            self = .AvroInvalidValue
+
+        case .EnumSchema(let boxedSchema) :
+            self = .AvroInvalidValue
+
+        case .RecordSchema(let boxedSchema) :
+            self = .AvroInvalidValue
+
+        case .FixedSchema(let name, let size) :
+            self = .AvroInvalidValue
 
         default :
             self = .AvroInvalidValue
