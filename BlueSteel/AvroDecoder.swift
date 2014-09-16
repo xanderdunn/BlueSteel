@@ -115,7 +115,7 @@ public class AvroDecoder {
 
         switch size {
             case let .Some(x):
-                if (Int64(bytes.count) < size) {
+                if (Int64(bytes.count) < x || x == 0) {
                     return nil
                 }
 
@@ -137,4 +137,12 @@ public class AvroDecoder {
         }
     }
 
+    public func decodeFixed(size: Int) -> [Byte]? {
+        if bytes.count < size {
+            return nil
+        }
+        var tmp: [Byte] = [Byte](bytes[0...size - 1])
+        bytes.removeRange(0...size - 1)
+        return tmp
+    }
 }
