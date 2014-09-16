@@ -301,8 +301,12 @@ public enum AvroValue {
             }
             self = .AvroRecordValue(pairs)
 
-        case .FixedSchema(let name, let size) :
-            self = .AvroInvalidValue
+        case .FixedSchema(_, let size) :
+            if let bytes = decoder.decodeFixed(size) {
+                self = .AvroFixedValue(bytes)
+            } else {
+                self = .AvroInvalidValue
+            }
 
         default :
             self = .AvroInvalidValue
