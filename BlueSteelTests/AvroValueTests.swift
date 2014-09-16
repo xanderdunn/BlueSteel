@@ -106,6 +106,25 @@ class AvroValueTests: XCTestCase {
         }
     }
 
+    func testArrayValue() {
+        let avroBytes: [Byte] = [0x04, 0x06, 0x36, 0x00]
+        let expected: [Int64] = [3, 27]
+        let jsonSchema = "{ \"type\" : \"array\", \"items\" : \"long\" }"
+
+        if let values = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).array {
+            XCTAssertEqual(values.count, 2, "Wrong number of elements in array.")
+            for idx in 0...1 {
+                if let value = values[idx].long {
+                    XCTAssertEqual(value, expected[idx], "Unexpected value.")
+                } else {
+                    XCTAssert(false, "Failed. Nil value")
+                }
+            }
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+    }
+
     func testPerformanceStub() {
         self.measureBlock() {
         }
