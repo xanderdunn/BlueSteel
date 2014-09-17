@@ -85,23 +85,23 @@ public class AvroDecoder {
     }
 
     public func decodeInt() -> Int32? {
-        switch Varint.VarintFromBytes(bytes) {
-            case let .Some(x):
+        if let x = Varint.VarintFromBytes(bytes) {
+            if x.count > 0 {
                 bytes.removeRange(0...x.count - 1)
                 return Int32(x.toUInt().decodeZigZag())
-            case .None:
-                return nil
+            }
         }
+        return nil
     }
 
     public func decodeLong() -> Int64? {
-        switch Varint.VarintFromBytes(bytes) {
-            case let .Some(x):
+        if let x = Varint.VarintFromBytes(bytes) {
+            if x.count > 0 {
                 bytes.removeRange(0...x.count - 1)
                 return Int64(x.toUInt().decodeZigZag())
-            case .None:
-                return nil
+            }
         }
+        return nil
     }
 
     // Avro doesnt actually support Unsigned primitives. So We'll keep this internal.
@@ -111,25 +111,17 @@ public class AvroDecoder {
     }
 
     public func decodeBytes() -> [Byte]? {
-        let size = decodeLong()
-
-        switch size {
-            case let .Some(x):
-                if (Int64(bytes.count) < x || x == 0) {
-                    return nil
-                }
-
-                var tmp: [Byte] = [Byte](bytes[0...x - 1])
-                bytes.removeRange(0...x - 1)
+        if let size = decodeLong() {
+            if size <= Int64(bytes.count) && size != 0 {
+                var tmp: [Byte] = [Byte](bytes[0...size - 1])
+                bytes.removeRange(0...size - 1)
                 return tmp
-
-            case .None:
-                return nil
+            }
         }
+        return nil
     }
 
     public func decodeString() -> String? {
-
         if let rawString = decodeBytes()? {
             return String.stringWithBytes(rawString, encoding: NSUTF8StringEncoding)
         } else {
