@@ -308,6 +308,15 @@ public enum AvroValue {
                 self = .AvroInvalidValue
             }
 
+        case .UnionSchema(let schemas) :
+            if let index = decoder.decodeLong() {
+                if Int(index) < schemas.count {
+                    self = AvroValue(schemas[Int(index)], withDecoder: decoder)
+                    return
+                }
+            }
+            self = .AvroInvalidValue
+
         default :
             self = .AvroInvalidValue
         }
