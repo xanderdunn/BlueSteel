@@ -144,6 +144,16 @@ class AvroValueTests: XCTestCase {
         }
     }
 
+    func testUnionValue() {
+        let avroBytes: [Byte] = [0x02, 0x02, 0x61]
+        let jsonSchema = "{\"type\" : [\"null\",\"string\"] }"
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).string {
+            XCTAssertEqual(value, "a", "Unexpected string value.")
+        } else {
+            XCTAssert(false, "Failed. Nil value")
+        }
+
+    }
     func testPerformanceStub() {
         self.measureBlock() {
         }
