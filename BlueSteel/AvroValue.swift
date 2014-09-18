@@ -35,7 +35,7 @@ public enum AvroValue {
     case AvroArrayValue([AvroValue])
     case AvroMapValue(Dictionary<String, AvroValue>)
     case AvroRecordValue(Dictionary<String, AvroValue>)
-    case AvroEnumValue(String)
+    case AvroEnumValue(Int32, String)
     case AvroFixedValue([Byte])
 
     case AvroInvalidValue
@@ -132,7 +132,7 @@ public enum AvroValue {
 
     public var enumeration: String? {
         switch self {
-        case .AvroEnumValue(let value) :
+        case .AvroEnumValue(_, let value) :
             return value
         default :
             return nil
@@ -282,7 +282,7 @@ public enum AvroValue {
         case .EnumSchema(_, let enumValues) :
             if let index = decoder.decodeInt() {
                 if Int(index) > enumValues.count - 1 {
-                    self = .AvroEnumValue(enumValues[Int(index)])
+                    self = .AvroEnumValue(index, enumValues[Int(index)])
                     return
                 }
             }
