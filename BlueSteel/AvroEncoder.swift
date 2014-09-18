@@ -16,25 +16,29 @@ public class AvroEncoder {
         return
     }
 
-    func encodeBoolean(value: Boolean) {
-        bytes.append(Byte(value))
+    func encodeBoolean(value: Bool) {
+        if value {
+            bytes.append(Byte(0x1))
+        } else {
+            bytes.append(Byte(0x0))
+        }
         return
     }
 
     func encodeInt(value: Int32) {
-        let encoded = Varint(fromValue: Int64(value))
+        let encoded = Varint(fromValue: Int64(value).encodeZigZag())
         bytes += encoded.backing
         return
     }
 
     func encodeLong(value: Int64) {
-        let encoded = Varint(fromValue: UInt64(value))
+        let encoded = Varint(fromValue: value.encodeZigZag())
         bytes += encoded.backing
         return
     }
     
     func encodeFloat(value: Float) {
-        let bits: UInt64 = unsafeBitCast(value, UInt64.self)
+        let bits: UInt32 = unsafeBitCast(value, UInt32.self)
 
         bytes.append(Byte(0xff & (bits >> 24)))
         bytes.append(Byte(0xff & (bits >> 16)))
