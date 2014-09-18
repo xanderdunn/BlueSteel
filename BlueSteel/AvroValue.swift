@@ -34,6 +34,7 @@ public enum AvroValue {
     // Complex Types
     case AvroArrayValue([AvroValue])
     case AvroMapValue(Dictionary<String, AvroValue>)
+    case AvroUnionValue(Int64, Box<AvroValue>)
     case AvroRecordValue(Dictionary<String, AvroValue>)
     case AvroEnumValue(Int32, String)
     case AvroFixedValue([Byte])
@@ -44,6 +45,8 @@ public enum AvroValue {
         switch self {
         case .AvroBooleanValue(let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.boolean
         default :
             return nil
         }
@@ -53,6 +56,8 @@ public enum AvroValue {
         switch self {
         case .AvroStringValue(let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.string
         default :
             return nil
         }
@@ -62,6 +67,8 @@ public enum AvroValue {
         switch self {
         case .AvroIntValue(let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.integer
         default :
             return nil
         }
@@ -71,6 +78,8 @@ public enum AvroValue {
         switch self {
         case .AvroLongValue(let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.long
         default :
             return nil
         }
@@ -80,6 +89,8 @@ public enum AvroValue {
         switch self {
         case .AvroFloatValue(let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.float
         default :
             return nil
         }
@@ -89,6 +100,8 @@ public enum AvroValue {
         switch self {
         case .AvroDoubleValue(let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.double
         default :
             return nil
         }
@@ -98,6 +111,8 @@ public enum AvroValue {
         switch self {
         case .AvroBytesValue(let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.bytes
         default :
             return nil
         }
@@ -107,6 +122,8 @@ public enum AvroValue {
         switch self {
         case .AvroArrayValue(let values) :
             return values
+        case .AvroUnionValue(_, let box) :
+            return box.value.array
         default :
             return nil
         }
@@ -116,6 +133,8 @@ public enum AvroValue {
         switch self {
         case .AvroMapValue(let pairs) :
             return pairs
+        case .AvroUnionValue(_, let box) :
+            return box.value.map
         default :
             return nil
         }
@@ -125,6 +144,8 @@ public enum AvroValue {
         switch self {
         case .AvroRecordValue(let fields) :
             return fields
+        case .AvroUnionValue(_, let box) :
+            return box.value.record
         default :
             return nil
         }
@@ -134,6 +155,8 @@ public enum AvroValue {
         switch self {
         case .AvroEnumValue(_, let value) :
             return value
+        case .AvroUnionValue(_, let box) :
+            return box.value.enumeration
         default :
             return nil
         }
@@ -143,6 +166,8 @@ public enum AvroValue {
         switch self {
         case .AvroFixedValue(let bytes) :
             return bytes
+        case .AvroUnionValue(_, let box) :
+            return box.value.fixed
         default :
             return nil
         }
@@ -311,7 +336,7 @@ public enum AvroValue {
         case .UnionSchema(let schemas) :
             if let index = decoder.decodeLong() {
                 if Int(index) < schemas.count {
-                    self = AvroValue(schemas[Int(index)], withDecoder: decoder)
+                    self = .AvroUnionValue(index, Box(AvroValue(schemas[Int(index)], withDecoder: decoder)))
                     return
                 }
             }
