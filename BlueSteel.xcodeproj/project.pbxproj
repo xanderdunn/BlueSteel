@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C50746EB19BF980A00FAE594 /* AvroSchemaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */; };
+		C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */; };
 		C5C483AB19B7B12B008E3F4C /* BlueSteel.h in Headers */ = {isa = PBXBuildFile; fileRef = C5C483AA19B7B12B008E3F4C /* BlueSteel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5C483C119B7B19F008E3F4C /* AvroDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483BE19B7B19F008E3F4C /* AvroDecoder.swift */; };
 		C5C483C319B7B19F008E3F4C /* Varint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483C019B7B19F008E3F4C /* Varint.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
+		C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroEncoder.swift; sourceTree = "<group>"; };
 		C5C483A519B7B12B008E3F4C /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C483A919B7B12B008E3F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5C483AA19B7B12B008E3F4C /* BlueSteel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueSteel.h; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				C5C483BE19B7B19F008E3F4C /* AvroDecoder.swift */,
+				C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */,
 				C5DA98A819C73D9400CA9F41 /* AvroValue.swift */,
 				C5C483DE19BA1D41008E3F4C /* Schema.swift */,
 				C5C483C019B7B19F008E3F4C /* Varint.swift */,
@@ -255,6 +258,7 @@
 				C5C483DF19BA1D41008E3F4C /* Schema.swift in Sources */,
 				C5C483C119B7B19F008E3F4C /* AvroDecoder.swift in Sources */,
 				C5C483C319B7B19F008E3F4C /* Varint.swift in Sources */,
+				C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */,
 				C5DA98A919C73D9400CA9F41 /* AvroValue.swift in Sources */,
 				C5C483ED19BE232D008E3F4C /* SwiftyJSON.swift in Sources */,
 				C5C483CC19B8C6A5008E3F4C /* Boxes.swift in Sources */,
