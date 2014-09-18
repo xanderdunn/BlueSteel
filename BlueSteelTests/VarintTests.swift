@@ -22,28 +22,28 @@ class VarintTests: XCTestCase {
 
     func testToInt() {
         //TODO: Exercise a range of numbers here.
-        let expected = Int(bitPattern: UInt(arc4random()))
+        let expected = Int64(bitPattern: UInt64(arc4random()))
         let testvarint = Varint(fromValue: expected)
-        let val = testvarint.toInt()
+        let val = testvarint.toInt64()
         println(testvarint.description)
         XCTAssertEqual(val, expected, "Expected -1. Got\(val)")
     }
 
     func testToUInt() {
-        let expected = UInt(arc4random())
+        let expected = UInt64(arc4random())
         let testvarint = Varint(fromValue: expected)
-        let val = testvarint.toUInt()
+        let val = testvarint.toUInt64()
         println(testvarint.description)
         XCTAssertEqual(val, expected, "Expected -1. Got\(val)")
     }
 
     func testEncodeZigZag() {
-        let val = Int(Int32.max).encodeZigZag()
-        XCTAssertEqual(val, UInt(UInt32.max) - 1, "\(val)")
+        let val = Int64(Int32.max).encodeZigZag()
+        XCTAssertEqual(val, UInt64(UInt32.max) - 1, "\(val)")
     }
 
     func testDecodeZigZag() {
-        let val = UInt.max.decodeZigZag()
-        XCTAssertEqual(val, Int.min, "\(val)")
+        let val = UInt64.max.decodeZigZag()
+        XCTAssertEqual(val, Int64.min, "\(val)")
     }
 }

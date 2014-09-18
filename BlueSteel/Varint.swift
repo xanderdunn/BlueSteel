@@ -31,6 +31,10 @@ public struct Varint {
     }
 
     public init(fromValue value:UInt) {
+        self.init(fromValue: UInt64(value))
+    }
+
+    public init(fromValue value:UInt64) {
         var tmp = value
         var idx: UInt = 0
         while tmp > 0 {
@@ -45,17 +49,17 @@ public struct Varint {
         }
     }
 
-    public func toInt() -> Int {
-        return Int(bitPattern: self.toUInt())
+    public func toInt64() -> Int64 {
+        return Int64(bitPattern: self.toUInt64())
     }
 
-    public func toUInt() -> UInt {
-        var result: UInt = 0
+    public func toUInt64() -> UInt64 {
+        var result: UInt64 = 0
 
         for var idx:Int = 0; idx < backing.count; idx++ {
             let tmp:UInt8 = backing[idx]
 
-            result |= UInt(tmp & 0x7F) << UInt(7 * idx)
+            result |= UInt64(tmp & 0x7F) << UInt64(7 * idx)
         }
         return result
     }
@@ -79,10 +83,13 @@ public struct Varint {
 
 extension Varint {
 
-    public init(fromValue value:Int) {
-        self = Varint(fromValue: UInt(bitPattern: value))
+    public init(fromValue value:Int64) {
+        self = Varint(fromValue: UInt64(value))
     }
 
+    public init(fromValue value:Int) {
+        self.init(fromValue: Int64(value))
+    }
 }
 
 // MARK: - Integer extensions
@@ -128,16 +135,16 @@ extension UInt16 {
 
 // MARK: Zig Zag encoding
 
-extension Int {
-    public func encodeZigZag() -> UInt {
-        let encoded = ((self << 1) ^ (self >> (sizeof(Int) * 8 - 1)))
-        return UInt(bitPattern:  encoded)
+extension Int64 {
+    public func encodeZigZag() -> UInt64 {
+        let encoded:Int64 = ((self << 1) ^ (self >> 63))
+        return UInt64(bitPattern:  encoded)
     }
 }
 
-extension UInt {
-    public func decodeZigZag() -> Int {
-        let decoded = ((self & 0x1) * UInt.max) ^ (self >> 1)
-        return Int(bitPattern: decoded)
+extension UInt64 {
+    public func decodeZigZag() -> Int64 {
+        let decoded = ((self & 0x1) * UInt64.max) ^ (self >> 1)
+        return Int64(bitPattern: decoded)
     }
 }

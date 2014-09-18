@@ -88,7 +88,7 @@ public class AvroDecoder {
         if let x = Varint.VarintFromBytes(bytes) {
             if x.count > 0 {
                 bytes.removeRange(0...x.count - 1)
-                return Int32(x.toUInt().decodeZigZag())
+                return Int32(x.toUInt64().decodeZigZag())
             }
         }
         return nil
@@ -98,7 +98,7 @@ public class AvroDecoder {
         if let x = Varint.VarintFromBytes(bytes) {
             if x.count > 0 {
                 bytes.removeRange(0...x.count - 1)
-                return Int64(x.toUInt().decodeZigZag())
+                return Int64(x.toUInt64().decodeZigZag())
             }
         }
         return nil
