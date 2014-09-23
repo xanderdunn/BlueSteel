@@ -80,5 +80,8 @@ public class AvroEncoder {
         bytes += value
         return
     }
-    
+
+    public init() {
+        bytes = []
+    }
 }
