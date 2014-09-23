@@ -35,17 +35,21 @@ public struct Varint {
     }
 
     public init(fromValue value:UInt64) {
-        var tmp = value
-        var idx: UInt = 0
-        while tmp > 0 {
-            backing.append(UInt8(truncate: tmp))
-            if (idx > 0) {
-                backing[idx - 1] |= 0x80
-            }
+        if value == 0 {
+            backing = [0]
+        } else {
+            var tmp = value
+            var idx: UInt = 0
+            while tmp > 0 {
+                backing.append(UInt8(truncate: tmp))
+                if (idx > 0) {
+                    backing[idx - 1] |= 0x80
+                }
 
-            // Next index
-            idx++
-            tmp >>= 7
+                // Next index
+                idx++
+                tmp >>= 7
+            }
         }
     }
 
