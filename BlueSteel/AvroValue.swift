@@ -407,4 +407,53 @@ public enum AvroValue {
             self = .AvroInvalidValue
         }
     }
+
+extension AvroValue: NilLiteralConvertible {
+    public static func convertFromNilLiteral() -> AvroValue {
+        return .AvroInvalidValue
+    }
+}
+
+extension AvroValue: BooleanLiteralConvertible {
+    public static func convertFromBooleanLiteral(value: BooleanLiteralType) -> AvroValue {
+        return .AvroBooleanValue(value)
+    }
+}
+
+extension AvroValue: IntegerLiteralConvertible {
+    public static func convertFromIntegerLiteral(value: Int64) -> AvroValue {
+        return .AvroLongValue(value)
+    }
+}
+
+extension AvroValue: FloatLiteralConvertible {
+    public static func convertFromFloatLiteral(value: Double) -> AvroValue {
+        return .AvroDoubleValue(value)
+    }
+}
+
+extension AvroValue: StringLiteralConvertible {
+    public static func convertFromExtendedGraphemeClusterLiteral(value: ExtendedGraphemeClusterType) -> AvroValue {
+        return .AvroStringValue(value)
+    }
+
+    public static func convertFromStringLiteral(value: StringLiteralType) -> AvroValue {
+        return .AvroStringValue(value)
+    }
+}
+
+extension AvroValue: ArrayLiteralConvertible {
+    public static func convertFromArrayLiteral(elements: AvroValue...) -> AvroValue {
+        return .AvroArrayValue(elements)
+    }
+}
+
+extension AvroValue: DictionaryLiteralConvertible {
+    public static func convertFromDictionaryLiteral(elements: (String, AvroValue)...) -> AvroValue {
+        var tmp = [String:AvroValue](minimumCapacity: elements.count)
+        for kv in elements {
+            tmp[kv.0] = kv.1
+        }
+        return .AvroInvalidValue
+    }
 }
