@@ -231,6 +231,7 @@ public enum AvroValue {
             for value in values {
                 value.encode(encoder)
             }
+            encoder.encodeLong(0)
 
         case .AvroMapValue(let pairs) :
             encoder.encodeLong(Int64(pairs.count))
