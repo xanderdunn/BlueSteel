@@ -79,6 +79,19 @@ public enum Schema {
     // TODO: Report errors for invalid schemas.
     case InvalidSchema
 
+    static func assembleFullName(namespace:String?, name: String?) -> String? {
+        if let shortName = name {
+            if !contains(shortName, ".") {
+                if let space = namespace {
+                    return space + "." + shortName
+                }
+            }
+            return shortName
+        } else {
+            return nil
+        }
+    }
+
     init(_ json: Dictionary<String, JSONValue>) {
         // Stub
         self = .InvalidSchema
@@ -123,7 +136,7 @@ public enum Schema {
 
             case .ARecord :
                 // Records must be named
-                if let recordName = json["name"].string {
+                if let recordName = Schema.assembleFullName(json["namespace"].string , name: json["name"].string) {
                     switch json["fields"] {
                     case .JArray(let fields) :
                         var recordFields: [Schema] = []
@@ -155,7 +168,8 @@ public enum Schema {
                 }
 
             case .AEnum :
-                if let enumName = json["name"].string {
+                if let enumName = Schema.assembleFullName(json["namespace"].string, name: json["name"].string) {
+                    println(enumName)
                     switch json["symbols"] {
                     case .JArray(let symbols) :
                         var symbolStrings: [String] = []
@@ -177,7 +191,7 @@ public enum Schema {
                 }
 
             case .AFixed :
-                if let fixedName = json["name"].string {
+                if let fixedName = Schema.assembleFullName(json["namespace"].string, name: json["name"].string) {
                     if let size = json["size"].integer {
                         self = .FixedSchema(fixedName, size)
                         return
