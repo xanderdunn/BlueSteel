@@ -92,6 +92,93 @@ public enum Schema {
         }
     }
 
+    public func parsingCanonicalForm(inout existingTypes: [String]) -> String? {
+        switch self {
+        case .PrimitiveSchema(let aType) :
+            switch aType {
+            case .ANull :
+                return "\"null\""
+            case .ABoolean :
+                return "\"boolean\""
+            case .AInt :
+                return "\"int\""
+            case .ALong :
+                return "\"long\""
+            case .AFloat :
+                return "\"float\""
+            case .ADouble :
+                return "\"double\""
+            case .AString :
+                return "\"string\""
+            case .ABytes :
+                return "\"bytes\""
+            default :
+                return nil
+            }
+
+        case .ArraySchema(let boxed) :
+            return "{\"type\":\"array\",\"items\":\(boxed.value.parsingCanonicalForm(&existingTypes)))}"
+
+        case .MapSchema(let boxed) :
+            return "{\"type\":\"array\",\"values\":\(boxed.value.parsingCanonicalForm(&existingTypes))}"
+
+        case .EnumSchema(let name, let enumValues) :
+            if contains(existingTypes, name) {
+                return name
+            } else {
+                existingTypes.append(name)
+                var str = "{\"name\":\"\(name)\",\"type\":\"enum\",\"symbols\":["
+                var first = true
+                for val in enumValues {
+                    if first {
+                        str += "\"\(val)\""
+                        first = false
+                    } else {
+                        str += ",\"\(val)\""
+                    }
+                }
+                str += "]}"
+                return str
+            }
+
+        case .RecordSchema(let name, let fields) :
+            if contains(existingTypes, name) {
+                return name
+            } else {
+                existingTypes.append(name)
+                var str = "{\"name\":\"\(name)\",\"type\":\"record\",\"fields\":["
+                var first = true
+                for field in fields {
+                    if !first {
+                        str += ","
+                    } else {
+                        first = false
+                    }
+
+                    switch field {
+                    case .FieldSchema(let fieldName, let fieldType) :
+                        str += "{\"name\":\"\(fieldName)\",\"type\":\(fieldType.value.parsingCanonicalForm(&existingTypes))}"
+                    default :
+                        return nil
+                    }
+                }
+                str += "]}"
+                return str
+            }
+
+        case .FixedSchema(let name, let size) :
+            if contains(existingTypes, name) {
+                return name
+            } else {
+                existingTypes.append(name)
+                return "{\"name\":\"\(name)\",\"type\":\"fixed\",\"size\":[\(size)]}"
+            }
+
+        default :
+            return nil
+        }
+    }
+
     init(_ json: Dictionary<String, JSONValue>) {
         // Stub
         self = .InvalidSchema
