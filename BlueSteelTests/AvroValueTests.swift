@@ -48,7 +48,7 @@ class AvroValueTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"int\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).integer {
-            XCTAssertEqual(value, 3209099, "Byte arrays don't match.")
+            XCTAssertEqual(Int(value), 3209099, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
         }
@@ -59,7 +59,7 @@ class AvroValueTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"long\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).long {
-            XCTAssertEqual(value, 3209099, "Byte arrays don't match.")
+            XCTAssertEqual(Int(value), 3209099, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
         }
@@ -69,8 +69,9 @@ class AvroValueTests: XCTestCase {
         let avroBytes: [Byte] = [0x40, 0x48, 0xf5, 0xc3]
         let jsonSchema = "{ \"type\" : \"float\" }"
 
+        let expected: Float = 3.14
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).float {
-            XCTAssertEqual(value, 3.14, "Byte arrays don't match.")
+            XCTAssertEqual(value, expected, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
         }
