@@ -409,51 +409,57 @@ public enum AvroValue {
     }
 
 extension AvroValue: NilLiteralConvertible {
-    public static func convertFromNilLiteral() -> AvroValue {
-        return .AvroInvalidValue
+    public init(nilLiteral: ()) {
+        self = AvroNullValue
     }
 }
 
 extension AvroValue: BooleanLiteralConvertible {
-    public static func convertFromBooleanLiteral(value: BooleanLiteralType) -> AvroValue {
-        return .AvroBooleanValue(value)
+    public init(booleanLiteral value: Bool) {
+        self = .AvroBooleanValue(value)
     }
 }
 
 extension AvroValue: IntegerLiteralConvertible {
-    public static func convertFromIntegerLiteral(value: Int64) -> AvroValue {
-        return .AvroLongValue(value)
+    public init(integerLiteral value: IntegerLiteralType) {
+        self = .AvroLongValue(Int64(value))
     }
 }
 
 extension AvroValue: FloatLiteralConvertible {
-    public static func convertFromFloatLiteral(value: Double) -> AvroValue {
-        return .AvroDoubleValue(value)
+    public init(floatLiteral value: FloatLiteralType) {
+        self = .AvroDoubleValue(value)
     }
 }
 
 extension AvroValue: StringLiteralConvertible {
-    public static func convertFromExtendedGraphemeClusterLiteral(value: ExtendedGraphemeClusterType) -> AvroValue {
-        return .AvroStringValue(value)
+
+    public init(unicodeScalarLiteral value: String) {
+        self = AvroInvalidValue
     }
 
-    public static func convertFromStringLiteral(value: StringLiteralType) -> AvroValue {
-        return .AvroStringValue(value)
+    public init(extendedGraphemeClusterLiteral value: String) {
+        self = .AvroStringValue(value)
+    }
+
+    public init(stringLiteral value: String) {
+        self = .AvroStringValue(value)
     }
 }
 
 extension AvroValue: ArrayLiteralConvertible {
-    public static func convertFromArrayLiteral(elements: AvroValue...) -> AvroValue {
-        return .AvroArrayValue(elements)
+    public init(arrayLiteral elements: AvroValue...) {
+        self = .AvroArrayValue(elements)
     }
 }
 
 extension AvroValue: DictionaryLiteralConvertible {
-    public static func convertFromDictionaryLiteral(elements: (String, AvroValue)...) -> AvroValue {
+
+    public init(dictionaryLiteral elements:(String, AvroValue)...) {
         var tmp = [String:AvroValue](minimumCapacity: elements.count)
         for kv in elements {
             tmp[kv.0] = kv.1
         }
-        return .AvroInvalidValue
+        self = .AvroMapValue(tmp)
     }
 }
