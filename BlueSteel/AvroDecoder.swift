@@ -46,14 +46,14 @@ public class AvroDecoder {
 
         let slice = bytes[0...7]
 
-        var bits: UInt64 = UInt64(slice[0]) << 56 |
-            UInt64(slice[1]) << 48 |
-            UInt64(slice[2]) << 40 |
-            UInt64(slice[3]) << 32 |
-            UInt64(slice[4]) << 24 |
-            UInt64(slice[5]) << 16 |
-            UInt64(slice[6]) << 8 |
-            UInt64(slice[7])
+        var bits: UInt64 = UInt64(slice[0]) << 56
+            bits |= UInt64(slice[1]) << 48
+            bits |= UInt64(slice[2]) << 40
+            bits |= UInt64(slice[3]) << 32
+            bits |= UInt64(slice[4]) << 24
+            bits |= UInt64(slice[5]) << 16
+            bits |= UInt64(slice[6]) << 8
+            bits |= UInt64(slice[7])
 
         bytes.removeRange(0...7)
 
@@ -71,10 +71,10 @@ public class AvroDecoder {
         }
 
         let slice = bytes[0...3]
-        var bits: UInt32 = UInt32(slice[0]) << 24 |
-            UInt32(slice[1]) << 16 |
-            UInt32(slice[2]) << 8 |
-            UInt32(slice[3])
+        var bits: UInt32 = (UInt32(slice[0]) << 24)
+            bits |= (UInt32(slice[1]) << 16)
+            bits |= (UInt32(slice[2]) << 8)
+            bits |= UInt32(slice[3])
 
         bytes.removeRange(0...3)
 
@@ -107,7 +107,7 @@ public class AvroDecoder {
     // Avro doesnt actually support Unsigned primitives. So We'll keep this internal.
     internal func decodeUInt() -> UInt {
         // Stub
-        return 0.0
+        return 0
     }
 
     public func decodeBytes() -> [Byte]? {
@@ -123,7 +123,9 @@ public class AvroDecoder {
 
     public func decodeString() -> String? {
         if let rawString = decodeBytes()? {
-            return String.stringWithBytes(rawString, encoding: NSUTF8StringEncoding)
+            //return String.stringWithBytes(rawString, encoding: NSUTF8StringEncoding)
+            let result: String? =  NSString(bytes: rawString, length: rawString.count, encoding: NSUTF8StringEncoding)
+            return result
         } else {
             return nil
         }
