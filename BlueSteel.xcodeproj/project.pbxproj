@@ -36,6 +36,7 @@
 /* Begin PBXFileReference section */
 		C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
 		C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroEncoder.swift; sourceTree = "<group>"; };
+		C5923B6C19D9D33D001710BF /* module.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
 		C5C483A519B7B12B008E3F4C /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5C483A919B7B12B008E3F4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5C483AA19B7B12B008E3F4C /* BlueSteel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueSteel.h; sourceTree = "<group>"; };
@@ -72,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5923B6A19D9D33D001710BF /* CommonCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				C5923B6C19D9D33D001710BF /* module.map */,
+			);
+			path = CommonCrypto;
+			sourceTree = "<group>";
+		};
 		C5C4839B19B7B12B008E3F4C = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +147,7 @@
 		C5C483EA19BE232D008E3F4C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C5923B6A19D9D33D001710BF /* CommonCrypto */,
 				C5C483EB19BE232D008E3F4C /* SwiftyJSON */,
 			);
 			path = Libs;
@@ -330,6 +340,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libs/CommonCrypto";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -369,6 +380,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libs/CommonCrypto";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -386,6 +398,10 @@
 				INFOPLIST_FILE = BlueSteel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -401,6 +417,10 @@
 				INFOPLIST_FILE = BlueSteel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
