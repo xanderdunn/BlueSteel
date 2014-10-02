@@ -187,6 +187,24 @@ public enum Schema {
                 return "{\"name\":\"" + name + "\",\"type\":\"fixed\",\"size\":\(size)}"
             }
 
+        case .UnionSchema(let unionSchemas) :
+            var str = "["
+            var first = true
+            for uschema in unionSchemas {
+                if !first {
+                    str += ","
+                } else {
+                    first = false
+                }
+
+                if let unionPCF = uschema.parsingCanonicalForm(&existingTypes) {
+                    str += unionPCF
+                } else {
+                    return nil
+                }
+            }
+            str += "]"
+            return str
         default :
             return nil
         }
