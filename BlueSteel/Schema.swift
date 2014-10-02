@@ -236,14 +236,23 @@ public enum Schema {
     }
 
     public init(_ json: NSData) {
-        self = Schema(JSONValue(json), typeKey:"type")
+        var cached: [String:Schema] = [:]
+        self = Schema(JSONValue(json), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
 
     public init(_ json: String) {
-        self = Schema(JSONValue(json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)), typeKey:"type")
+        var cached: [String:Schema] = [:]
+        self = Schema(JSONValue(json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
 
-    init(_ json: JSONValue, typeKey key: String) {
+    init(_ json: JSONValue, typeKey key: String, namespace ns: String?, inout cachedSchemas cache: [String:Schema]) {
+        var schemaNamespace: String?
+        if let jsonNamespace = json["namespace"].string {
+            schemaNamespace = jsonNamespace
+        } else {
+            schemaNamespace = ns
+        }
+
         switch json[key] {
         case .JString(let typeString) :
             let avroType = AvroType(typeString)
@@ -253,7 +262,7 @@ public enum Schema {
                 self = .PrimitiveSchema(AvroType(typeString))
 
             case .AMap :
-                let schema = Schema(json, typeKey: "values")
+                let schema = Schema(json, typeKey: "values", namespace: schemaNamespace, cachedSchemas: &cache)
 
                 switch schema {
                 case .InvalidSchema :
@@ -263,7 +272,7 @@ public enum Schema {
                 }
 
             case .AArray :
-                let schema = Schema(json, typeKey: "items")
+                let schema = Schema(json, typeKey: "items", namespace: schemaNamespace, cachedSchemas: &cache)
 
                 switch schema {
                 case .InvalidSchema :
@@ -274,7 +283,7 @@ public enum Schema {
 
             case .ARecord :
                 // Records must be named
-                if let recordName = Schema.assembleFullName(json["namespace"].string , name: json["name"].string) {
+                if let recordName = Schema.assembleFullName(schemaNamespace , name: json["name"].string) {
                     switch json["fields"] {
                     case .JArray(let fields) :
                         var recordFields: [Schema] = []
@@ -282,7 +291,7 @@ public enum Schema {
                         for field in fields {
                             // Fields must be named
                             if let fieldName = field["name"].string {
-                                let schema = Schema(field, typeKey: "type")
+                                let schema = Schema(field, typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
 
                                 switch schema {
                                 case .InvalidSchema :
@@ -298,6 +307,7 @@ public enum Schema {
                             }
                         }
                         self = .RecordSchema(recordName, recordFields)
+                        cache[recordName] = self
                     default :
                         self = .InvalidSchema
                     }
@@ -306,8 +316,7 @@ public enum Schema {
                 }
 
             case .AEnum :
-                if let enumName = Schema.assembleFullName(json["namespace"].string, name: json["name"].string) {
-                    println(enumName)
+                if let enumName = Schema.assembleFullName(schemaNamespace, name: json["name"].string) {
                     switch json["symbols"] {
                     case .JArray(let symbols) :
                         var symbolStrings: [String] = []
@@ -321,6 +330,7 @@ public enum Schema {
                         }
 
                         self = .EnumSchema(enumName, symbolStrings)
+                        cache[enumName] = self
                     default :
                         self = .InvalidSchema
                     }
@@ -329,9 +339,10 @@ public enum Schema {
                 }
 
             case .AFixed :
-                if let fixedName = Schema.assembleFullName(json["namespace"].string, name: json["name"].string) {
+                if let fixedName = Schema.assembleFullName(schemaNamespace, name: json["name"].string) {
                     if let size = json["size"].integer {
                         self = .FixedSchema(fixedName, size)
+                        cache[fixedName] = self
                         return
                     }
                 }
@@ -339,35 +350,44 @@ public enum Schema {
 
             default:
                 // Schema type is invalid
-                self = .InvalidSchema
+                if let cachedSchema = cache[typeString] {
+                    self = cachedSchema
+                } else {
+                    self = .InvalidSchema
+                }
             }
 
         case .JObject(_):
-            self = Schema(json[key], typeKey: "type")
+            self = Schema(json[key], typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
 
         // Union
         case .JArray(let unionSchema):
             var schemas: [Schema] = []
             for def in unionSchema {
-                var schema: Schema
+                var schema: Schema = .InvalidSchema
                 switch def {
                 case .JString(let typeString) :
                     let avroType = AvroType(typeString)
                     if  avroType != .AInvalidType {
                         schema = .PrimitiveSchema(avroType)
+                    } else if let cachedSchema = cache[typeString] {
+                        schema = cachedSchema
                     } else {
                         schema = .InvalidSchema
                     }
+
+
                 case .JArray(_) :
                     // Nested unions not permitted
                     schema = .InvalidSchema
                 default :
-                    schema = Schema(def, typeKey: "type")
+                    schema = Schema(def, typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
                 }
 
                 switch schema {
                 case .InvalidSchema:
                     self = .InvalidSchema
+                    return
                 default:
                     schemas.append(schema)
                 }
