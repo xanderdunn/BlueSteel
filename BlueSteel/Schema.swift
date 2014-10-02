@@ -117,17 +117,25 @@ public enum Schema {
             }
 
         case .ArraySchema(let boxed) :
-            return "{\"type\":\"array\",\"items\":\(boxed.value.parsingCanonicalForm(&existingTypes)))}"
+            if let arrayPCF = boxed.value.parsingCanonicalForm(&existingTypes) {
+                return "{\"type\":\"array\",\"items\":" + arrayPCF + "}"
+            } else {
+                return nil
+            }
 
         case .MapSchema(let boxed) :
-            return "{\"type\":\"array\",\"values\":\(boxed.value.parsingCanonicalForm(&existingTypes))}"
+            if let mapPCF = boxed.value.parsingCanonicalForm(&existingTypes) {
+                return "{\"type\":\"map\",\"values\":" + mapPCF + "}"
+            } else {
+                return nil
+            }
 
         case .EnumSchema(let name, let enumValues) :
             if contains(existingTypes, name) {
-                return name
+                return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
-                var str = "{\"name\":\"\(name)\",\"type\":\"enum\",\"symbols\":["
+                var str = "{\"name\":\"" + name + "\",\"type\":\"enum\",\"symbols\":["
                 var first = true
                 for val in enumValues {
                     if first {
@@ -143,10 +151,10 @@ public enum Schema {
 
         case .RecordSchema(let name, let fields) :
             if contains(existingTypes, name) {
-                return name
+                return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
-                var str = "{\"name\":\"\(name)\",\"type\":\"record\",\"fields\":["
+                var str = "{\"name\":\"" + name + "\",\"type\":\"record\",\"fields\":["
                 var first = true
                 for field in fields {
                     if !first {
@@ -157,7 +165,12 @@ public enum Schema {
 
                     switch field {
                     case .FieldSchema(let fieldName, let fieldType) :
-                        str += "{\"name\":\"\(fieldName)\",\"type\":\(fieldType.value.parsingCanonicalForm(&existingTypes))}"
+                        if let fieldPCF = fieldType.value.parsingCanonicalForm(&existingTypes) {
+                            str += "{\"name\":\"" + fieldName + "\",\"type\":" + fieldPCF + "}"
+                        } else {
+                            println(fieldName)
+                            return nil
+                        }
                     default :
                         return nil
                     }
@@ -168,10 +181,10 @@ public enum Schema {
 
         case .FixedSchema(let name, let size) :
             if contains(existingTypes, name) {
-                return name
+                return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
-                return "{\"name\":\"\(name)\",\"type\":\"fixed\",\"size\":[\(size)]}"
+                return "{\"name\":\"" + name + "\",\"type\":\"fixed\",\"size\":\(size)}"
             }
 
         default :
