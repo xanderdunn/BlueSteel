@@ -8,6 +8,8 @@
 
 import Foundation
 
+import CommonCrypto
+
 public enum AvroType {
     // Primitives
     case ANull
@@ -208,6 +210,24 @@ public enum Schema {
         default :
             return nil
         }
+    }
+
+    public func fingerprint() -> String? {
+        var etypes: [String] = []
+        if let pcf = self.parsingCanonicalForm(&etypes) {
+            var hash = [Byte](count: Int(CC_SHA256_DIGEST_LENGTH), repeatedValue: 0)
+            if let cString = pcf.cStringUsingEncoding(NSUTF8StringEncoding) {
+                // Compute hash of PCF string without the NULL terminator.
+
+                CC_SHA256(cString, UInt32(cString.count - 1), &hash)
+                var hexBits = "" as String
+                for value in hash {
+                    hexBits += NSString(format:"%02X", value) as String
+                }
+                return hexBits
+            }
+        }
+        return nil
     }
 
     init(_ json: Dictionary<String, JSONValue>) {
