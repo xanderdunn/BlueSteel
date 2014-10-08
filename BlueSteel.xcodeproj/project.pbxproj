@@ -18,6 +18,7 @@
 		C5C483CC19B8C6A5008E3F4C /* Boxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483CB19B8C6A5008E3F4C /* Boxes.swift */; };
 		C5C483DF19BA1D41008E3F4C /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483DE19BA1D41008E3F4C /* Schema.swift */; };
 		C5C483ED19BE232D008E3F4C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483EC19BE232D008E3F4C /* SwiftyJSON.swift */; };
+		C5D243DA19E489CA0034D0B3 /* AvroValueEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D243D919E489CA0034D0B3 /* AvroValueEncoding.swift */; };
 		C5DA98A919C73D9400CA9F41 /* AvroValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DA98A819C73D9400CA9F41 /* AvroValue.swift */; };
 		C5DA98AB19C778A200CA9F41 /* AvroValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DA98AA19C778A200CA9F41 /* AvroValueTests.swift */; };
 		C5E75BEC19D33A8B0012C6FB /* AvroConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E75BEB19D33A8B0012C6FB /* AvroConvertible.swift */; };
@@ -49,6 +50,7 @@
 		C5C483CB19B8C6A5008E3F4C /* Boxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boxes.swift; sourceTree = "<group>"; };
 		C5C483DE19BA1D41008E3F4C /* Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
 		C5C483EC19BE232D008E3F4C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		C5D243D919E489CA0034D0B3 /* AvroValueEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueEncoding.swift; sourceTree = "<group>"; };
 		C5DA98A819C73D9400CA9F41 /* AvroValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValue.swift; sourceTree = "<group>"; };
 		C5DA98AA19C778A200CA9F41 /* AvroValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueTests.swift; sourceTree = "<group>"; };
 		C5E75BEB19D33A8B0012C6FB /* AvroConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroConvertible.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				C5C483BE19B7B19F008E3F4C /* AvroDecoder.swift */,
 				C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */,
 				C5DA98A819C73D9400CA9F41 /* AvroValue.swift */,
+				C5D243D919E489CA0034D0B3 /* AvroValueEncoding.swift */,
 				C5E75BEB19D33A8B0012C6FB /* AvroConvertible.swift */,
 				C5C483DE19BA1D41008E3F4C /* Schema.swift */,
 				C5C483C019B7B19F008E3F4C /* Varint.swift */,
@@ -272,6 +275,7 @@
 				C5C483C119B7B19F008E3F4C /* AvroDecoder.swift in Sources */,
 				C5E75BEC19D33A8B0012C6FB /* AvroConvertible.swift in Sources */,
 				C5C483C319B7B19F008E3F4C /* Varint.swift in Sources */,
+				C5D243DA19E489CA0034D0B3 /* AvroValueEncoding.swift in Sources */,
 				C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */,
 				C5DA98A919C73D9400CA9F41 /* AvroValue.swift in Sources */,
 				C5C483ED19BE232D008E3F4C /* SwiftyJSON.swift in Sources */,
