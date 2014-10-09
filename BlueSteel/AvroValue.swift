@@ -266,12 +266,17 @@ public enum AvroValue {
         return encoder.bytes
     }
 
-    public init(jsonSchema: String, withBytes bytes:[Byte]) {
+    public init(jsonSchema: String, withData data: NSData) {
         let schema = Schema(jsonSchema)
-        let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
-        let decoder = AvroDecoder(avroData)
+        let decoder = AvroDecoder(data)
 
         self = AvroValue(schema, withDecoder: decoder)
+    }
+
+    public init(jsonSchema: String, withBytes bytes:[Byte]) {
+        let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
+
+        self = AvroValue(jsonSchema: jsonSchema, withData: avroData)
     }
 
     init(_ schema: Schema, withDecoder decoder: AvroDecoder) {
