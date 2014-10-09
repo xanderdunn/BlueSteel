@@ -10,6 +10,12 @@ import Foundation
 
 public extension AvroValue {
 
+    public func encode(jsonSchema: String) -> [Byte]? {
+        let schema = Schema(jsonSchema)
+        let encoder = AvroEncoder()
+        return self.encode(encoder, schema: schema)
+    }
+
     public func encode(encoder: AvroEncoder, schema: Schema) -> [Byte]? {
         switch schema {
         case .PrimitiveSchema(let aType) :
