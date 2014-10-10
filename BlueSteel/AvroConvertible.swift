@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol AvroValueConvertible {
+public protocol AvroValueConvertible {
     func toAvro() -> AvroValue
 }
 
