@@ -152,15 +152,31 @@ public extension AvroValue {
         case .UnionSchema(let uSchemas) :
             switch self {
             case .AvroUnionValue(let index, let box) :
-                encoder.encodeLong(index)
-                if box.value.encode(encoder, schema: schema) == nil {
+                encoder.encodeLong(Int64(index))
+                if index < uSchemas.count {
+                    if box.value.encode(encoder, schema: uSchemas[index]) == nil {
+                        return nil
+                    }
+                } else {
                     return nil
                 }
             default :
                 return nil
             }
 
-        // Dont forget fixed schema
+
+        case .FixedSchema(_, let size) :
+            switch self {
+            case .AvroFixedValue(let fixedBytes) :
+                if fixedBytes.count == size {
+                    encoder.encodeFixed(fixedBytes)
+                } else {
+                    return nil
+                }
+            default :
+                return nil
+            }
+
         default :
             return nil
         }
