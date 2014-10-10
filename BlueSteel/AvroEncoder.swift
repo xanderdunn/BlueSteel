@@ -40,24 +40,27 @@ public class AvroEncoder {
     func encodeFloat(value: Float) {
         let bits: UInt32 = unsafeBitCast(value, UInt32.self)
 
-        bytes.append(Byte(0xff & (bits >> 24)))
-        bytes.append(Byte(0xff & (bits >> 16)))
-        bytes.append(Byte(0xff & (bits >> 8)))
-        bytes.append(Byte(0xff & bits))
+        let encodedFloat = [Byte(0xff & (bits >> 24)),
+        Byte(0xff & (bits >> 16)),
+        Byte(0xff & (bits >> 8)),
+        Byte(0xff & bits)]
+
+        bytes += encodedFloat
         return
     }
     
     func encodeDouble(value: Double) {
         let bits: UInt64 = unsafeBitCast(value, UInt64.self)
 
-        bytes.append(Byte(0xff & (bits >> 56)))
-        bytes.append(Byte(0xff & (bits >> 48)))
-        bytes.append(Byte(0xff & (bits >> 40)))
-        bytes.append(Byte(0xff & (bits >> 32)))
-        bytes.append(Byte(0xff & (bits >> 24)))
-        bytes.append(Byte(0xff & (bits >> 16)))
-        bytes.append(Byte(0xff & (bits >> 8)))
-        bytes.append(Byte(0xff & bits))
+        let encodedDouble = [Byte(0xff & (bits >> 56)),
+            Byte(0xff & (bits >> 48)),
+            Byte(0xff & (bits >> 40)),
+            Byte(0xff & (bits >> 32)),
+            Byte(0xff & (bits >> 24)),
+            Byte(0xff & (bits >> 16)),
+            Byte(0xff & (bits >> 8)),
+            Byte(0xff & bits)]
+        bytes += encodedDouble
         return
     }
 
