@@ -190,7 +190,7 @@ public enum AvroValue {
     static func decodeMapBlock(schema: Schema, count:Int64, decoder: AvroDecoder) -> Dictionary<String, AvroValue>? {
         var pairs: Dictionary<String, AvroValue> = Dictionary()
         for idx in 0...count - 1 {
-            if let key = AvroValue(.PrimitiveSchema(.AString), withDecoder: decoder).string {
+            if let key = AvroValue(.AvroStringSchema, withDecoder: decoder).string {
                 let value = AvroValue(schema, withDecoder: decoder)
                 switch value {
                 case .AvroInvalidValue :
@@ -282,52 +282,52 @@ public enum AvroValue {
     init(_ schema: Schema, withDecoder decoder: AvroDecoder) {
 
         switch schema {
-        case .PrimitiveSchema(.ANull) :
+        case .AvroNullSchema :
             self = .AvroNullValue
 
-        case .PrimitiveSchema(.ABoolean) :
+        case .AvroBooleanSchema :
             if let decoded = decoder.decodeBoolean() {
                 self = .AvroBooleanValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.AInt) :
+        case .AvroIntSchema :
             if let decoded = decoder.decodeInt() {
                 self = .AvroIntValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.ALong) :
+        case .AvroLongSchema :
             if let decoded = decoder.decodeLong() {
                 self = .AvroLongValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.AFloat) :
+        case .AvroFloatSchema :
             if let decoded = decoder.decodeFloat() {
                 self = .AvroFloatValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.ADouble) :
+        case .AvroDoubleSchema :
             if let decoded = decoder.decodeDouble() {
                 self = .AvroDoubleValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.AString) :
+        case .AvroStringSchema :
             if let decoded = decoder.decodeString() {
                 self = .AvroStringValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .PrimitiveSchema(.ABytes) :
+        case .AvroBytesSchema :
             if let decoded = decoder.decodeBytes() {
                 self = .AvroBytesValue(decoded)
             } else {
@@ -335,7 +335,7 @@ public enum AvroValue {
             }
 
         // TODO: Collections negative count support.
-        case .ArraySchema(let boxedSchema) :
+        case .AvroArraySchema(let boxedSchema) :
             var values: [AvroValue] = []
             while let count = decoder.decodeLong() {
                 if count == 0 {
@@ -353,7 +353,7 @@ public enum AvroValue {
             self = .AvroInvalidValue
 
 
-        case .MapSchema(let boxedSchema) :
+        case .AvroMapSchema(let boxedSchema) :
             var pairs: Dictionary<String, AvroValue> = [:]
             while let count = decoder.decodeLong() {
                 if count == 0 {
@@ -370,7 +370,7 @@ public enum AvroValue {
             self = .AvroInvalidValue
 
 
-        case .EnumSchema(_, let enumValues) :
+        case .AvroEnumSchema(_, let enumValues) :
             if let index = decoder.decodeInt() {
                 if Int(index) > enumValues.count - 1 {
                     self = .AvroEnumValue(index, enumValues[Int(index)])
@@ -379,11 +379,11 @@ public enum AvroValue {
             }
             self = .AvroInvalidValue
 
-        case .RecordSchema(_, let fields) :
+        case .AvroRecordSchema(_, let fields) :
             var pairs: Dictionary<String, AvroValue> = [:]
             for field in fields {
                 switch field {
-                case .FieldSchema(let key, let box) :
+                case .AvroFieldSchema(let key, let box) :
                     pairs[key] = AvroValue(box.value, withDecoder: decoder)
                 default :
                     self = .AvroInvalidValue
@@ -392,14 +392,14 @@ public enum AvroValue {
             }
             self = .AvroRecordValue(pairs)
 
-        case .FixedSchema(_, let size) :
+        case .AvroFixedSchema(_, let size) :
             if let bytes = decoder.decodeFixed(size) {
                 self = .AvroFixedValue(bytes)
             } else {
                 self = .AvroInvalidValue
             }
 
-        case .UnionSchema(let schemas) :
+        case .AvroUnionSchema(let schemas) :
             if let index = decoder.decodeLong() {
                 if Int(index) < schemas.count {
                     self = .AvroUnionValue(index, Box(AvroValue(schemas[Int(index)], withDecoder: decoder)))
