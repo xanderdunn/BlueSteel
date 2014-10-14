@@ -289,8 +289,7 @@ class AvroSchemaTests: XCTestCase {
 
         var existingTypes:[String] = []
         var form = schema.parsingCanonicalForm(&existingTypes)
-        form?.cStringUsingEncoding(NSUTF8StringEncoding)
-        println(form!)
+
         if let let fp = schema.fingerprint() {
             XCTAssertEqual(fp, "1E85E88ACE91D3273377213306CDFAF2F0FE705F93E95BF4F8065BC10F1D55FE", "Fingeprint mismatch.")
         } else {

@@ -25,7 +25,6 @@ class VarintTests: XCTestCase {
         let expected = Int64(bitPattern: UInt64(arc4random()))
         let testvarint = Varint(fromValue: expected)
         let val = testvarint.toInt64()
-        println(testvarint.description)
         XCTAssertEqual(val, expected, "Expected -1. Got\(val)")
     }
 
@@ -33,7 +32,6 @@ class VarintTests: XCTestCase {
         let expected = UInt64(arc4random())
         let testvarint = Varint(fromValue: expected)
         let val = testvarint.toUInt64()
-        println(testvarint.description)
         XCTAssertEqual(val, expected, "Expected -1. Got\(val)")
     }
 
