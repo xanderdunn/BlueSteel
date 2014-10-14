@@ -436,3 +436,169 @@ public enum Schema {
     }
 
 }
+
+extension Schema : Equatable {
+
+}
+
+public func ==(lhs: Schema, rhs: Schema) -> Bool {
+    switch (lhs) {
+    case .AvroBooleanSchema :
+        switch rhs {
+        case .AvroBooleanSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroIntSchema :
+        switch rhs {
+        case .AvroIntSchema :
+            return true
+        default :
+            return false
+        }
+    case .AvroLongSchema :
+        switch rhs {
+        case .AvroLongSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroFloatSchema :
+        switch rhs {
+        case .AvroFloatSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroDoubleSchema :
+        switch rhs {
+        case .AvroDoubleSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroBytesSchema :
+        switch rhs {
+        case .AvroBytesSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroStringSchema :
+        switch rhs {
+        case .AvroStringSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroNullSchema :
+        switch rhs {
+        case .AvroNullSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroArraySchema(let lbox) :
+        switch rhs {
+        case .AvroArraySchema(let rbox) :
+            if lbox.value == rbox.value {
+                return true
+            }
+            return false
+        default :
+            return false
+        }
+
+    case .AvroMapSchema(let lbox) :
+        switch rhs {
+        case .AvroMapSchema(let rbox) :
+            if lbox.value == rbox.value {
+                return true
+            }
+            return false
+        default :
+            return false
+        }
+
+    case .AvroRecordSchema(let lRecordName, let lRecordSchemas) :
+        switch rhs {
+        case .AvroRecordSchema(let rRecordName, let rRecordSchemas) :
+            if (lRecordName == rRecordName) && (lRecordSchemas.count == rRecordSchemas.count) {
+                for idx in 0..<lRecordSchemas.count {
+                    if lRecordSchemas[idx] != rRecordSchemas[idx] {
+                        return false
+                    }
+                }
+                return true
+            }
+            return false
+        default :
+            return false
+        }
+
+    case .AvroFieldSchema(let lFieldName, let lFieldBox) :
+        switch rhs {
+        case .AvroFieldSchema(let rFieldName, let rFieldBox) :
+            if (lFieldName == rFieldName) && (lFieldBox.value == rFieldBox.value) {
+                return true
+            }
+            return false
+        default :
+            return false
+        }
+
+    case .AvroUnionSchema(let lUnionSchemas) :
+        switch rhs {
+        case .AvroUnionSchema(let rUnionSchemas) :
+            if lUnionSchemas.count == rUnionSchemas.count {
+                for idx in 0..<lUnionSchemas.count {
+                    if lUnionSchemas[idx] != rUnionSchemas[idx] {
+                        return false
+                    }
+                }
+                return true
+            }
+            return false
+        default :
+            return false
+        }
+
+    case .AvroEnumSchema(let lEnumName, let lSymbols) :
+        switch rhs {
+        case .AvroEnumSchema(let rEnumName, let rSymbols) :
+            if (lEnumName == rEnumName) && (lSymbols.count == rSymbols.count) {
+                for idx in 0..<lSymbols.count {
+                    if lSymbols[idx] != rSymbols[idx] {
+                        return false
+                    }
+                }
+                return true
+            }
+            return false
+        default :
+            return false
+        }
+
+    case .AvroFixedSchema(let lFixedName, let lSize) :
+        switch rhs {
+        case .AvroFixedSchema(let rFixedName, let rSize) :
+            if (lFixedName == rFixedName) && (lSize == rSize) {
+                return true
+            }
+            return false
+        default :
+            return false
+        }
+
+    default :
+        return false
+    }
+}
