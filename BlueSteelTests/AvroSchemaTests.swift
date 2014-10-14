@@ -34,7 +34,7 @@ class AvroSchemaTests: XCTestCase {
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .PrimitiveSchema(.ALong):
+        case .AvroLongSchema :
             XCTAssert(true, "Passed.")
         default:
             XCTAssert(false, "Failed.")
@@ -46,9 +46,9 @@ class AvroSchemaTests: XCTestCase {
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .MapSchema(let box):
+        case .AvroMapSchema(let box):
             switch box.value {
-            case .PrimitiveSchema(.AInt):
+            case .AvroIntSchema:
                 XCTAssert(true, "Passed.")
             default:
                 XCTAssert(false, "Failed: Map of wrong type.")
@@ -70,9 +70,9 @@ class AvroSchemaTests: XCTestCase {
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .ArraySchema(let box):
+        case .AvroArraySchema(let box):
             switch box.value {
-            case .PrimitiveSchema(.ADouble):
+            case .AvroDoubleSchema:
                 XCTAssert(true, "Passed.")
             default:
                 XCTAssert(false, "Failed: Map of wrong type.")
@@ -94,11 +94,11 @@ class AvroSchemaTests: XCTestCase {
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .ArraySchema(let arrayBox) :
+        case .AvroArraySchema(let arrayBox) :
             switch arrayBox.value {
-            case .MapSchema(let mapBox) :
+            case .AvroMapSchema(let mapBox) :
                 switch mapBox.value {
-                case .PrimitiveSchema(.AInt):
+                case .AvroIntSchema :
                     XCTAssert(true, "Passed.")
                 default:
                     XCTAssert(false, "Failed: Map of wrong type.")
@@ -113,15 +113,15 @@ class AvroSchemaTests: XCTestCase {
 
     func testUnion() {
         let jsonSchema = "{ \"type\" : [ \"double\", \"int\", \"long\", \"float\" ] }"
-        let expected: [AvroType] = [.ADouble, .AInt, .ALong, .AFloat]
+        let expected: [Schema] = [.AvroDoubleSchema, .AvroIntSchema, .AvroLongSchema, .AvroFloatSchema]
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .UnionSchema(let schemas):
+        case .AvroUnionSchema(let schemas):
             XCTAssert(schemas.count == 4, "Wrong number of schemas in union.")
             for idx in 0...3 {
                 switch schemas[idx] {
-                case .PrimitiveSchema(expected[idx]) :
+                case let res where res == expected[idx] :
                     XCTAssert(true, "Passed")
                 default :
                     XCTAssert(false, "Wrong schema type in union.")
@@ -141,17 +141,17 @@ class AvroSchemaTests: XCTestCase {
 
     func testUnionMap() {
         let jsonSchema = "{ \"type\" : [ { \"type\" : \"map\", \"values\" : \"int\" }, { \"type\" : \"map\", \"values\" : \"double\" } ] }"
-        let expected: [AvroType] = [.AInt, .ADouble]
+        let expected: [Schema] = [.AvroIntSchema, .AvroDoubleSchema]
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .UnionSchema(let schemas):
+        case .AvroUnionSchema(let schemas):
             XCTAssert(schemas.count == 2, "Wrong number of schemas in union.")
             for idx in 0...1 {
                 switch schemas[idx] {
-                case .MapSchema(let box) :
+                case .AvroMapSchema(let box) :
                     switch box.value {
-                    case .PrimitiveSchema(expected[idx]) :
+                    case let res where res == expected[idx] :
                         XCTAssert(true, "Passed")
                     default :
                         XCTAssert(false, "Expected primitive schema type in map.")
@@ -175,24 +175,24 @@ class AvroSchemaTests: XCTestCase {
         "{ \"name\" : \"skuId\",\"type\" : \"long\" }]}"
 
         let fieldNames = ["lookId", "productId", "quantity", "saleId", "skuId"]
-        let fieldType: [AvroType] = [.ALong, .ALong, .AInt, .AInvalidType, .ALong]
-        let unionFieldTypes: [AvroType] = [.ANull, .ALong]
+        let fieldType: [Schema] = [.AvroLongSchema, .AvroLongSchema, .AvroIntSchema, .AvroInvalidSchema, .AvroLongSchema]
+        let unionFieldTypes: [Schema] = [.AvroNullSchema, .AvroLongSchema]
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .RecordSchema("AddToCartActionEvent", let fields) :
+        case .AvroRecordSchema("AddToCartActionEvent", let fields) :
             XCTAssert(fields.count == 5, "Record schema should consist of 5 fields.")
             for idx in 0...4 {
                 switch fields[idx] {
-                case .FieldSchema(fieldNames[idx], let typeSchema) :
+                case .AvroFieldSchema(fieldNames[idx], let typeSchema) :
                     switch typeSchema.value {
-                    case .PrimitiveSchema(fieldType[idx]) :
+                    case let res where res == fieldType[idx] :
                         XCTAssert(true, "")
-                    case .UnionSchema(let unionSchemas) :
+                    case .AvroUnionSchema(let unionSchemas) :
                         XCTAssert(unionSchemas.count == 2, "Union schema should consist of 2 fields.")
                         for uidx in 0...1 {
                             switch unionSchemas[uidx] {
-                            case .PrimitiveSchema(unionFieldTypes[uidx]) :
+                            case let res where res == unionFieldTypes[uidx] :
                                 XCTAssert(true, "")
                             default :
                                 XCTAssert(false, "Wrong type in union")
@@ -237,7 +237,7 @@ class AvroSchemaTests: XCTestCase {
         var schema = Schema(jsonSchema)
 
         switch schema {
-        case .EnumSchema(let enumName, let symbols) :
+        case .AvroEnumSchema(let enumName, let symbols) :
             XCTAssertEqual(enumName, "ChannelKey", "Unexpected enum name.")
             XCTAssertEqual(symbols, expectedSymbols, "Symbols dont match.")
         default :
@@ -262,7 +262,7 @@ class AvroSchemaTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"fixed\", \"name\" : \"Uuid\", \"size\" : 16 }"
         var schema = Schema(jsonSchema)
         switch schema {
-        case .FixedSchema(let fixedName, let size) :
+        case .AvroFixedSchema(let fixedName, let size) :
             XCTAssertEqual("Uuid", fixedName, "Unexpected fixed name.")
             XCTAssertEqual(16, size, "Unexpected fixed size.")
         default :
