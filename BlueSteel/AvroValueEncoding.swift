@@ -140,7 +140,7 @@ public extension AvroValue {
             switch self {
             //TODO: Make sure enum matches schema
             case .AvroEnumValue(let index, _) :
-                encoder.encodeInt(index)
+                encoder.encodeInt(Int32(index))
             default :
                 return nil
             }

@@ -34,9 +34,9 @@ public enum AvroValue {
     // Complex Types
     case AvroArrayValue([AvroValue])
     case AvroMapValue(Dictionary<String, AvroValue>)
-    case AvroUnionValue(Int64, Box<AvroValue>)
+    case AvroUnionValue(Int, Box<AvroValue>)
     case AvroRecordValue(Dictionary<String, AvroValue>)
-    case AvroEnumValue(Int32, String)
+    case AvroEnumValue(Int, String)
     case AvroFixedValue([Byte])
 
     case AvroInvalidValue
@@ -255,10 +255,10 @@ public enum AvroValue {
             }
 
         case .AvroEnumValue(let index, _) :
-            encoder.encodeInt(index)
+            encoder.encodeInt(Int32(index))
 
         case .AvroUnionValue(let index, let box) :
-            encoder.encodeLong(index)
+            encoder.encodeLong(Int64(index))
             box.value.encode(encoder)
         default :
             return nil
@@ -373,7 +373,7 @@ public enum AvroValue {
         case .AvroEnumSchema(_, let enumValues) :
             if let index = decoder.decodeInt() {
                 if Int(index) > enumValues.count - 1 {
-                    self = .AvroEnumValue(index, enumValues[Int(index)])
+                    self = .AvroEnumValue(Int(index), enumValues[Int(index)])
                     return
                 }
             }
@@ -402,7 +402,7 @@ public enum AvroValue {
         case .AvroUnionSchema(let schemas) :
             if let index = decoder.decodeLong() {
                 if Int(index) < schemas.count {
-                    self = .AvroUnionValue(index, Box(AvroValue(schemas[Int(index)], withDecoder: decoder)))
+                    self = .AvroUnionValue(Int(index), Box(AvroValue(schemas[Int(index)], withDecoder: decoder)))
                     return
                 }
             }
@@ -412,6 +412,7 @@ public enum AvroValue {
             self = .AvroInvalidValue
         }
     }
+}
 
 extension AvroValue: NilLiteralConvertible {
     public init(nilLiteral: ()) {
