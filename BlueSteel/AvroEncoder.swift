@@ -65,10 +65,10 @@ public class AvroEncoder {
     }
 
     func encodeString(value: String) {
-        var stringBytes: [Byte] = []
-        for char in value.utf8 {
-            stringBytes.append(char)
-        }
+        var cstr = value.cStringUsingEncoding(NSUTF8StringEncoding)!
+        let bufferptr = UnsafeBufferPointer<Byte>(start: UnsafePointer<Byte>(cstr), count: cstr.count - 1)
+
+        let stringBytes = [Byte](bufferptr)
         encodeBytes(stringBytes)
         return
     }
