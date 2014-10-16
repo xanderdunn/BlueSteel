@@ -123,7 +123,6 @@ public extension AvroValue {
                     switch fSchema {
                     case .AvroFieldSchema(let key, let box) :
                         if let value = pairs[key] {
-                            encoder.encodeString(key)
                             if value.encode(encoder, schema: box.value) == nil {
                                 return nil
                             }
