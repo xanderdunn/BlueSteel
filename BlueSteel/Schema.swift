@@ -233,7 +233,7 @@ public enum Schema {
         self = .AvroInvalidSchema
     }
 
-    public init(_ json: NSData) {
+    public init(_ json: NSData?) {
         var cached: [String:Schema] = [:]
         self = Schema(JSONValue(json), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
