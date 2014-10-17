@@ -214,7 +214,7 @@ public enum Schema {
         }
     }
 
-    public func fingerprint() -> String? {
+    public func fingerprint() -> [Byte]? {
         var etypes: [String] = []
         if let pcf = self.parsingCanonicalForm(&etypes) {
             var hash = [Byte](count: 32, repeatedValue: 0)
@@ -222,11 +222,7 @@ public enum Schema {
                 // Compute hash of PCF string without the NULL terminator.
 
                 BlueSteel_SHA256(cString, UInt32(cString.count - 1), &hash)
-                var hexBits = "" as String
-                for value in hash {
-                    hexBits += NSString(format:"%02X", value) as String
-                }
-                return hexBits
+                return hash
             }
         }
         return nil
