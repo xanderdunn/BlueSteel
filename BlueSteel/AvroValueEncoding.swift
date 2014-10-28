@@ -10,8 +10,17 @@ import Foundation
 
 public extension AvroValue {
 
+    public func encode(schemaData: NSData) -> [Byte]? {
+        let schema = Schema(schemaData)
+        return self.encode(schema)
+    }
+
     public func encode(jsonSchema: String) -> [Byte]? {
         let schema = Schema(jsonSchema)
+        return self.encode(schema)
+    }
+
+    public func encode(schema: Schema) -> [Byte]? {
         let encoder = AvroEncoder()
         return self.encode(encoder, schema: schema)
     }
