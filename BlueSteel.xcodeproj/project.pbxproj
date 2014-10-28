@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C50746EB19BF980A00FAE594 /* AvroSchemaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */; };
+		C565CAA61A001026003FE24B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565CAA51A001026003FE24B /* SwiftyJSON.swift */; };
 		C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */; };
-		C58C18C119ED94BA00E684B0 /* CCWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = C58C18C019ED94BA00E684B0 /* CCWrapper.c */; };
+		C58C18C219EDD88C00E684B0 /* CCWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = C58C18C019ED94BA00E684B0 /* CCWrapper.c */; };
 		C5C483AB19B7B12B008E3F4C /* BlueSteel.h in Headers */ = {isa = PBXBuildFile; fileRef = C5C483AA19B7B12B008E3F4C /* BlueSteel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5C483C119B7B19F008E3F4C /* AvroDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483BE19B7B19F008E3F4C /* AvroDecoder.swift */; };
 		C5C483C319B7B19F008E3F4C /* Varint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483C019B7B19F008E3F4C /* Varint.swift */; };
@@ -18,7 +19,6 @@
 		C5C483CA19B7B2EE008E3F4C /* BlueSteel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5C483A519B7B12B008E3F4C /* BlueSteel.framework */; };
 		C5C483CC19B8C6A5008E3F4C /* Boxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483CB19B8C6A5008E3F4C /* Boxes.swift */; };
 		C5C483DF19BA1D41008E3F4C /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483DE19BA1D41008E3F4C /* Schema.swift */; };
-		C5C483ED19BE232D008E3F4C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C483EC19BE232D008E3F4C /* SwiftyJSON.swift */; };
 		C5D243DA19E489CA0034D0B3 /* AvroValueEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D243D919E489CA0034D0B3 /* AvroValueEncoding.swift */; };
 		C5DA98A919C73D9400CA9F41 /* AvroValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DA98A819C73D9400CA9F41 /* AvroValue.swift */; };
 		C5DA98AB19C778A200CA9F41 /* AvroValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DA98AA19C778A200CA9F41 /* AvroValueTests.swift */; };
@@ -37,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
+		C565CAA51A001026003FE24B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroEncoder.swift; sourceTree = "<group>"; };
 		C58C18C019ED94BA00E684B0 /* CCWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CCWrapper.c; sourceTree = "<group>"; };
 		C5C483A519B7B12B008E3F4C /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +51,6 @@
 		C5C483C519B7B1AD008E3F4C /* VarintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarintTests.swift; sourceTree = "<group>"; };
 		C5C483CB19B8C6A5008E3F4C /* Boxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boxes.swift; sourceTree = "<group>"; };
 		C5C483DE19BA1D41008E3F4C /* Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
-		C5C483EC19BE232D008E3F4C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		C5D243D919E489CA0034D0B3 /* AvroValueEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueEncoding.swift; sourceTree = "<group>"; };
 		C5DA98A819C73D9400CA9F41 /* AvroValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValue.swift; sourceTree = "<group>"; };
 		C5DA98AA19C778A200CA9F41 /* AvroValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueTests.swift; sourceTree = "<group>"; };
@@ -76,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C565CAA71A00102E003FE24B /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				C565CAA51A001026003FE24B /* SwiftyJSON.swift */,
+			);
+			name = SwiftyJSON;
+			sourceTree = "<group>";
+		};
 		C5C4839B19B7B12B008E3F4C = {
 			isa = PBXGroup;
 			children = (
@@ -144,17 +152,9 @@
 		C5C483EA19BE232D008E3F4C /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				C5C483EB19BE232D008E3F4C /* SwiftyJSON */,
+				C565CAA71A00102E003FE24B /* SwiftyJSON */,
 			);
 			path = Libs;
-			sourceTree = "<group>";
-		};
-		C5C483EB19BE232D008E3F4C /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				C5C483EC19BE232D008E3F4C /* SwiftyJSON.swift */,
-			);
-			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,13 +267,13 @@
 				C5C483DF19BA1D41008E3F4C /* Schema.swift in Sources */,
 				C5C483C119B7B19F008E3F4C /* AvroDecoder.swift in Sources */,
 				C5E75BEC19D33A8B0012C6FB /* AvroConvertible.swift in Sources */,
+				C565CAA61A001026003FE24B /* SwiftyJSON.swift in Sources */,
 				C5C483C319B7B19F008E3F4C /* Varint.swift in Sources */,
 				C5D243DA19E489CA0034D0B3 /* AvroValueEncoding.swift in Sources */,
 				C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */,
 				C5DA98A919C73D9400CA9F41 /* AvroValue.swift in Sources */,
-				C5C483ED19BE232D008E3F4C /* SwiftyJSON.swift in Sources */,
 				C5C483CC19B8C6A5008E3F4C /* Boxes.swift in Sources */,
-				C58C18C119ED94BA00E684B0 /* CCWrapper.c in Sources */,
+				C58C18C219EDD88C00E684B0 /* CCWrapper.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

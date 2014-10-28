@@ -228,22 +228,26 @@ public enum Schema {
         return nil
     }
 
-    init(_ json: Dictionary<String, JSONValue>) {
+    init(_ json: Dictionary<String, JSON>) {
         // Stub
         self = .AvroInvalidSchema
     }
 
     public init(_ json: NSData?) {
         var cached: [String:Schema] = [:]
-        self = Schema(JSONValue(json), typeKey:"type", namespace: nil, cachedSchemas: &cached)
+        self = Schema(JSON(json!), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
 
     public init(_ json: String) {
         var cached: [String:Schema] = [:]
-        self = Schema(JSONValue(json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)), typeKey:"type", namespace: nil, cachedSchemas: &cached)
+        if let schemaData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            self = Schema(JSON(data: schemaData, options: NSJSONReadingOptions.allZeros, error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
+        } else {
+            self = .AvroInvalidSchema
+        }
     }
 
-    init(_ json: JSONValue, typeKey key: String, namespace ns: String?, inout cachedSchemas cache: [String:Schema]) {
+    init(_ json: JSON, typeKey key: String, namespace ns: String?, inout cachedSchemas cache: [String:Schema]) {
         var schemaNamespace: String?
         if let jsonNamespace = json["namespace"].string {
             schemaNamespace = jsonNamespace
@@ -251,8 +255,8 @@ public enum Schema {
             schemaNamespace = ns
         }
 
-        switch json[key] {
-        case .JString(let typeString) :
+        if let typeString = json[key].string {
+            // FIXME: Converting to AvroType, and then switching, is double the work.
             let avroType = AvroType(typeString)
 
             switch avroType {
@@ -296,11 +300,12 @@ public enum Schema {
             case .ARecord :
                 // Records must be named
                 if let recordName = Schema.assembleFullName(schemaNamespace , name: json["name"].string) {
-                    switch json["fields"] {
-                    case .JArray(let fields) :
+                    let fields = json["fields"]
+                    switch fields.type {
+                    case .Array :
                         var recordFields: [Schema] = []
 
-                        for field in fields {
+                        for field in fields.arrayValue {
                             // Fields must be named
                             if let fieldName = field["name"].string {
                                 let schema = Schema(field, typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
@@ -329,8 +334,7 @@ public enum Schema {
 
             case .AEnum :
                 if let enumName = Schema.assembleFullName(schemaNamespace, name: json["name"].string) {
-                    switch json["symbols"] {
-                    case .JArray(let symbols) :
+                    if let symbols = json["symbols"].array {
                         var symbolStrings: [String] = []
                         for sym in symbols {
                             if let symbol = sym.string {
@@ -343,7 +347,7 @@ public enum Schema {
 
                         self = .AvroEnumSchema(enumName, symbolStrings)
                         cache[enumName] = self
-                    default :
+                    } else {
                         self = .AvroInvalidSchema
                     }
                 } else {
@@ -352,7 +356,7 @@ public enum Schema {
 
             case .AFixed :
                 if let fixedName = Schema.assembleFullName(schemaNamespace, name: json["name"].string) {
-                    if let size = json["size"].integer {
+                    if let size = json["size"].int {
                         self = .AvroFixedSchema(fixedName, size)
                         cache[fixedName] = self
                         return
@@ -369,16 +373,15 @@ public enum Schema {
                 }
             }
 
-        case .JObject(_):
+        } else if let jsonObject = json[key].dictionary {
             self = Schema(json[key], typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
-
-        // Union
-        case .JArray(let unionSchema):
+        } else if let unionSchema = json[key].array {
+            // Union
             var schemas: [Schema] = []
             for def in unionSchema {
                 var schema: Schema = .AvroInvalidSchema
-                switch def {
-                case .JString(let typeString) :
+                if let typeString = def.string {
+
                     let avroType = AvroType(typeString)
                     if  avroType != .AInvalidType {
                         //schema = .PrimitiveSchema(avroType)
@@ -408,12 +411,10 @@ public enum Schema {
                         schema = .AvroInvalidSchema
                     }
 
-
-                case .JArray(_) :
-                    // Nested unions not permitted
-                    schema = .AvroInvalidSchema
-                default :
+                } else if let subschema = def.dictionary {
                     schema = Schema(def, typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
+                } else {
+                    schema = .AvroInvalidSchema
                 }
 
                 switch schema {
@@ -425,12 +426,10 @@ public enum Schema {
                 }
             }
             self = .AvroUnionSchema(schemas)
-
-        default:
+        } else {
             self = .AvroInvalidSchema
         }
     }
-
 }
 
 extension Schema : Equatable {
