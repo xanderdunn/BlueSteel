@@ -26,7 +26,7 @@ Since there's currently no [proper infrastructure](http://cocoapods.org) for Swi
 
 ## Usage
 
-Since Avro data is not self describing, we're going to need to supply an Avro Schema before we can (de)serialize some objects. Schemas can be constructed from a JSON string, or NSData.
+Since Avro data is not self describing, we're going to need to supply an Avro Schema before we can (de)serialize any data. Schema enums are constructed from a JSON schema description, in either String or NSData form.
 
 ```swift
 import BlueSteel
@@ -37,14 +37,14 @@ let schema = Schema(jsonSchema)
 
 ## Deserializing Avro data
 
-Using the schema above, we can now decode some Avro binary data.
+Using the Schema above, we can now decode some Avro binary data.
 
 ```swift
 let rawBytes: [Byte] = [0x6, 0x66, 0x6f, 0x6f]
 let avro = AvroValue(schema: schema, withBytes: rawBytes)
 ```
 
-We can now get the swift string from the Avro value above using an optional getter.
+We can now get the Swift String from the Avro value above using an optional getter.
 ```swift
 if let avroString = avro.string {
     println(avroString) // Prints "foo"
@@ -53,7 +53,7 @@ if let avroString = avro.string {
 
 ## Serializing Swift data
 
-We can use the same schema above to serialize an AvroValue to binary.
+We can use the same Schema above to serialize an AvroValue to binary.
 
 ```swift
 if let serialized = avro.encode(schema) {
