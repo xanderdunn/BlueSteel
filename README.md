@@ -96,7 +96,7 @@ To generate and serialize a NSUUID, we could now do:
 let serialized: [Byte]? = NSUUID().toAvro().encode(uuidSchema)
 ```
 Hey presto! We now have a byte array representing an NSUUID serialized to Avro according to the fixed schema provided.
-Okay, so the example above is maybe a little bit too simple. Let's take a look at a more complex example. Suppose we have a record schema as follows:"
+Okay, so the example above is maybe a little bit too simple. Let's take a look at a more complex example. Suppose we have a record schema as follows:
 
 ```JSON
 {
