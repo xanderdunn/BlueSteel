@@ -235,16 +235,13 @@ public enum Schema {
 
     public init(_ json: NSData?) {
         var cached: [String:Schema] = [:]
-        self = Schema(JSON(json!), typeKey:"type", namespace: nil, cachedSchemas: &cached)
+        self = Schema(JSON(data: json!, options: NSJSONReadingOptions.allZeros, error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
 
     public init(_ json: String) {
         var cached: [String:Schema] = [:]
-        if let schemaData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
-            self = Schema(JSON(data: schemaData, options: NSJSONReadingOptions.allZeros, error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
-        } else {
-            self = .AvroInvalidSchema
-        }
+        let schemaData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        self.init(schemaData)
     }
 
     init(_ json: JSON, typeKey key: String, namespace ns: String?, inout cachedSchemas cache: [String:Schema]) {
