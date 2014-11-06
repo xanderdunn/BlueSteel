@@ -131,7 +131,7 @@ extension testStruct : AvroValueConvertible {
 
 You might've noticed above that we called .toAvro() on Int64 and String values. We didn't have to define these ourselves because BlueSteel provides AvroValueConvertible extensions for Swift primitives.
 
-So that just about covers very quick introduction to BlueSteel. Please note that BlueSteel is still very early in development and may change significantly.
+So that just about covers a very quick introduction to BlueSteel. Please note that BlueSteel is still very early in development and may change significantly.
 
 ## Copyright & License
 
