@@ -96,10 +96,12 @@ public extension AvroValue {
         case .AvroArraySchema(let box) :
             switch self {
             case .AvroArrayValue(let values) :
-                encoder.encodeLong(Int64(values.count))
-                for value in values {
-                    if value.encode(encoder, schema: box.value) == nil {
-                        return nil
+                if values.count != 0 {
+                    encoder.encodeLong(Int64(values.count))
+                    for value in values {
+                        if value.encode(encoder, schema: box.value) == nil {
+                            return nil
+                        }
                     }
                 }
                 encoder.encodeLong(0)
@@ -110,17 +112,20 @@ public extension AvroValue {
         case .AvroMapSchema(let box) :
             switch self {
             case .AvroMapValue(let pairs) :
-                encoder.encodeLong(Int64(pairs.count))
-                for key in pairs.keys {
-                    encoder.encodeString(key)
-                    if let value = pairs[key] {
-                        if value.encode(encoder, schema: box.value) == nil {
+                if pairs.count != 0 {
+                    encoder.encodeLong(Int64(pairs.count))
+                    for key in pairs.keys {
+                        encoder.encodeString(key)
+                        if let value = pairs[key] {
+                            if value.encode(encoder, schema: box.value) == nil {
+                                return nil
+                            }
+                        } else {
                             return nil
                         }
-                    } else {
-                        return nil
                     }
                 }
+                encoder.encodeLong(0)
             default :
                 return nil
             }
@@ -135,6 +140,9 @@ public extension AvroValue {
                             if value.encode(encoder, schema: box.value) == nil {
                                 return nil
                             }
+                        } else {
+                            // Since we don't support schema defaults, fail encoding when values are missing for schema keys.
+                            return nil
                         }
                     default :
                         return nil
