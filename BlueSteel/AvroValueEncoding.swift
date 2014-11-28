@@ -8,23 +8,53 @@
 
 import Foundation
 
+/// Avro value binary encoding.
 public extension AvroValue {
 
+    /**
+    AvroValue binary encoding.
+
+    :param schemaData Avro JSON schema as NSData.
+
+    :returns Avro binary encoding as byte array. Nil if encoding fails.
+    */
     public func encode(schemaData: NSData) -> [Byte]? {
         let schema = Schema(schemaData)
         return self.encode(schema)
     }
 
+    /**
+    AvroValue binary encoding.
+
+    :param jsonSchema Avro JSON schema string.
+
+    :returns Avro binary encoding as byte array. Nil if encoding fails.
+    */
     public func encode(jsonSchema: String) -> [Byte]? {
         let schema = Schema(jsonSchema)
         return self.encode(schema)
     }
 
+    /**
+    AvroValue binary encoding.
+
+    :param schema Avro schema object.
+
+    :returns Avro binary encoding as byte array. Nil if encoding fails.
+    */
     public func encode(schema: Schema) -> [Byte]? {
         let encoder = AvroEncoder()
         return self.encode(encoder, schema: schema)
     }
 
+    /**
+    AvroValue binary encoding.
+
+    :param encoder Avro Encoder.
+    :param schema Avro schema object.
+
+    :returns Avro binary encoding as byte array. Nil if encoding fails.
+    */
     public func encode(encoder: AvroEncoder, schema: Schema) -> [Byte]? {
         switch schema {
 
