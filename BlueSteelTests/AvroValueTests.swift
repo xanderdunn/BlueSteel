@@ -66,7 +66,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testFloatValue() {
-        let avroBytes: [Byte] = [0x40, 0x48, 0xf5, 0xc3]
+        let avroBytes: [Byte] = [0xc3, 0xf5, 0x48, 0x40]
         let jsonSchema = "{ \"type\" : \"float\" }"
 
         let expected: Float = 3.14
@@ -78,11 +78,12 @@ class AvroValueTests: XCTestCase {
     }
 
     func testDoubleValue() {
-        let avroBytes: [Byte] = [0x40,0x09, 0x1e, 0xb8, 0x51, 0xeb, 0x85, 0x1f]
+        let avroBytes: [Byte] = [0x1f, 0x85, 0xeb, 0x51, 0xb8, 0x1e, 0x9, 0x40]
         let jsonSchema = "{ \"type\" : \"double\" }"
 
+        let expected: Double = 3.14
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).double {
-            XCTAssertEqual(value, 3.14, "Byte arrays don't match.")
+            XCTAssertEqual(value, expected, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
         }

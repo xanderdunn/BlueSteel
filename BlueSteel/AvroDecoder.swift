@@ -46,14 +46,14 @@ public class AvroDecoder {
 
         let slice = bytes[0...7]
 
-        var bits: UInt64 = UInt64(slice[0]) << 56
-            bits |= UInt64(slice[1]) << 48
-            bits |= UInt64(slice[2]) << 40
-            bits |= UInt64(slice[3]) << 32
-            bits |= UInt64(slice[4]) << 24
-            bits |= UInt64(slice[5]) << 16
-            bits |= UInt64(slice[6]) << 8
-            bits |= UInt64(slice[7])
+        var bits: UInt64 = UInt64(slice[0])
+            bits |= UInt64(slice[1]) << 8
+            bits |= UInt64(slice[2]) << 16
+            bits |= UInt64(slice[3]) << 24
+            bits |= UInt64(slice[4]) << 32
+            bits |= UInt64(slice[5]) << 40
+            bits |= UInt64(slice[6]) << 48
+            bits |= UInt64(slice[7]) << 56
 
         bytes.removeRange(0...7)
 
@@ -71,10 +71,10 @@ public class AvroDecoder {
         }
 
         let slice = bytes[0...3]
-        var bits: UInt32 = (UInt32(slice[0]) << 24)
-            bits |= (UInt32(slice[1]) << 16)
-            bits |= (UInt32(slice[2]) << 8)
-            bits |= UInt32(slice[3])
+        var bits: UInt32 = UInt32(slice[0])
+            bits |= UInt32(slice[1]) << 8
+            bits |= UInt32(slice[2]) << 16
+            bits |= UInt32(slice[3]) << 24
 
         bytes.removeRange(0...3)
 
