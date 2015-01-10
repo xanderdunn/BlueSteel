@@ -7,37 +7,39 @@
 //
 
 import Foundation
+import LlamaKit
 
 public class AvroEncoder {
 
+    // Backing
     var bytes: [Byte] = []
 
-    func encodeNull() {
+    func emitNull() {
         return
     }
 
-    func encodeBoolean(value: Bool) {
+    func emitBool(value: Bool) -> Result<(), NSError> {
         if value {
             bytes.append(Byte(0x1))
         } else {
             bytes.append(Byte(0x0))
         }
-        return
+        return success(())
     }
 
-    func encodeInt(value: Int32) {
+    func emitInt32(value: Int32) -> Result<(), NSError> {
         let encoded = Varint(fromValue: Int64(value).encodeZigZag())
         bytes += encoded.backing
-        return
+        return success(())
     }
 
-    func encodeLong(value: Int64) {
+    func emitInt64(value: Int64) -> Result<(), NSError> {
         let encoded = Varint(fromValue: value.encodeZigZag())
         bytes += encoded.backing
-        return
+        return success(())
     }
     
-    func encodeFloat(value: Float) {
+    func emitFloat(value: Float) -> Result<(), NSError> {
         let bits: UInt32 = unsafeBitCast(value, UInt32.self)
 
         let encodedFloat = [Byte(0xff & bits),
@@ -46,10 +48,10 @@ public class AvroEncoder {
             Byte(0xff & (bits >> 24))]
 
         bytes += encodedFloat
-        return
+        return success(())
     }
     
-    func encodeDouble(value: Double) {
+    func emitDouble(value: Double) -> Result<(), NSError> {
         let bits: UInt64 = unsafeBitCast(value, UInt64.self)
 
         let encodedDouble = [Byte(0xff & bits),
@@ -61,27 +63,27 @@ public class AvroEncoder {
             Byte(0xff & (bits >> 48)),
             Byte(0xff & (bits >> 56))]
         bytes += encodedDouble
-        return
+        return success(())
     }
 
-    func encodeString(value: String) {
+    func emitString(value: String) -> Result<(), NSError> {
         var cstr = value.cStringUsingEncoding(NSUTF8StringEncoding)!
         let bufferptr = UnsafeBufferPointer<Byte>(start: UnsafePointer<Byte>(cstr), count: cstr.count - 1)
 
         let stringBytes = [Byte](bufferptr)
-        encodeBytes(stringBytes)
-        return
+        emitBytes(stringBytes)
+        return success(())
     }
 
-    func encodeBytes(value: [Byte]) {
-        encodeLong(Int64(value.count))
+    func emitBytes(value: [Byte]) -> Result<(), NSError> {
+        emitInt64(Int64(value.count))
         bytes += value
-        return
+        return success(())
     }
 
-    func encodeFixed(value: [Byte]) {
+    func emitFixed(value: [Byte]) -> Result<(), NSError> {
         bytes += value
-        return
+        return success(())
     }
 
     public init() {

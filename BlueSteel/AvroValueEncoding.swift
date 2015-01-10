@@ -57,14 +57,13 @@ public extension AvroValue {
     */
     public func encode(encoder: AvroEncoder, schema: Schema) -> [Byte]? {
         switch schema {
-
             case .AvroNullSchema :
-                encoder.encodeNull()
+                encoder.emitNull()
 
             case .AvroBooleanSchema :
                 switch self {
                 case .AvroBooleanValue(let value) :
-                    encoder.encodeBoolean(value)
+                    encoder.emitBool(value)
                 default :
                     return nil
                 }
@@ -72,7 +71,7 @@ public extension AvroValue {
             case .AvroIntSchema :
                 switch self {
                 case .AvroIntValue(let value) :
-                    encoder.encodeInt(value)
+                    encoder.emitInt32(value)
                 default :
                     return nil
                 }
@@ -80,9 +79,9 @@ public extension AvroValue {
             case .AvroLongSchema :
                 switch self {
                 case .AvroIntValue(let value) :
-                    encoder.encodeLong(Int64(value))
+                    encoder.emitInt64(Int64(value))
                 case .AvroLongValue(let value) :
-                    encoder.encodeLong(value)
+                    encoder.emitInt64(value)
                 default :
                     return nil
                 }
@@ -90,11 +89,11 @@ public extension AvroValue {
             case .AvroFloatSchema :
                 switch self {
                 case .AvroIntValue(let value) :
-                    encoder.encodeFloat(Float(value))
+                    encoder.emitFloat(Float(value))
                 case .AvroLongValue(let value) :
-                    encoder.encodeFloat(Float(value))
+                    encoder.emitFloat(Float(value))
                 case .AvroFloatValue(let value) :
-                    encoder.encodeFloat(value)
+                    encoder.emitFloat(value)
                 default :
                     return nil
                 }
@@ -102,13 +101,13 @@ public extension AvroValue {
             case .AvroDoubleSchema :
                 switch self {
                 case .AvroIntValue(let value) :
-                    encoder.encodeDouble(Double(value))
+                    encoder.emitDouble(Double(value))
                 case .AvroLongValue(let value) :
-                    encoder.encodeDouble(Double(value))
+                    encoder.emitDouble(Double(value))
                 case .AvroFloatValue(let value) :
-                    encoder.encodeDouble(Double(value))
+                    encoder.emitDouble(Double(value))
                 case .AvroDoubleValue(let value) :
-                    encoder.encodeDouble(value)
+                    encoder.emitDouble(value)
                 default :
                     return nil
                 }
@@ -116,9 +115,9 @@ public extension AvroValue {
             case .AvroStringSchema, .AvroBytesSchema :
                 switch self {
                 case .AvroStringValue(let value) :
-                    encoder.encodeString(value)
+                    encoder.emitString(value)
                 case .AvroBytesValue(let value) :
-                    encoder.encodeBytes(value)
+                    encoder.emitBytes(value)
                 default :
                     return nil
                 }
@@ -127,14 +126,14 @@ public extension AvroValue {
             switch self {
             case .AvroArrayValue(let values) :
                 if values.count != 0 {
-                    encoder.encodeLong(Int64(values.count))
+                    encoder.emitInt64(Int64(values.count))
                     for value in values {
                         if value.encode(encoder, schema: box.value) == nil {
                             return nil
                         }
                     }
                 }
-                encoder.encodeLong(0)
+                encoder.emitInt64(0)
             default :
                 return nil
             }
@@ -143,9 +142,9 @@ public extension AvroValue {
             switch self {
             case .AvroMapValue(let pairs) :
                 if pairs.count != 0 {
-                    encoder.encodeLong(Int64(pairs.count))
+                    encoder.emitInt64(Int64(pairs.count))
                     for key in pairs.keys {
-                        encoder.encodeString(key)
+                        encoder.emitString(key)
                         if let value = pairs[key] {
                             if value.encode(encoder, schema: box.value) == nil {
                                 return nil
@@ -155,7 +154,7 @@ public extension AvroValue {
                         }
                     }
                 }
-                encoder.encodeLong(0)
+                encoder.emitInt64(0)
             default :
                 return nil
             }
@@ -186,7 +185,7 @@ public extension AvroValue {
             switch self {
             //TODO: Make sure enum matches schema
             case .AvroEnumValue(let index, _) :
-                encoder.encodeInt(Int32(index))
+                encoder.emitInt32(Int32(index))
             default :
                 return nil
             }
@@ -194,7 +193,7 @@ public extension AvroValue {
         case .AvroUnionSchema(let uSchemas) :
             switch self {
             case .AvroUnionValue(let index, let box) :
-                encoder.encodeLong(Int64(index))
+                encoder.emitInt64(Int64(index))
                 if index < uSchemas.count {
                     if box.value.encode(encoder, schema: uSchemas[index]) == nil {
                         return nil
@@ -211,7 +210,7 @@ public extension AvroValue {
             switch self {
             case .AvroFixedValue(let fixedBytes) :
                 if fixedBytes.count == size {
-                    encoder.encodeFixed(fixedBytes)
+                    encoder.emitFixed(fixedBytes)
                 } else {
                     return nil
                 }
