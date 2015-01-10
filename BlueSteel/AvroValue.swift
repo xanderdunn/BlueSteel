@@ -304,14 +304,14 @@ public enum AvroValue {
             }
 
         case .AvroIntSchema :
-            if let decoded = decoder.decodeInt() {
+            if let decoded = decoder.decodeInt32() {
                 self = .AvroIntValue(decoded)
             } else {
                 self = .AvroInvalidValue
             }
 
         case .AvroLongSchema :
-            if let decoded = decoder.decodeLong() {
+            if let decoded = decoder.decodeInt64() {
                 self = .AvroLongValue(decoded)
             } else {
                 self = .AvroInvalidValue
@@ -348,7 +348,7 @@ public enum AvroValue {
         // TODO: Collections negative count support.
         case .AvroArraySchema(let boxedSchema) :
             var values: [AvroValue] = []
-            while let count = decoder.decodeLong() {
+            while let count = decoder.decodeInt64() {
                 if count == 0 {
                     self = .AvroArrayValue(values)
                     return
@@ -366,7 +366,7 @@ public enum AvroValue {
 
         case .AvroMapSchema(let boxedSchema) :
             var pairs: Dictionary<String, AvroValue> = [:]
-            while let count = decoder.decodeLong() {
+            while let count = decoder.decodeInt64() {
                 if count == 0 {
                     self = .AvroMapValue(pairs)
                     return
@@ -382,7 +382,7 @@ public enum AvroValue {
 
 
         case .AvroEnumSchema(_, let enumValues) :
-            if let index = decoder.decodeInt() {
+            if let index = decoder.decodeInt32() {
                 if Int(index) > enumValues.count - 1 {
                     self = .AvroEnumValue(Int(index), enumValues[Int(index)])
                     return
@@ -411,7 +411,7 @@ public enum AvroValue {
             }
 
         case .AvroUnionSchema(let schemas) :
-            if let index = decoder.decodeLong() {
+            if let index = decoder.decodeInt64() {
                 if Int(index) < schemas.count {
                     self = .AvroUnionValue(Int(index), Box(AvroValue(schemas[Int(index)], withDecoder: decoder)))
                     return

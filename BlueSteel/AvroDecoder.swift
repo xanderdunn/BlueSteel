@@ -84,7 +84,7 @@ public class AvroDecoder {
         return result
     }
 
-    public func decodeInt() -> Int32? {
+    public func decodeInt32() -> Int32? {
         if let x = Varint.VarintFromBytes(bytes) {
             if x.count > 0 {
                 bytes.removeRange(0...x.count - 1)
@@ -94,7 +94,7 @@ public class AvroDecoder {
         return nil
     }
 
-    public func decodeLong() -> Int64? {
+    public func decodeInt64() -> Int64? {
         if let x = Varint.VarintFromBytes(bytes) {
             if x.count > 0 {
                 bytes.removeRange(0...x.count - 1)
@@ -111,7 +111,7 @@ public class AvroDecoder {
     }
 
     public func decodeBytes() -> [Byte]? {
-        if let size = decodeLong() {
+        if let size = decodeInt64() {
             if size <= Int64(bytes.count) && size != 0 {
                 var tmp: [Byte] = [Byte](bytes[0...size - 1])
                 bytes.removeRange(0...size - 1)
