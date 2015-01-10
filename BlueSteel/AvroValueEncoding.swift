@@ -43,7 +43,7 @@ public extension AvroValue {
     :returns Avro binary encoding as byte array. Nil if encoding fails.
     */
     public func encode(schema: Schema) -> [Byte]? {
-        let encoder = AvroEncoder()
+        let encoder = AvroEncoder(schema: schema)
         return self.encode(encoder, schema: schema)
     }
 
