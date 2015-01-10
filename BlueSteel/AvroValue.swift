@@ -205,67 +205,6 @@ public enum AvroValue {
         return pairs
     }
 
-    public func encode(encoder: AvroEncoder) -> [Byte]? {
-        switch self {
-        case .AvroNullValue :
-            encoder.encodeNull()
-        case .AvroBooleanValue(let value) :
-            encoder.encodeBoolean(value)
-        case .AvroIntValue(let value) :
-            encoder.encodeInt(value)
-        case .AvroLongValue(let value) :
-            encoder.encodeLong(value)
-        case .AvroFloatValue(let value) :
-            encoder.encodeFloat(value)
-        case .AvroDoubleValue(let value) :
-            encoder.encodeDouble(value)
-        case .AvroStringValue(let value) :
-            encoder.encodeString(value)
-        case .AvroBytesValue(let value) :
-            encoder.encodeBytes(value)
-        case .AvroFixedValue(let value) :
-            encoder.encodeFixed(value)
-
-        case .AvroArrayValue(let values) :
-            encoder.encodeLong(Int64(values.count))
-            for value in values {
-                value.encode(encoder)
-            }
-            encoder.encodeLong(0)
-
-        case .AvroMapValue(let pairs) :
-            encoder.encodeLong(Int64(pairs.count))
-            for key in pairs.keys {
-                encoder.encodeString(key)
-                if let value = pairs[key] {
-                    value.encode(encoder)
-                } else {
-                    return nil
-                }
-            }
-
-        case .AvroRecordValue(let pairs) :
-            for key in pairs.keys {
-                encoder.encodeString(key)
-                if let value = pairs[key] {
-                    value.encode(encoder)
-                } else {
-                    return nil
-                }
-            }
-
-        case .AvroEnumValue(let index, _) :
-            encoder.encodeInt(Int32(index))
-
-        case .AvroUnionValue(let index, let box) :
-            encoder.encodeLong(Int64(index))
-            box.value.encode(encoder)
-        default :
-            return nil
-        }
-        return encoder.bytes
-    }
-
     public init(jsonSchema: String, withBytes bytes: [Byte]) {
         let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
 
