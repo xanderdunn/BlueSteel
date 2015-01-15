@@ -31,7 +31,7 @@ public extension AvroValue {
     :returns Avro binary encoding as byte array. Nil if encoding fails.
     */
     public func encode(jsonSchema: String) -> [Byte]? {
-        let schema = Schema(jsonSchema)
+        let schema = Schema(string: jsonSchema)
         return self.encode(schema)
     }
 

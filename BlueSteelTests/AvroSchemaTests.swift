@@ -21,9 +21,9 @@ class AvroSchemaTests: XCTestCase {
     }
 
     func testSchemaEquality(s1: String, s2: String) {
-        var lhs = Schema(s1)
-        var rhsEqual = Schema(s1)
-        var rhsNotEqual = Schema(s2)
+        var lhs = Schema(string: s1)
+        var rhsEqual = Schema(string: s1)
+        var rhsNotEqual = Schema(string: s2)
 
         XCTAssertEqual(lhs, rhsEqual, "Schemas should be equal")
         XCTAssertNotEqual(lhs, rhsNotEqual, "Schemas should not be equal")
@@ -31,7 +31,7 @@ class AvroSchemaTests: XCTestCase {
 
     func testPrimitive() {
         let jsonSchema = "{ \"type\" : \"long\"}"
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroLongSchema :
@@ -43,7 +43,7 @@ class AvroSchemaTests: XCTestCase {
 
     func testMap() {
         let jsonSchema = "{ \"type\" : \"map\", \"values\" : \"int\" }"
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroMapSchema(let box):
@@ -67,7 +67,7 @@ class AvroSchemaTests: XCTestCase {
 
     func testArray() {
         let jsonSchema = "{ \"type\" : \"array\", \"items\" : \"double\" }"
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroArraySchema(let box):
@@ -91,7 +91,7 @@ class AvroSchemaTests: XCTestCase {
 
     func testArrayMap() {
         let jsonSchema = "{ \"type\" : \"array\", \"items\" : { \"type\" : \"map\", \"values\" : \"int\" } }"
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroArraySchema(let arrayBox) :
@@ -114,7 +114,7 @@ class AvroSchemaTests: XCTestCase {
     func testUnion() {
         let jsonSchema = "{ \"type\" : [ \"double\", \"int\", \"long\", \"float\" ] }"
         let expected: [Schema] = [.AvroDoubleSchema, .AvroIntSchema, .AvroLongSchema, .AvroFloatSchema]
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroUnionSchema(let schemas):
@@ -142,7 +142,7 @@ class AvroSchemaTests: XCTestCase {
     func testUnionMap() {
         let jsonSchema = "{ \"type\" : [ { \"type\" : \"map\", \"values\" : \"int\" }, { \"type\" : \"map\", \"values\" : \"double\" } ] }"
         let expected: [Schema] = [.AvroIntSchema, .AvroDoubleSchema]
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroUnionSchema(let schemas):
@@ -177,7 +177,7 @@ class AvroSchemaTests: XCTestCase {
         let fieldNames = ["lookId", "productId", "quantity", "saleId", "skuId"]
         let fieldType: [Schema] = [.AvroLongSchema, .AvroLongSchema, .AvroIntSchema, .AvroInvalidSchema, .AvroLongSchema]
         let unionFieldTypes: [Schema] = [.AvroNullSchema, .AvroLongSchema]
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroRecordSchema("AddToCartActionEvent", let fields) :
@@ -234,7 +234,7 @@ class AvroSchemaTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"enum\", \"name\" : \"ChannelKey\", \"doc\" : \"Enum of valid channel keys.\", \"symbols\" : [ \"CityIphone\", \"CityMobileWeb\", \"GiltAndroid\", \"GiltcityCom\", \"GiltCom\", \"GiltIpad\", \"GiltIpadSafari\", \"GiltIphone\", \"GiltMobileWeb\", \"NoChannel\" ]}"
 
         let expectedSymbols = ["CityIphone", "CityMobileWeb", "GiltAndroid", "GiltcityCom", "GiltCom", "GiltIpad", "GiltIpadSafari", "GiltIphone", "GiltMobileWeb", "NoChannel"]
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
 
         switch schema {
         case .AvroEnumSchema(let enumName, let symbols) :
@@ -260,7 +260,7 @@ class AvroSchemaTests: XCTestCase {
 
     func testFixed() {
         let jsonSchema = "{ \"type\" : \"fixed\", \"name\" : \"Uuid\", \"size\" : 16 }"
-        var schema = Schema(jsonSchema)
+        var schema = Schema(string: jsonSchema)
         switch schema {
         case .AvroFixedSchema(let fixedName, let size) :
             XCTAssertEqual("Uuid", fixedName, "Unexpected fixed name.")
@@ -285,7 +285,7 @@ class AvroSchemaTests: XCTestCase {
     func testFingerprint() {
         //let jsonSchema = "{ \"type\" : \"enum\", \"name\" : \"ChannelKey\", \"doc\" : \"Enum of valid channel keys.\", \"symbols\" : [ \"CityIphone\", \"CityMobileWeb\", \"GiltAndroid\", \"GiltcityCom\", \"GiltCom\", \"GiltIpad\", \"GiltIpadSafari\", \"GiltIphone\", \"GiltMobileWeb\", \"NoChannel\" ]}"
         let jsonSchema = "{\"type\":\"record\",\"name\":\"StorePageViewedEvent\",\"namespace\":\"com.gilt.mobile.tapstream.v1\",\"doc\":\"This event is fired when a store is displayed.\",\"fields\":[{\"name\":\"uuid\",\"type\":{\"type\":\"fixed\",\"name\":\"UUID\",\"namespace\":\"gfc.avro\",\"size\":16},\"doc\":\"the unique identifier of the event, as determined by the mobile app.\\n        this must be a version 1 uuid.\"},{\"name\":\"base\",\"type\":{\"type\":\"record\",\"name\":\"MobileEvent\",\"doc\":\"Fields common to all events generated by mobile apps.\\n      NOTE: this should not be sent as is, meant to be wrapped into some more specific type.\",\"fields\":[{\"name\":\"eventTs\",\"type\":\"long\",\"doc\":\"The unix timestamp at which the event occurred.\\n        This is in Gilt time (not device time).\"},{\"name\":\"batchGuid\",\"type\":\"gfc.avro.UUID\",\"doc\":\"NOTE: This attribute should NOT be set by the client, it will be set by the server.\\n        The unique identifier assigned to a batch of events.\\n        Events that share this value were submitted by a client as part of the same batch.\",\"default\":\"\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\"},{\"name\":\"channelKey\",\"type\":{\"type\":\"enum\",\"name\":\"ChannelKey\",\"doc\":\"Enum of valid channel keys.\",\"symbols\":[\"CityIphone\",\"CityMobileWeb\",\"GiltAndroid\",\"GiltcityCom\",\"GiltCom\",\"GiltIpad\",\"GiltIpadSafari\",\"GiltIphone\",\"GiltMobileWeb\",\"NoChannel\"]}},{\"name\":\"deviceTimeOffset\",\"type\":\"long\",\"doc\":\"Offset in milliseconds between the Gilt time and the device time (device time + offset == Gilt time)\"},{\"name\":\"headers\",\"type\":{\"type\":\"map\",\"values\":\"string\"},\"doc\":\"The HTTP headers of the request the event was sent in.\\n        Multi-valued header values are tab-separated.\\n        NOTE: This attribute should NOT be set by the client, it will be set by the server.\",\"default\":{}},{\"name\":\"ipAddress\",\"type\":\"string\",\"doc\":\"IP address of the client.\\n        NOTE: This attribute should NOT be set by the client, it will be set by the server.\",\"default\":\"0.0.0.0\"},{\"name\":\"sessionTs\",\"type\":\"long\",\"doc\":\"The unix timestamp of the current session.\"},{\"name\":\"testBucketId\",\"type\":\"long\",\"doc\":\"The test bucket identifier.\"},{\"name\":\"userAgent\",\"type\":\"string\",\"doc\":\"The user agent of the request.\\n        NOTE: This attribute should NOT be set by the client, it will be set by the server.\",\"default\":\"\"},{\"name\":\"userGuid\",\"type\":[\"null\",\"gfc.avro.UUID\"],\"doc\":\"The Gilt user_guid (optional).\",\"default\":null},{\"name\":\"visitorGuid\",\"type\":\"gfc.avro.UUID\",\"doc\":\"Generated on first app launch it never changes unless the app is uninstalled and re-installed.\"}]}},{\"name\":\"page\",\"type\":{\"type\":\"record\",\"name\":\"PageViewedEvent\",\"doc\":\"Fields common to all events of type page_viewed.\\n      NOTE: this should not be sent as is, meant to be wrapped into some more specific type.\",\"fields\":[{\"name\":\"deviceOrientation\",\"type\":{\"type\":\"enum\",\"name\":\"DeviceOrientation\",\"doc\":\"Enum of valid device orientations.\",\"symbols\":[\"Landscape\",\"Portrait\"]}}]}},{\"name\":\"storeKey\",\"type\":{\"type\":\"enum\",\"name\":\"StoreKey\",\"doc\":\"Enum of valid store keys.\",\"symbols\":[\"Children\",\"City\",\"Gifts\",\"Home\",\"Men\",\"MyGilt\",\"Women\",\"NoStore\"]}}]}"
-        let schema = Schema(jsonSchema)
+        let schema = Schema(string: jsonSchema)
 
         var existingTypes:[String] = []
         var form = schema.parsingCanonicalForm(&existingTypes)
