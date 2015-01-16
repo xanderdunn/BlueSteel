@@ -238,7 +238,7 @@ public enum Schema {
         self = Schema(JSON(data: json!, options: NSJSONReadingOptions.allZeros, error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
 
-    public init(_ json: String) {
+    public init(string json: String) {
         var cached: [String:Schema] = [:]
         let schemaData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         self.init(schemaData)
