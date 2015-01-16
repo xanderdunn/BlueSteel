@@ -214,3 +214,198 @@ class AvroDecoderTestCase: XCTestCase {
         }
     }
 }
+
+class AvroValueEquatableTestCase: XCTestCase {
+
+    override func setUp() {
+        super.setUp()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+    }
+
+    // Helpers
+    // Random byte.
+    var rbyte: Byte {
+        return Byte(arc4random() & 0xff)
+    }
+
+    // Random byte array
+    var rbyteArray: [Byte] {
+        let size = Int(rbyte)
+        var array = Array<Byte>(count: size, repeatedValue: 0)
+
+        for idx in 0...size - 1 {
+            array[idx] = rbyte
+        }
+        return array
+    }
+
+
+    func testNullEquality() {
+        XCTAssert(AvroValue.AvroNullValue == AvroValue.AvroNullValue, "Null values should be equal.")
+        XCTAssert(AvroValue.AvroNullValue != AvroValue.AvroInvalidValue, "Null values shouldn't be equal to values of another type.")
+    }
+
+    func testBoolEquality() {
+        XCTAssert(AvroValue.AvroBooleanValue(true) == AvroValue.AvroBooleanValue(true), "Boolean values should be equal.")
+        XCTAssert(AvroValue.AvroBooleanValue(false) == AvroValue.AvroBooleanValue(false), "Boolean values should be equal.")
+        XCTAssert(AvroValue.AvroBooleanValue(true) != AvroValue.AvroBooleanValue(false), "Boolean values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroBooleanValue(false) != AvroValue.AvroBooleanValue(true), "Boolean values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroBooleanValue(true) != AvroValue.AvroNullValue, "Boolean values shouldn't be equal to values of another type.")
+    }
+
+    func testIntEquality() {
+        // Generate some non-equal random values
+        let i1 = unsafeBitCast(arc4random(), Int32.self)
+        var i2 = unsafeBitCast(arc4random(), Int32.self)
+
+        while (i1 == i2) {
+            i2 = unsafeBitCast(arc4random(), Int32.self)
+        }
+
+        XCTAssert(AvroValue.AvroIntValue(i1) == AvroValue.AvroIntValue(i1), "Integer values should be equal.")
+        XCTAssert(AvroValue.AvroIntValue(i2) != AvroValue.AvroIntValue(i1), "Integer values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroIntValue(i1) != AvroValue.AvroIntValue(i2), "Integer values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroIntValue(i1) != AvroValue.AvroNullValue, "Integer values shouldn't be equal to values of another type.")
+    }
+
+    func testLongEquality() {
+        // Generate some non-equal random values
+        let l1 = Int64(arc4random())
+        var l2 = Int64(arc4random())
+
+        while (l1 == l2) {
+            l2 = Int64(arc4random())
+        }
+
+        XCTAssert(AvroValue.AvroLongValue(l1) == AvroValue.AvroLongValue(l1), "Long values should be equal.")
+        XCTAssert(AvroValue.AvroLongValue(l2) != AvroValue.AvroLongValue(l1), "Long values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroLongValue(l1) != AvroValue.AvroLongValue(l2), "Long values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroLongValue(l1) != AvroValue.AvroNullValue, "Long values shouldn't be equal to values of another type.")
+    }
+
+    func testFloatEquality() {
+        // Generate some non-equal random values
+        let f1 = Float(arc4random())
+        var f2 = Float(arc4random())
+
+        while (f1 == f2) {
+            f2 = Float(arc4random())
+        }
+
+        XCTAssert(AvroValue.AvroFloatValue(f1) == AvroValue.AvroFloatValue(f1), "Float values should be equal.")
+        XCTAssert(AvroValue.AvroFloatValue(f2) != AvroValue.AvroFloatValue(f1), "Float values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroFloatValue(f1) != AvroValue.AvroFloatValue(f2), "Float values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroFloatValue(f1) != AvroValue.AvroNullValue, "Float values shouldn't be equal to values of another type.")
+    }
+
+    func testDoubleEquality() {
+        // Generate some non-equal random values
+        let d1 = Double(arc4random())
+        var d2 = Double(arc4random())
+
+        while (d1 == d2) {
+            d2 = Double(arc4random())
+        }
+
+        XCTAssert(AvroValue.AvroDoubleValue(d1) == AvroValue.AvroDoubleValue(d1), "Double values should be equal.")
+        XCTAssert(AvroValue.AvroDoubleValue(d2) != AvroValue.AvroDoubleValue(d1), "Double values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroDoubleValue(d1) != AvroValue.AvroDoubleValue(d2), "Double values shouldn't be equal .")
+        XCTAssert(AvroValue.AvroDoubleValue(d1) != AvroValue.AvroNullValue, "Double values shouldn't be equal to values of another type.")
+    }
+
+    func testStringEquality() {
+        let s1 = "Wolf"
+        let s2 = "Hound"
+
+        XCTAssert(AvroValue.AvroStringValue(s1) == AvroValue.AvroStringValue(s1), "String values should be equal.")
+        XCTAssert(AvroValue.AvroStringValue(s2) != AvroValue.AvroStringValue(s1), "String values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroStringValue(s1) != AvroValue.AvroStringValue(s2), "String values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroStringValue(s1) != AvroValue.AvroNullValue, "String values shouldn't be equal to values of another type.")
+    }
+
+    func testBytesEquality() {
+
+        let b1 = rbyteArray
+        let b2 = rbyteArray
+
+        XCTAssert(AvroValue.AvroBytesValue(b1) == AvroValue.AvroBytesValue(b1), "Byte array values should be equal.")
+        XCTAssert(AvroValue.AvroBytesValue(b2) != AvroValue.AvroBytesValue(b1), "Byte array values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroBytesValue(b1) != AvroValue.AvroBytesValue(b2), "Byte array values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroBytesValue(b1) != AvroValue.AvroNullValue, "Byte array values shouldn't be equal to values of another type.")
+    }
+
+    func testArrayEquality() {
+        let a1 = AvroValue.AvroArrayValue(rbyteArray.map { byte in return AvroValue.AvroIntValue(Int32(byte)) })
+        let a2 = AvroValue.AvroArrayValue(rbyteArray.map { byte in return AvroValue.AvroIntValue(Int32(byte)) })
+
+        XCTAssert(a1 == a1, "Array values should be equal.")
+        XCTAssert(a1 != a2, "Array values shouldn't be equal.")
+        XCTAssert(a1 != AvroValue.AvroNullValue, "Array values shouldn't be equal to values of another type.")
+    }
+
+    func testMapEquality() {
+        let m1 = AvroValue.AvroMapValue(["wolf" : AvroValue.AvroFloatValue(Float(arc4random()))])
+        let m2 = AvroValue.AvroMapValue(["wolf" : AvroValue.AvroFloatValue(Float(arc4random()))])
+        let m3 = AvroValue.AvroMapValue(["hound" : AvroValue.AvroFloatValue(Float(arc4random()))])
+
+        XCTAssert(m1 == m1, "Map values should be equal.")
+        XCTAssert(m1 != m2, "Map values shouldn't be equal.")
+        XCTAssert(m1 != m3, "Map values shouldn't be equal.")
+        XCTAssert(m3 != m2, "Map values shouldn't be equal.")
+        XCTAssert(m1 != AvroValue.AvroNullValue, "Map values shouldn't be equal to values of another type.")
+    }
+
+    func testRecordEquality() {
+        let r1 = AvroValue.AvroRecordValue(["wolf" : AvroValue.AvroFloatValue(Float(rbyte))])
+        let r2 = AvroValue.AvroRecordValue(["wolf" : AvroValue.AvroFloatValue(Float(rbyte))])
+        let r3 = AvroValue.AvroRecordValue(["hound" : AvroValue.AvroFloatValue(Float(rbyte))])
+
+        XCTAssert(r1 == r1, "Record values should be equal.")
+        XCTAssert(r1 != r2, "Record values shouldn't be equal.")
+        XCTAssert(r1 != r3, "Record values shouldn't be equal.")
+        XCTAssert(r3 != r2, "Record values shouldn't be equal.")
+        XCTAssert(r1 != AvroValue.AvroNullValue, "Record values shouldn't be equal to values of another type.")
+    }
+
+    func testUnionEquality() {
+        let u1 = AvroValue.AvroUnionValue(Int(rbyte), Box(AvroValue.AvroDoubleValue(Double(arc4random()))))
+        let u2 = AvroValue.AvroUnionValue(Int(rbyte), Box(AvroValue.AvroDoubleValue(Double(arc4random()))))
+        let u3 = AvroValue.AvroUnionValue(Int(rbyte), Box(AvroValue.AvroFloatValue(Float(arc4random()))))
+
+        XCTAssert(u1 == u1, "Union values should be equal.")
+        XCTAssert(u1 != u2, "Union values shouldn't be equal.")
+        XCTAssert(u1 != u3, "Union values shouldn't be equal.")
+        XCTAssert(u3 != u2, "Union values shouldn't be equal.")
+        XCTAssert(u1 != AvroValue.AvroNullValue, "Union values shouldn't be equal to values of another type.")
+    }
+
+    func testEnumEquality() {
+        let e1 = AvroValue.AvroEnumValue(Int(rbyte), "Wolf")
+        let e2 = AvroValue.AvroEnumValue(Int(rbyte), "Wolf")
+        let e3 = AvroValue.AvroEnumValue(Int(rbyte), "Hound")
+
+        XCTAssert(e1 == e1, "Enum values should be equal.")
+        XCTAssert(e1 != e2, "Enum values shouldn't be equal.")
+        XCTAssert(e1 != e3, "Enum values shouldn't be equal.")
+        XCTAssert(e3 != e2, "Enum values shouldn`t be equal.")
+        XCTAssert(e1 != AvroValue.AvroNullValue, "Enum values shouldn't be equal to values of another type.")
+    }
+
+    func testFixedEquality() {
+        let b1 = rbyteArray
+        let b2 = rbyteArray
+
+        XCTAssert(AvroValue.AvroFixedValue(b1) == AvroValue.AvroFixedValue(b1), "Fixed values should be equal.")
+        XCTAssert(AvroValue.AvroFixedValue(b2) != AvroValue.AvroFixedValue(b1), "Fixed values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroFixedValue(b1) != AvroValue.AvroFixedValue(b2), "Fixed values shouldn't be equal.")
+        XCTAssert(AvroValue.AvroFixedValue(b1) != AvroValue.AvroNullValue, "Fixed values shouldn't be equal to values of another type.")
+    }
+
+    func testInvalidEquality() {
+        XCTAssert(AvroValue.AvroInvalidValue == AvroValue.AvroInvalidValue, "Invalid values should be equal.")
+        XCTAssert(AvroValue.AvroInvalidValue != AvroValue.AvroNullValue, "Invalid values shouldn't be equal to values of another type.")
+    }
+}

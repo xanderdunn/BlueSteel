@@ -8,18 +8,6 @@
 
 import Foundation
 
-
-extension Dictionary {
-
-}
-
-func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
-    for (k, v) in right {
-        left.updateValue(v, forKey: k)
-    }
-    return left
-}
-
 public enum AvroValue {
     // Primitives
     case AvroNullValue
@@ -227,5 +215,132 @@ extension AvroValue: DictionaryLiteralConvertible {
             tmp[kv.0] = kv.1
         }
         self = .AvroMapValue(tmp)
+    }
+}
+
+extension AvroValue: Equatable { }
+
+public func ==(lhs: AvroValue, rhs: AvroValue) -> Bool {
+    switch lhs {
+
+    case .AvroNullValue :
+        switch rhs {
+        case .AvroNullValue :
+            return true
+        default :
+            return false
+        }
+
+    case .AvroBooleanValue(let lhsBool) :
+        switch rhs {
+        case .AvroBooleanValue(let rhsBool) :
+            return lhsBool == rhsBool
+        default :
+            return false
+        }
+
+    case .AvroIntValue(let lhsInt) :
+        switch rhs {
+        case .AvroIntValue(let rhsInt) :
+            return lhsInt == rhsInt
+        default :
+            return false
+        }
+
+    case .AvroLongValue(let lhsLong) :
+        switch rhs {
+        case .AvroLongValue(let rhsLong) :
+            return lhsLong == rhsLong
+        default :
+            return false
+        }
+
+    case .AvroFloatValue(let lhsFloat) :
+        switch rhs {
+        case .AvroFloatValue(let rhsFloat) :
+            return lhsFloat == rhsFloat
+        default :
+            return false
+        }
+
+    case .AvroDoubleValue(let lhsDouble) :
+        switch rhs {
+        case .AvroDoubleValue(let rhsDouble) :
+            return lhsDouble == rhsDouble
+        default :
+            return false
+        }
+
+    case .AvroStringValue(let lhsString) :
+        switch rhs {
+        case .AvroStringValue(let rhsString) :
+            return lhsString == rhsString
+        default :
+            return false
+        }
+
+    case .AvroBytesValue(let lhsBytes) :
+        switch rhs {
+        case .AvroBytesValue(let rhsBytes) :
+            return lhsBytes == rhsBytes
+        default :
+            return false
+        }
+
+    case .AvroArrayValue(let lhsArray) :
+        switch rhs {
+        case .AvroArrayValue(let rhsArray) :
+            return lhsArray == rhsArray
+        default :
+            return false
+        }
+
+    case .AvroMapValue(let lhsMap) :
+        switch rhs {
+        case .AvroMapValue(let rhsMap) :
+            return lhsMap == rhsMap
+        default :
+            return false
+        }
+
+    case .AvroRecordValue(let lhsRecord) :
+        switch rhs {
+        case .AvroRecordValue(let rhsRecord) :
+            return lhsRecord == rhsRecord
+        default :
+            return false
+        }
+
+    case .AvroUnionValue(let lhsIdx, let lhsBoxedValue) :
+        switch rhs {
+        case .AvroUnionValue(let rhsIdx, let rhsBoxedValue) :
+            return lhsIdx == rhsIdx ? lhsBoxedValue.value == rhsBoxedValue.value : false
+        default :
+            return false
+        }
+
+    case .AvroEnumValue(let lhsIdx, let lhsName) :
+        switch rhs {
+        case .AvroEnumValue(let rhsIdx, let rhsName) :
+            return lhsIdx == rhsIdx ? lhsName == rhsName : false
+        default :
+            return false
+        }
+
+    case .AvroFixedValue(let lhsBytes) :
+        switch rhs {
+        case .AvroFixedValue(let rhsBytes) :
+            return lhsBytes == rhsBytes
+        default :
+            return false
+        }
+
+    case .AvroInvalidValue :
+        switch rhs {
+        case .AvroInvalidValue :
+            return true
+        default :
+            return false
+        }
     }
 }
