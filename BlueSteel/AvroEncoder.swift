@@ -10,13 +10,19 @@ import Foundation
 import LlamaKit
 
 public class AvroEncoder {
-
-    // Backing
     var bytes: [Byte] = []
     var schema: Schema
 
-    func emitNull() {
-        return
+    public var byteArray: [Byte] {
+        return self.bytes
+    }
+
+    public var data: NSData {
+        return NSData(bytes: &self.bytes, length: self.bytes.count)
+    }
+
+    func emitNull() -> Result<(), NSError> {
+        return success(())
     }
 
     func emitBool(value: Bool) -> Result<(), NSError> {
@@ -87,7 +93,7 @@ public class AvroEncoder {
         return success(())
     }
 
-    func emitValue(value: AvroValue) -> Result<(), NSError> {
+    public func emitValue(value: AvroValue) -> Result<(), NSError> {
         switch schema {
 
         case .AvroNullSchema :
