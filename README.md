@@ -29,14 +29,15 @@ BlueSteel will be built as a dynamic framework, which can then be added to your 
 
 ## Usage
 
-BlueSteel depends on [LlamaKit](https://github.com/LlamaKit/LlamaKit) for Result types. You should take a look at the LlamaKit Readme to see how Results work before reading further. They're really simple, yet super powerful.  
+BlueSteel depends on [LlamaKit](https://github.com/LlamaKit/LlamaKit) for Result types. You should take a look at the LlamaKit Readme to see how Results work before reading further. They're really simple,  and so it'll just take a minute to get up to speed. Results are very powerful though, and BlueSteel uses them to simplify error reporting.   
 Since Avro data is not self describing, we're going to need to supply an Avro Schema before we can (de)serialize any data. Schema enums are constructed from a JSON schema description, in either String or NSData form.
 
 ```swift
+import LlamaKit
 import BlueSteel
 
 let jsonSchema = "{ \"type\" : \"string\" }"
-let schema = Schema(jsonSchema)
+let schema = Schema(string: jsonSchema)
 ```
 
 ## Deserializing Avro data
@@ -54,9 +55,7 @@ We can then decode an Avro value.
 ```swift
 let avroValueResult = avroDecoder.decodeValue()
 ```
-```decodeValue()``` returns a Result<AvroValue, NSError>
-
-We can now get the Swift String from the AvroValue result above using the result ```value``` optional getter, chained with the AvroValue ```string``` optional getter.
+```decodeValue()``` returns a ```Result<AvroValue, NSError>```, from which we can obtain an Avro value, using the result's ```value``` optional getter. We can then chain the AvroValue ```string``` optional getter.
 
 ```swift
 if let strValue = avroValueResult.value?.string {
@@ -77,11 +76,14 @@ One or more Avro values can then be emitted to the encoder.
 let avroEncoder = AvroEncoder(schema: schema)
 let emitResult = avroEncoder.emitValue(avroValueResult.value!)
 ```
-The encoded stream of bytes can be accessed as NSData via the ```data``` property of the encoder, or via the as a Swift Byte Array via the ```byteArray``` property.
+The encoded stream of bytes can be accessed via the ```data``` or ```byteArray```encoder properties.
 
 ```swift
 println(avroEncoder.byteArray)  // [6, 102, 111, 111]
 ```
+### What about codec errors?
+
+Comprehensive error reporting is still in progress, but for now if anything goes bad, the results returned by ```decodeValue``` and ```encodeValue``` methods will be Failures and will wrap an NSError object containing a description of what went wrong. The above examples assume that the results returned are successful. In the real world, you should check these results for success, and/or use the ```map``` and ```flatMap``` combinators to chain results.
 
 ### But how do we convert our own Swift types to AvroValue?
 
