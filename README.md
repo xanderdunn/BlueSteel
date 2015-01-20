@@ -9,57 +9,81 @@ Have a gander at the [official docs](http://avro.apache.org/docs/current/) befor
 
 ## Requirements
 
-- iOS 7.0+ / Mac OS X 10.9+
+- iOS 8.0+ / Mac OS X 10.9+
 - Xcode 6.1
 
 ## Integration
 
-Since there's currently no [proper infrastructure](http://cocoapods.org) for Swift dependency management, using BlueSteel in your project requires a little bit of extra work, as outlined by the following steps:
+BlueSteel should be installed via [Carthage](https://github.com/Carthage/Carthage).
+Add the following to your Cartfile:
+```
+github "gilt/BlueSteel"
+```
 
-1. Add BlueSteel as a submodule by opening the Terminal, `cd`-ing into your top-level project directory, and entering the command `git submodule add https://github.com/BlueSteel/BlueSteel.git` and then `git submodule update --init --recursive` to pull in BlueSteel's dependencies.
-2. Open the `BlueSteel` folder, and drag `BlueSteel.xcodeproj` into the file navigator of your app project.
-3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
-4. Ensure that the deployment target of BlueSteel.framework matches that of the application target.
-5. In the tab bar at the top of that window, open the "Build Phases" panel.
-6. Expand the "Target Dependencies" group, and add `BlueSteel.framework`.
-7. Click on the `+` button at the top left of the panel and select "New Copy Files Phase". Rename this new phase to "Copy Frameworks", set the "Destination" to "Frameworks", and add `BlueSteel.framework`.
+And then run:
+```
+$ carthage update
+```
+
+BlueSteel will be built as a dynamic framework, which can then be added to your application.
 
 ## Usage
 
+BlueSteel depends on [LlamaKit](https://github.com/LlamaKit/LlamaKit) for Result types. You should take a look at the LlamaKit Readme to see how Results work before reading further. They're really simple,  and so it'll just take a minute to get up to speed. Results are very powerful though, and BlueSteel uses them to simplify error reporting.   
 Since Avro data is not self describing, we're going to need to supply an Avro Schema before we can (de)serialize any data. Schema enums are constructed from a JSON schema description, in either String or NSData form.
 
 ```swift
+import LlamaKit
 import BlueSteel
 
 let jsonSchema = "{ \"type\" : \"string\" }"
-let schema = Schema(jsonSchema)
+let schema = Schema(string: jsonSchema)
 ```
 
 ## Deserializing Avro data
 
 Using the Schema above, we can now decode some Avro binary data.
+First we create a decoder using the schema above and the raw data we want to decode.
 
 ```swift
 let rawBytes: [Byte] = [0x6, 0x66, 0x6f, 0x6f]
-let avro = AvroValue(schema: schema, withBytes: rawBytes)
+let avroDecoder = AvroDecoder(schema: schema, data: rawBytes)
 ```
 
-We can now get the Swift String from the Avro value above using an optional getter.
+We can then decode an Avro value.
+
 ```swift
-if let avroString = avro.string {
-    println(avroString) // Prints "foo"
+let avroValueResult = avroDecoder.decodeValue()
+```
+```decodeValue()``` returns a ```Result<AvroValue, NSError>```, from which we can obtain an Avro value, using the result's ```value``` optional getter. We can then chain the AvroValue ```string``` optional getter.
+
+```swift
+if let strValue = avroValueResult.value?.string {
+    println(strValue)
 }
 ```
 
 ## Serializing Swift data
 
-We can use the same Schema above to serialize an AvroValue to binary.
+We can use the same Schema above to create an encdoer that can serialize AvroValues to Avro binary.
 
 ```swift
-if let serialized = avro.encode(schema) {
-    println(serialized) // Prints [6, 102, 111, 111]
-}
+let avroEncoder = AvroEncoder(schema: schema)
 ```
+One or more Avro values can then be emitted to the encoder.
+
+```swift
+let avroEncoder = AvroEncoder(schema: schema)
+let emitResult = avroEncoder.emitValue(avroValueResult.value!)
+```
+The encoded stream of bytes can be accessed via the ```data``` or ```byteArray```encoder properties.
+
+```swift
+println(avroEncoder.byteArray)  // [6, 102, 111, 111]
+```
+### What about codec errors?
+
+Comprehensive error reporting is still in progress, but for now if anything goes bad, the results returned by ```decodeValue``` and ```encodeValue``` methods will be Failures and will wrap an NSError object containing a description of what went wrong. The above examples assume that the results returned are successful. In the real world, you should check these results for success, and/or use the ```map``` and ```flatMap``` combinators to chain results.
 
 ### But how do we convert our own Swift types to AvroValue?
 
