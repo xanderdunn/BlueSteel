@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Gilt. All rights reserved.
 //
 
-import Foundation
-
 /// Avro value binary encoding.
 public extension AvroValue {
 

@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Gilt. All rights reserved.
 //
 
-import Foundation
-
 public protocol AvroValueConvertible {
     func toAvro() -> AvroValue
 }

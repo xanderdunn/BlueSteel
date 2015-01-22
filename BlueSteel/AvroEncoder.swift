@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Gilt. All rights reserved.
 //
 
-import Foundation
 import LlamaKit
 
 public class AvroEncoder {

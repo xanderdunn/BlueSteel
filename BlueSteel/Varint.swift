@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Gilt. All rights reserved.
 //
 
-import Foundation
-
 // MARK: Varint
 
 public struct Varint {
