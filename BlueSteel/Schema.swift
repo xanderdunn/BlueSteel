@@ -87,17 +87,15 @@ public enum Schema {
     // TODO: Report errors for invalid schemas.
     case AvroInvalidSchema
 
-    static func assembleFullName(namespace:String?, name: String?) -> String? {
-        if let shortName = name {
-            if !contains(shortName, ".") {
-                if let space = namespace {
-                    return space + "." + shortName
-                }
+    static func assembleFullName(namespace:String?, name: String) -> String {
+
+        if !contains(name, ".") {
+            if let space = namespace {
+                return space + "." + name
             }
-            return shortName
-        } else {
-            return nil
         }
+        return name
+
     }
 
     public func parsingCanonicalForm(inout existingTypes: [String]) -> String? {
@@ -296,8 +294,10 @@ public enum Schema {
 
             case .ARecord :
                 // Records must be named
-                if let recordName = Schema.assembleFullName(schemaNamespace , name: json["name"].string) {
+                if let recordName = json["name"].string {
+                    let fullRecordName = Schema.assembleFullName(schemaNamespace, name: recordName)
                     let fields = json["fields"]
+
                     switch fields.type {
                     case .Array :
                         var recordFields: [Schema] = []
@@ -320,8 +320,8 @@ public enum Schema {
                                 return
                             }
                         }
-                        self = .AvroRecordSchema(recordName, recordFields)
-                        cache[recordName] = self
+                        self = .AvroRecordSchema(fullRecordName, recordFields)
+                        cache[fullRecordName] = self
                     default :
                         self = .AvroInvalidSchema
                     }
@@ -330,7 +330,7 @@ public enum Schema {
                 }
 
             case .AEnum :
-                if let enumName = Schema.assembleFullName(schemaNamespace, name: json["name"].string) {
+                if let enumName = json["name"].string {
                     if let symbols = json["symbols"].array {
                         var symbolStrings: [String] = []
                         for sym in symbols {
@@ -342,8 +342,10 @@ public enum Schema {
                             }
                         }
 
-                        self = .AvroEnumSchema(enumName, symbolStrings)
-                        cache[enumName] = self
+                        let fullEnumName = Schema.assembleFullName(schemaNamespace, name: enumName)
+
+                        self = .AvroEnumSchema(fullEnumName, symbolStrings)
+                        cache[fullEnumName] = self
                     } else {
                         self = .AvroInvalidSchema
                     }
@@ -352,10 +354,11 @@ public enum Schema {
                 }
 
             case .AFixed :
-                if let fixedName = Schema.assembleFullName(schemaNamespace, name: json["name"].string) {
+                if let fixedName = json["name"].string {
                     if let size = json["size"].int {
-                        self = .AvroFixedSchema(fixedName, size)
-                        cache[fixedName] = self
+                        let fullFixedName = Schema.assembleFullName(schemaNamespace, name: fixedName)
+                        self = .AvroFixedSchema(fullFixedName, size)
+                        cache[fullFixedName] = self
                         return
                     }
                 }
@@ -363,7 +366,9 @@ public enum Schema {
 
             default:
                 // Schema type is invalid
-                if let cachedSchema = cache[typeString] {
+                let fullTypeName = Schema.assembleFullName(schemaNamespace, name: typeString)
+
+                if let cachedSchema = cache[fullTypeName] {
                     self = cachedSchema
                 } else {
                     self = .AvroInvalidSchema
@@ -378,8 +383,9 @@ public enum Schema {
             for def in unionSchema {
                 var schema: Schema = .AvroInvalidSchema
                 if let typeString = def.string {
-
+                    let fullTypeName = Schema.assembleFullName(schemaNamespace, name: typeString)
                     let avroType = AvroType(typeString)
+
                     if  avroType != .AInvalidType {
                         //schema = .PrimitiveSchema(avroType)
                         switch avroType {
@@ -402,7 +408,7 @@ public enum Schema {
                         default :
                             schema = .AvroInvalidSchema
                         }
-                    } else if let cachedSchema = cache[typeString] {
+                    } else if let cachedSchema = cache[fullTypeName] {
                         schema = cachedSchema
                     } else {
                         schema = .AvroInvalidSchema
