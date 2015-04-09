@@ -293,7 +293,7 @@ class AvroSchemaTests: XCTestCase {
         if let let fp = schema.fingerprint() {
             var hexString = ""
             for byte in fp {
-                hexString += NSString(format: "%02X", byte)
+                hexString += NSString(format: "%02X", byte) as String
             }
             XCTAssertEqual(hexString, "1E85E88ACE91D3273377213306CDFAF2F0FE705F93E95BF4F8065BC10F1D55FE", "Fingeprint mismatch.")
         } else {

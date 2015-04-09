@@ -22,7 +22,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testStringValue() {
-        var avroBytes: [Byte] = [0x06, 0x66, 0x6f, 0x6f]
+        var avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
         let jsonSchema = "{ \"type\" : \"string\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).string {
@@ -33,7 +33,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testByteValue() {
-        var avroBytes: [Byte] = [0x06, 0x66, 0x6f, 0x6f]
+        var avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
         let jsonSchema = "{ \"type\" : \"bytes\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).bytes {
@@ -44,7 +44,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testIntValue() {
-        let avroBytes: [Byte] = [0x96, 0xde, 0x87, 0x3]
+        let avroBytes: [UInt8] = [0x96, 0xde, 0x87, 0x3]
         let jsonSchema = "{ \"type\" : \"int\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).integer {
@@ -55,7 +55,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testLongValue() {
-        let avroBytes: [Byte] = [0x96, 0xde, 0x87, 0x3]
+        let avroBytes: [UInt8] = [0x96, 0xde, 0x87, 0x3]
         let jsonSchema = "{ \"type\" : \"long\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).long {
@@ -66,7 +66,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testFloatValue() {
-        let avroBytes: [Byte] = [0xc3, 0xf5, 0x48, 0x40]
+        let avroBytes: [UInt8] = [0xc3, 0xf5, 0x48, 0x40]
         let jsonSchema = "{ \"type\" : \"float\" }"
 
         let expected: Float = 3.14
@@ -78,7 +78,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testDoubleValue() {
-        let avroBytes: [Byte] = [0x1f, 0x85, 0xeb, 0x51, 0xb8, 0x1e, 0x9, 0x40]
+        let avroBytes: [UInt8] = [0x1f, 0x85, 0xeb, 0x51, 0xb8, 0x1e, 0x9, 0x40]
         let jsonSchema = "{ \"type\" : \"double\" }"
 
         let expected: Double = 3.14
@@ -90,8 +90,8 @@ class AvroValueTests: XCTestCase {
     }
 
     func testBooleanValue() {
-        var avroFalseBytes: [Byte] = [0x0]
-        var avroTrueBytes: [Byte] = [0x1]
+        var avroFalseBytes: [UInt8] = [0x0]
+        var avroTrueBytes: [UInt8] = [0x1]
 
         let jsonSchema = "{ \"type\" : \"boolean\" }"
 
@@ -109,7 +109,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testArrayValue() {
-        let avroBytes: [Byte] = [0x04, 0x06, 0x36, 0x00]
+        let avroBytes: [UInt8] = [0x04, 0x06, 0x36, 0x00]
         let expected: [Int64] = [3, 27]
         let jsonSchema = "{ \"type\" : \"array\", \"items\" : \"long\" }"
 
@@ -128,7 +128,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testMapValue() {
-        let avroBytes: [Byte] = [0x02, 0x06, 0x66, 0x6f, 0x6f, 0x36, 0x00]
+        let avroBytes: [UInt8] = [0x02, 0x06, 0x66, 0x6f, 0x6f, 0x36, 0x00]
         let expected: [Int64] = [27]
         let jsonSchema = "{ \"type\" : \"map\", \"values\" : \"long\" }"
 
@@ -147,7 +147,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testUnionValue() {
-        let avroBytes: [Byte] = [0x02, 0x02, 0x61]
+        let avroBytes: [UInt8] = [0x02, 0x02, 0x61]
         let jsonSchema = "{\"type\" : [\"null\",\"string\"] }"
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).string {
             XCTAssertEqual(value, "a", "Unexpected string value.")

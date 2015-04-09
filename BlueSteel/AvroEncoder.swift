@@ -10,7 +10,7 @@ import Foundation
 
 public class AvroEncoder {
 
-    var bytes: [Byte] = []
+    var bytes: [UInt8] = []
 
     func encodeNull() {
         return
@@ -18,9 +18,9 @@ public class AvroEncoder {
 
     func encodeBoolean(value: Bool) {
         if value {
-            bytes.append(Byte(0x1))
+            bytes.append(UInt8(0x1))
         } else {
-            bytes.append(Byte(0x0))
+            bytes.append(UInt8(0x0))
         }
         return
     }
@@ -40,10 +40,10 @@ public class AvroEncoder {
     func encodeFloat(value: Float) {
         let bits: UInt32 = unsafeBitCast(value, UInt32.self)
 
-        let encodedFloat = [Byte(0xff & bits),
-            Byte(0xff & (bits >> 8)),
-            Byte(0xff & (bits >> 16)),
-            Byte(0xff & (bits >> 24))]
+        let encodedFloat = [UInt8(0xff & bits),
+            UInt8(0xff & (bits >> 8)),
+            UInt8(0xff & (bits >> 16)),
+            UInt8(0xff & (bits >> 24))]
 
         bytes += encodedFloat
         return
@@ -52,34 +52,34 @@ public class AvroEncoder {
     func encodeDouble(value: Double) {
         let bits: UInt64 = unsafeBitCast(value, UInt64.self)
 
-        let encodedDouble = [Byte(0xff & bits),
-            Byte(0xff & (bits >> 8)),
-            Byte(0xff & (bits >> 16)),
-            Byte(0xff & (bits >> 24)),
-            Byte(0xff & (bits >> 32)),
-            Byte(0xff & (bits >> 40)),
-            Byte(0xff & (bits >> 48)),
-            Byte(0xff & (bits >> 56))]
+        let encodedDouble = [UInt8(0xff & bits),
+            UInt8(0xff & (bits >> 8)),
+            UInt8(0xff & (bits >> 16)),
+            UInt8(0xff & (bits >> 24)),
+            UInt8(0xff & (bits >> 32)),
+            UInt8(0xff & (bits >> 40)),
+            UInt8(0xff & (bits >> 48)),
+            UInt8(0xff & (bits >> 56))]
         bytes += encodedDouble
         return
     }
 
     func encodeString(value: String) {
         var cstr = value.cStringUsingEncoding(NSUTF8StringEncoding)!
-        let bufferptr = UnsafeBufferPointer<Byte>(start: UnsafePointer<Byte>(cstr), count: cstr.count - 1)
+        let bufferptr = UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(cstr), count: cstr.count - 1)
 
-        let stringBytes = [Byte](bufferptr)
+        let stringBytes = [UInt8](bufferptr)
         encodeBytes(stringBytes)
         return
     }
 
-    func encodeBytes(value: [Byte]) {
+    func encodeBytes(value: [UInt8]) {
         encodeLong(Int64(value.count))
         bytes += value
         return
     }
 
-    func encodeFixed(value: [Byte]) {
+    func encodeFixed(value: [UInt8]) {
         bytes += value
         return
     }

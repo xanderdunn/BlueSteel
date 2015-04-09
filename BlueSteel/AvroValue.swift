@@ -28,7 +28,7 @@ public enum AvroValue {
     case AvroLongValue(Int64)
     case AvroFloatValue(Float)
     case AvroDoubleValue(Double)
-    case AvroBytesValue([Byte])
+    case AvroBytesValue([UInt8])
     case AvroStringValue(String)
 
     // Complex Types
@@ -37,7 +37,7 @@ public enum AvroValue {
     case AvroUnionValue(Int, Box<AvroValue>)
     case AvroRecordValue(Dictionary<String, AvroValue>)
     case AvroEnumValue(Int, String)
-    case AvroFixedValue([Byte])
+    case AvroFixedValue([UInt8])
 
     case AvroInvalidValue
 
@@ -107,7 +107,7 @@ public enum AvroValue {
         }
     }
 
-    public var bytes: [Byte]? {
+    public var bytes: [UInt8]? {
         switch self {
         case .AvroBytesValue(let value) :
             return value
@@ -162,7 +162,7 @@ public enum AvroValue {
         }
     }
 
-    public var fixed: [Byte]? {
+    public var fixed: [UInt8]? {
         switch self {
         case .AvroFixedValue(let bytes) :
             return bytes
@@ -205,7 +205,7 @@ public enum AvroValue {
         return pairs
     }
 
-    public func encode(encoder: AvroEncoder) -> [Byte]? {
+    public func encode(encoder: AvroEncoder) -> [UInt8]? {
         switch self {
         case .AvroNullValue :
             encoder.encodeNull()
@@ -266,7 +266,7 @@ public enum AvroValue {
         return encoder.bytes
     }
 
-    public init(jsonSchema: String, withBytes bytes: [Byte]) {
+    public init(jsonSchema: String, withBytes bytes: [UInt8]) {
         let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
 
         self.init(jsonSchema: jsonSchema, withData: avroData)
@@ -278,7 +278,7 @@ public enum AvroValue {
         self.init(schema: schema, withData: data)
     }
 
-    public init(schema: Schema, withBytes bytes: [Byte]) {
+    public init(schema: Schema, withBytes bytes: [UInt8]) {
         let avroData = NSData(bytes: UnsafePointer<Void>(bytes), length: bytes.count)
 
         self.init(schema: schema, withData: avroData)

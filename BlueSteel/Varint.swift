@@ -11,7 +11,7 @@ import Foundation
 // MARK: Varint
 
 public struct Varint {
-    let backing: [Byte] = []
+    let backing: [UInt8]
 
     public var count: Int {
         return backing.count
@@ -26,8 +26,8 @@ public struct Varint {
     // This initializer should never be used directly.
     // VarintFromBytes should be used instead.
 
-    init(fromBytes bytes: [Byte]) {
-        backing = bytes
+    init(fromBytes bytes: [UInt8]) {
+        self.backing = bytes
     }
 
     public init(fromValue value:UInt) {
@@ -35,15 +35,16 @@ public struct Varint {
     }
 
     public init(fromValue value:UInt64) {
+        var buffer: [UInt8] = []
         if value == 0 {
-            backing = [0]
+            buffer.append(0)
         } else {
             var tmp = value
-            var idx: UInt = 0
+            var idx: Int = 0
             while tmp > 0 {
-                backing.append(UInt8(truncate: tmp))
+                buffer.append(UInt8(truncate: tmp))
                 if (idx > 0) {
-                    backing[idx - 1] |= 0x80
+                    buffer[idx - 1] |= 0x80
                 }
 
                 // Next index
@@ -51,6 +52,8 @@ public struct Varint {
                 tmp >>= 7
             }
         }
+
+        self.backing = buffer
     }
 
     public func toInt64() -> Int64 {
@@ -68,8 +71,8 @@ public struct Varint {
         return result
     }
 
-    public static func VarintFromBytes(bytes: [Byte]) -> Varint? {
-        var buf = [Byte]()
+    public static func VarintFromBytes(bytes: [UInt8]) -> Varint? {
+        var buf = [UInt8]()
 
         for x in bytes {
             buf.append(x)

@@ -18,7 +18,7 @@ public extension AvroValue {
 
     :returns Avro binary encoding as byte array. Nil if encoding fails.
     */
-    public func encode(schemaData: NSData) -> [Byte]? {
+    public func encode(schemaData: NSData) -> [UInt8]? {
         let schema = Schema(schemaData)
         return self.encode(schema)
     }
@@ -30,7 +30,7 @@ public extension AvroValue {
 
     :returns Avro binary encoding as byte array. Nil if encoding fails.
     */
-    public func encode(jsonSchema: String) -> [Byte]? {
+    public func encode(jsonSchema: String) -> [UInt8]? {
         let schema = Schema(jsonSchema)
         return self.encode(schema)
     }
@@ -42,7 +42,7 @@ public extension AvroValue {
 
     :returns Avro binary encoding as byte array. Nil if encoding fails.
     */
-    public func encode(schema: Schema) -> [Byte]? {
+    public func encode(schema: Schema) -> [UInt8]? {
         let encoder = AvroEncoder()
         return self.encode(encoder, schema: schema)
     }
@@ -55,7 +55,7 @@ public extension AvroValue {
 
     :returns Avro binary encoding as byte array. Nil if encoding fails.
     */
-    public func encode(encoder: AvroEncoder, schema: Schema) -> [Byte]? {
+    public func encode(encoder: AvroEncoder, schema: Schema) -> [UInt8]? {
         switch schema {
 
             case .AvroNullSchema :

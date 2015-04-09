@@ -212,10 +212,10 @@ public enum Schema {
         }
     }
 
-    public func fingerprint() -> [Byte]? {
+    public func fingerprint() -> [UInt8]? {
         var etypes: [String] = []
         if let pcf = self.parsingCanonicalForm(&etypes) {
-            var hash = [Byte](count: 32, repeatedValue: 0)
+            var hash = [UInt8](count: 32, repeatedValue: 0)
             if let cString = pcf.cStringUsingEncoding(NSUTF8StringEncoding) {
                 // Compute hash of PCF string without the NULL terminator.
 
