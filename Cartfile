@@ -1,2 +1,2 @@
-github "LlamaKit/LlamaKit" == 0.5.0
-github "haveahennessy/SwiftyJSON" >= 2.0.0
+github "LlamaKit/LlamaKit" >= 0.6.0
+github "SwiftyJSON/SwiftyJSON" >= 2.2.0
