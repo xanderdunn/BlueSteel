@@ -1,0 +1,2 @@
+github "LlamaKit/LlamaKit" >= 0.6.0
+github "SwiftyJSON/SwiftyJSON" >= 2.2.0
