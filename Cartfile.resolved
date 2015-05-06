@@ -1,2 +1,2 @@
-github "LlamaKit/LlamaKit" "v0.5.0"
-github "haveahennessy/SwiftyJSON" "v2.1.4"
+github "LlamaKit/LlamaKit" "v0.6.0"
+github "SwiftyJSON/SwiftyJSON" "2.2.0"
