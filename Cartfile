@@ -1,2 +1,2 @@
-github "antitypical/Result" ~> 0.5
 github "SwiftyJSON/SwiftyJSON" "xcode7"
+github "antitypical/Result" ~> 0.5
