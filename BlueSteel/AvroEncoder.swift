@@ -65,7 +65,7 @@ public class AvroEncoder {
     }
 
     func encodeString(value: String) {
-        var cstr = value.cStringUsingEncoding(NSUTF8StringEncoding)!
+        let cstr = value.cStringUsingEncoding(NSUTF8StringEncoding)!
         let bufferptr = UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(cstr), count: cstr.count - 1)
 
         let stringBytes = [UInt8](bufferptr)

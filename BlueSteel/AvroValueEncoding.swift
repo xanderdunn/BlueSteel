@@ -160,7 +160,7 @@ public extension AvroValue {
                 return nil
             }
 
-        case .AvroRecordSchema(let name, let fieldSchemas) :
+        case .AvroRecordSchema(_, let fieldSchemas) :
             switch self {
             case .AvroRecordValue(let pairs) :
                 for fSchema in fieldSchemas {

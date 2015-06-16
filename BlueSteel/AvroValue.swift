@@ -175,7 +175,7 @@ public enum AvroValue {
 
     static func decodeArrayBlock(schema: Schema, count:Int64, decoder: AvroDecoder) -> [AvroValue]? {
         var values: [AvroValue] = []
-        for idx in 0...count - 1 {
+        for _ in 0...count - 1 {
             let value = AvroValue(schema, withDecoder: decoder)
             switch value {
             case .AvroInvalidValue :
@@ -189,7 +189,7 @@ public enum AvroValue {
 
     static func decodeMapBlock(schema: Schema, count:Int64, decoder: AvroDecoder) -> Dictionary<String, AvroValue>? {
         var pairs: Dictionary<String, AvroValue> = Dictionary()
-        for idx in 0...count - 1 {
+        for _ in 0...count - 1 {
             if let key = AvroValue(.AvroStringSchema, withDecoder: decoder).string {
                 let value = AvroValue(schema, withDecoder: decoder)
                 switch value {

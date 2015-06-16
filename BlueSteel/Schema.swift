@@ -89,7 +89,7 @@ public enum Schema {
 
     static func assembleFullName(namespace:String?, name: String) -> String {
 
-        if !contains(name, ".") {
+        if !name.characters.contains(".".characters) {
             if let space = namespace {
                 return space + "." + name
             }
@@ -133,7 +133,7 @@ public enum Schema {
             }
 
         case .AvroEnumSchema(let name, let enumValues) :
-            if contains(existingTypes, name) {
+            if existingTypes.contains(name.characters) {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -152,7 +152,7 @@ public enum Schema {
             }
 
         case .AvroRecordSchema(let name, let fields) :
-            if contains(existingTypes, name) {
+            if existingTypes.contains(name.characters) {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -170,7 +170,7 @@ public enum Schema {
                         if let fieldPCF = fieldType.value.parsingCanonicalForm(&existingTypes) {
                             str += "{\"name\":\"" + fieldName + "\",\"type\":" + fieldPCF + "}"
                         } else {
-                            println(fieldName)
+                            print(fieldName)
                             return nil
                         }
                     default :
@@ -182,7 +182,7 @@ public enum Schema {
             }
 
         case .AvroFixedSchema(let name, let size) :
-            if contains(existingTypes, name) {
+            if existingTypes.contains(name.characters) {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -233,11 +233,10 @@ public enum Schema {
 
     public init(_ json: NSData?) {
         var cached: [String:Schema] = [:]
-        self = Schema(JSON(data: json!, options: NSJSONReadingOptions.allZeros, error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
+        self = Schema(JSON(data: json!, options: NSJSONReadingOptions(), error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
 
     public init(_ json: String) {
-        var cached: [String:Schema] = [:]
         let schemaData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         self.init(schemaData)
     }
@@ -375,7 +374,7 @@ public enum Schema {
                 }
             }
 
-        } else if let jsonObject = json[key].dictionary {
+        } else if let _ = json[key].dictionary {
             self = Schema(json[key], typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
         } else if let unionSchema = json[key].array {
             // Union

@@ -113,7 +113,7 @@ public class AvroDecoder {
     public func decodeBytes() -> [UInt8]? {
         if let size = decodeLong() {
             if size <= Int64(bytes.count) && size != 0 {
-                var tmp: [UInt8] = [UInt8](bytes[0...size - 1])
+                let tmp: [UInt8] = [UInt8](bytes[0...size - 1])
                 bytes.removeRange(0...size - 1)
                 return tmp
             }
@@ -136,7 +136,7 @@ public class AvroDecoder {
         if bytes.count < size {
             return nil
         }
-        var tmp: [UInt8] = [UInt8](bytes[0...size - 1])
+        let tmp: [UInt8] = [UInt8](bytes[0...size - 1])
         bytes.removeRange(0...size - 1)
         return tmp
     }

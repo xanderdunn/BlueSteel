@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C50746EB19BF980A00FAE594 /* AvroSchemaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */; };
-		C565CAA61A001026003FE24B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565CAA51A001026003FE24B /* SwiftyJSON.swift */; };
 		C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */; };
 		C58C18C219EDD88C00E684B0 /* CCWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = C58C18C019ED94BA00E684B0 /* CCWrapper.c */; };
 		C5C483AB19B7B12B008E3F4C /* BlueSteel.h in Headers */ = {isa = PBXBuildFile; fileRef = C5C483AA19B7B12B008E3F4C /* BlueSteel.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
-		C565CAA51A001026003FE24B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroEncoder.swift; sourceTree = "<group>"; };
 		C58C18C019ED94BA00E684B0 /* CCWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CCWrapper.c; sourceTree = "<group>"; };
 		C5C483A519B7B12B008E3F4C /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,20 +74,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C565CAA71A00102E003FE24B /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				C565CAA51A001026003FE24B /* SwiftyJSON.swift */,
-			);
-			name = SwiftyJSON;
-			sourceTree = "<group>";
-		};
 		C5C4839B19B7B12B008E3F4C = {
 			isa = PBXGroup;
 			children = (
-				C5C483EA19BE232D008E3F4C /* Libs */,
-				C5C483A719B7B12B008E3F4C /* BlueSteel */,
-				C5C483B119B7B12B008E3F4C /* BlueSteelTests */,
+				C5C483A719B7B12B008E3F4C /* Code */,
+				C5C483B119B7B12B008E3F4C /* Tests */,
 				C5C483A619B7B12B008E3F4C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,7 +92,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C5C483A719B7B12B008E3F4C /* BlueSteel */ = {
+		C5C483A719B7B12B008E3F4C /* Code */ = {
 			isa = PBXGroup;
 			children = (
 				C58C18C019ED94BA00E684B0 /* CCWrapper.c */,
@@ -118,6 +107,7 @@
 				C5C483AA19B7B12B008E3F4C /* BlueSteel.h */,
 				C5C483A819B7B12B008E3F4C /* Supporting Files */,
 			);
+			name = Code;
 			path = BlueSteel;
 			sourceTree = "<group>";
 		};
@@ -129,7 +119,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C5C483B119B7B12B008E3F4C /* BlueSteelTests */ = {
+		C5C483B119B7B12B008E3F4C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C5C483C419B7B1AD008E3F4C /* AvroDecoderTests.swift */,
@@ -138,6 +128,7 @@
 				C5DA98AA19C778A200CA9F41 /* AvroValueTests.swift */,
 				C5C483B219B7B12B008E3F4C /* Supporting Files */,
 			);
+			name = Tests;
 			path = BlueSteelTests;
 			sourceTree = "<group>";
 		};
@@ -147,14 +138,6 @@
 				C5C483B319B7B12B008E3F4C /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C5C483EA19BE232D008E3F4C /* Libs */ = {
-			isa = PBXGroup;
-			children = (
-				C565CAA71A00102E003FE24B /* SwiftyJSON */,
-			);
-			path = Libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,7 +196,8 @@
 		C5C4839C19B7B12B008E3F4C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Matt Isaacs";
 				TargetAttributes = {
 					C5C483A419B7B12B008E3F4C = {
@@ -267,7 +251,6 @@
 				C5C483DF19BA1D41008E3F4C /* Schema.swift in Sources */,
 				C5C483C119B7B19F008E3F4C /* AvroDecoder.swift in Sources */,
 				C5E75BEC19D33A8B0012C6FB /* AvroConvertible.swift in Sources */,
-				C565CAA61A001026003FE24B /* SwiftyJSON.swift in Sources */,
 				C5C483C319B7B19F008E3F4C /* Varint.swift in Sources */,
 				C5D243DA19E489CA0034D0B3 /* AvroValueEncoding.swift in Sources */,
 				C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */,
@@ -320,6 +303,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -398,6 +382,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gilt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -416,6 +401,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gilt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -424,16 +410,13 @@
 		C5C483BC19B7B12B008E3F4C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = BlueSteelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gilt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -441,12 +424,9 @@
 		C5C483BD19B7B12B008E3F4C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = BlueSteelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gilt.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
