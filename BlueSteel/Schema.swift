@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 public enum AvroType {
     // Primitives
@@ -89,7 +90,7 @@ public enum Schema {
 
     static func assembleFullName(namespace:String?, name: String) -> String {
 
-        if !name.characters.contains(".".characters) {
+        if name.rangeOfString(".") == nil {
             if let space = namespace {
                 return space + "." + name
             }
@@ -133,7 +134,7 @@ public enum Schema {
             }
 
         case .AvroEnumSchema(let name, let enumValues) :
-            if existingTypes.contains(name.characters) {
+            if existingTypes.indexOf(name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -152,7 +153,7 @@ public enum Schema {
             }
 
         case .AvroRecordSchema(let name, let fields) :
-            if existingTypes.contains(name.characters) {
+            if existingTypes.indexOf(name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -182,7 +183,7 @@ public enum Schema {
             }
 
         case .AvroFixedSchema(let name, let size) :
-            if existingTypes.contains(name.characters) {
+            if existingTypes.indexOf(name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -413,7 +414,7 @@ public enum Schema {
                         schema = .AvroInvalidSchema
                     }
 
-                } else if let subschema = def.dictionary {
+                } else if let _ = def.dictionary {
                     schema = Schema(def, typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
                 } else {
                     schema = .AvroInvalidSchema

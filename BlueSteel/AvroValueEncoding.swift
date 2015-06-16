@@ -182,7 +182,7 @@ public extension AvroValue {
                 return nil
             }
 
-        case .AvroEnumSchema(let name, let enumSchemas) :
+        case .AvroEnumSchema:
             switch self {
             //TODO: Make sure enum matches schema
             case .AvroEnumValue(let index, _) :
