@@ -6,6 +6,8 @@
 *.xcworkspace/xcshareddata/
 *.xcworkspace/xcuserdata/
 .DS_Store
-Carthage
 build/
+Carthage/Checkouts
+!Carthage/Build/
+Carthage/Build/Mac
 
