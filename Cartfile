@@ -1,3 +1,3 @@
-github "gilt/SwiftyJSON" "swift-2.0"
+github "gilt/SwiftyJSON" "master"
 
 github "antitypical/Result" ~> 0.5
