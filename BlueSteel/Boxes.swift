@@ -24,9 +24,9 @@ public final class Box<T> {
   }
 }
 
-class BoxedArray<T>: MutableCollectionType, Sliceable {
+class BoxedArray<T>: MutableCollectionType, CollectionType {
+    typealias Index = Int
     typealias Element = T
-    typealias SubSlice = ArraySlice<T>
 
     var boxed: Array<T>
 
@@ -49,16 +49,20 @@ class BoxedArray<T>: MutableCollectionType, Sliceable {
     subscript (index: Int) -> T {
         get {
             return boxed[index]
-            }
+        }
 
-            set {
-                boxed[index] = newValue
-            }
+        set {
+            boxed[index] = newValue
+        }
     }
 
     subscript (subRange: Range<Int>) -> ArraySlice<T> {
         get {
             return boxed[subRange]
+        }
+
+        set {
+            boxed[subRange] = newValue
         }
     }
 }
