@@ -13,7 +13,7 @@ extension Dictionary {
 
 }
 
-func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
+public func +=<K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
     for (k, v) in right {
         left.updateValue(v, forKey: k)
     }
