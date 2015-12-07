@@ -22,7 +22,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testStringValue() {
-        var avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
+        let avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
         let jsonSchema = "{ \"type\" : \"string\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).string {
@@ -33,7 +33,7 @@ class AvroValueTests: XCTestCase {
     }
 
     func testByteValue() {
-        var avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
+        let avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
         let jsonSchema = "{ \"type\" : \"bytes\" }"
 
         if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).bytes {
@@ -90,8 +90,8 @@ class AvroValueTests: XCTestCase {
     }
 
     func testBooleanValue() {
-        var avroFalseBytes: [UInt8] = [0x0]
-        var avroTrueBytes: [UInt8] = [0x1]
+        let avroFalseBytes: [UInt8] = [0x0]
+        let avroTrueBytes: [UInt8] = [0x1]
 
         let jsonSchema = "{ \"type\" : \"boolean\" }"
 

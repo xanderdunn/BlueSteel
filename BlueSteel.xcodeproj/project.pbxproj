@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B5233661B2FDD5800B63782 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5233641B2FDD5800B63782 /* Result.framework */; };
 		3B5233671B2FDD5800B63782 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5233651B2FDD5800B63782 /* SwiftyJSON.framework */; };
 		C50746EB19BF980A00FAE594 /* AvroSchemaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */; };
 		C57DD77319C9FCE6002BEDBA /* AvroEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3B5233641B2FDD5800B63782 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		3B5233651B2FDD5800B63782 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		C50746EA19BF980A00FAE594 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
 		C57DD77219C9FCE6002BEDBA /* AvroEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroEncoder.swift; sourceTree = "<group>"; };
@@ -65,7 +63,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B5233671B2FDD5800B63782 /* SwiftyJSON.framework in Frameworks */,
-				3B5233661B2FDD5800B63782 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +80,6 @@
 		3B5233681B2FDD5C00B63782 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				3B5233641B2FDD5800B63782 /* Result.framework */,
 				3B5233651B2FDD5800B63782 /* SwiftyJSON.framework */,
 			);
 			name = Libraries;
