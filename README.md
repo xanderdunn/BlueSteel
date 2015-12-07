@@ -1,28 +1,42 @@
+![Gilt Tech logo](https://raw.githubusercontent.com/gilt/Cleanroom/master/Assets/gilt-tech-logo.png)
 
-# Avro Blue Steel
+# BlueSteel
 
-The [nuclear option](http://en.wikipedia.org/wiki/Blue_Steel_(missile)) for working with Avro schemas and binary data, in Swift.
+An Avro encoding/decoding library for Swift.
 
-## Never heard of Avro?
+BlueSteel is part of [the Cleanroom Project](https://github.com/gilt/Cleanroom) from [Gilt Tech](http://tech.gilt.com).
 
-Have a gander at the [official docs](http://avro.apache.org/docs/current/) before reading further.
 
-## Requirements
+### Never heard of Avro?
 
-- iOS 7.0+ / Mac OS X 10.9+
-- Xcode 6.1
+Take a gander at the [official documentation for Avro](http://avro.apache.org/docs/current/) before reading further.
 
-## Integration
 
-Since there's currently no [proper infrastructure](http://cocoapods.org) for Swift dependency management, using BlueSteel in your project requires a little bit of extra work, as outlined by the following steps:
+### Swift 2.1 compatibility
 
-1. Add BlueSteel as a submodule by opening the Terminal, `cd`-ing into your top-level project directory, and entering the command `git submodule add https://github.com/BlueSteel/BlueSteel.git` and then `git submodule update --init --recursive` to pull in BlueSteel's dependencies.
-2. Open the `BlueSteel` folder, and drag `BlueSteel.xcodeproj` into the file navigator of your app project.
-3. In Xcode, navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
-4. Ensure that the deployment target of BlueSteel.framework matches that of the application target.
-5. In the tab bar at the top of that window, open the "Build Phases" panel.
-6. Expand the "Target Dependencies" group, and add `BlueSteel.framework`.
-7. Click on the `+` button at the top left of the panel and select "New Copy Files Phase". Rename this new phase to "Copy Frameworks", set the "Destination" to "Frameworks", and add `BlueSteel.framework`.
+The `master` branch of this project is Swift 2.1 compliant and therefore **requires Xcode 7.1 or higher to compile**.
+
+
+### Adding BlueSteel to your project
+
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
+You’ll need to [integrate BlueSteel into your project](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md) in order to use [the API](https://rawgit.com/gilt/BlueSteel/master/Documentation/index.html) it provides. You can choose:
+
+- [Manual integration](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md#manual-integration), wherein you embed BlueSteel’s Xcode project within your own, **_or_**
+- [Using the Carthage dependency manager](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md#carthage-integration) to build a framework that you then embed in your application.
+ 
+Once integrated, just add the following `import` statement to any Swift file where you want to use BlueSteel:
+
+```swift
+import BlueSteel
+```
+
+
+### API documentation
+
+For detailed information on using BlueSteel, [API documentation](https://rawgit.com/gilt/BlueSteel/master/Documentation/index.html) is available.
+
 
 ## Usage
 
@@ -35,7 +49,7 @@ let jsonSchema = "{ \"type\" : \"string\" }"
 let schema = Schema(jsonSchema)
 ```
 
-## Deserializing Avro data
+### Deserializing Avro data
 
 Using the Schema above, we can now decode some Avro binary data.
 
@@ -51,7 +65,7 @@ if let avroString = avro.string {
 }
 ```
 
-## Serializing Swift data
+### Serializing Swift data
 
 We can use the same Schema above to serialize an AvroValue to binary.
 
@@ -61,7 +75,7 @@ if let serialized = avro.encode(schema) {
 }
 ```
 
-### But how do we convert our own Swift types to AvroValue?
+#### But how do we convert our own Swift types to AvroValue?
 
 By conforming to the AvroValueConvertible protocol! You just need to extend your types with one function:
 ```swift
@@ -133,9 +147,26 @@ You might've noticed above that we called .toAvro() on Int64 and String values. 
 
 So that just about covers a very quick introduction to BlueSteel. Please note that BlueSteel is still very early in development and may change significantly.
 
-## Copyright & License
 
-Avro BlueSteel Library © Copyright 2014, Gilt Groupe.
+## About
 
-Licensed under [the MIT license](LICENSE).
+The Cleanroom Project began as an experiment to re-imagine Gilt’s iOS codebase in a legacy-free, Swift-based incarnation. 
+
+Since then, we’ve expanded the Cleanroom Project to include multi-platform support. Much of our codebase now supports tvOS in addition to iOS, and our lower-level code is usable on Mac OS X and watchOS as well.
+
+Cleanroom Project code serves as the foundation of Gilt on TV, our tvOS app [featured by Apple during the launch of the new Apple TV](http://www.apple.com/apple-events/september-2015/). And as time goes on, we'll be replacing more and more of our existing Objective-C codebase with Cleanroom implementations.
+
+In the meantime, we’ll be tracking the latest releases of Swift & Xcode, and [open-sourcing major portions of our codebase](https://github.com/gilt/Cleanroom#open-source-by-default) along the way.
+
+
+### Contributing
+
+BlueSteel is in active development, and we welcome your contributions.
+
+If you’d like to contribute to this or any other Cleanroom Project repo, please read [the contribution guidelines](https://github.com/gilt/Cleanroom#contributing-to-the-cleanroom-project).
+
+
+### Acknowledgements
+
+[API documentation for BlueSteel](https://rawgit.com/gilt/BlueSteel/master/Documentation/index.html) is generated using [Realm](http://realm.io)’s [jazzy](https://github.com/realm/jazzy/) project, maintained by [JP Simard](https://github.com/jpsim) and [Samuel E. Giddins](https://github.com/segiddins).
 
