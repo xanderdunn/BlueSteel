@@ -1,0 +1,3 @@
+[submodule "Libraries/SwiftyJSON"]
+	path = Libraries/SwiftyJSON
+	url = git@github.com:gilt/SwiftyJSON.git
