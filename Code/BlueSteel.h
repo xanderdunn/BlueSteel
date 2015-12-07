@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Gilt. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for BlueSteel.
 FOUNDATION_EXPORT double BlueSteelVersionNumber;
