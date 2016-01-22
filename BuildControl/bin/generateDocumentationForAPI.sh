@@ -24,9 +24,10 @@ if [[ "$COPYRIGHT_YEAR" != "$CURRENT_YEAR" ]]; then
 	COPYRIGHT_YEAR="${COPYRIGHT_YEAR}-${CURRENT_YEAR}"
 fi
 
-"$JAZZY_EXECUTABLE" -o Documentation \
+"$JAZZY_EXECUTABLE" -o Documentation/API \
 	-m "$MODULE_NAME" \
-	--readme Code/README.md \
+	--swift-version 2.1.1 \
+	--readme Sources/README.md \
 	--github_url "$PUBLIC_GITHUB_URL" \
 	--author "Gilt Groupe" \
 	--author_url "$AUTHOR_GITHUB_URL" \
