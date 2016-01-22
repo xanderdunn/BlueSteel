@@ -14,14 +14,15 @@ Take a gander at the [official documentation for Avro](http://avro.apache.org/do
 
 ### Swift 2.1 compatibility
 
-The `master` branch of this project is Swift 2.1 compliant and therefore **requires Xcode 7.1 or higher to compile**.
+The `master` branch of this project is **Swift 2.1 compliant** and therefore **requires Xcode 7.1 or higher** to compile.
 
+It is also known to work with Swift 2.1.1 in Xcode 7.2.
 
 ### Adding BlueSteel to your project
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-You’ll need to [integrate BlueSteel into your project](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md) in order to use [the API](https://rawgit.com/gilt/BlueSteel/master/Documentation/index.html) it provides. You can choose:
+You’ll need to [integrate BlueSteel into your project](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md) in order to use [the API](https://rawgit.com/gilt/BlueSteel/master/Documentation/API/index.html) it provides. You can choose:
 
 - [Manual integration](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md#manual-integration), wherein you embed BlueSteel’s Xcode project within your own, **_or_**
 - [Using the Carthage dependency manager](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md#carthage-integration) to build a framework that you then embed in your application.
@@ -35,7 +36,7 @@ import BlueSteel
 
 ### API documentation
 
-For detailed information on using BlueSteel, [API documentation](https://rawgit.com/gilt/BlueSteel/master/Documentation/index.html) is available.
+For detailed information on using BlueSteel, [API documentation](https://rawgit.com/gilt/BlueSteel/master/Documentation/API/index.html) is available.
 
 
 ## Usage
@@ -61,7 +62,7 @@ let avro = AvroValue(schema: schema, withBytes: rawBytes)
 We can now get the Swift String from the Avro value above using an optional getter.
 ```swift
 if let avroString = avro.string {
-    println(avroString) // Prints "foo"
+    print(avroString) // Prints "foo"
 }
 ```
 
@@ -71,7 +72,7 @@ We can use the same Schema above to serialize an AvroValue to binary.
 
 ```swift
 if let serialized = avro.encode(schema) {
-    println(serialized) // Prints [6, 102, 111, 111]
+    print(serialized) // Prints [6, 102, 111, 111]
 }
 ```
 
@@ -168,5 +169,5 @@ If you’d like to contribute to this or any other Cleanroom Project repo, pleas
 
 ### Acknowledgements
 
-[API documentation for BlueSteel](https://rawgit.com/gilt/BlueSteel/master/Documentation/index.html) is generated using [Realm](http://realm.io)’s [jazzy](https://github.com/realm/jazzy/) project, maintained by [JP Simard](https://github.com/jpsim) and [Samuel E. Giddins](https://github.com/segiddins).
+[API documentation for BlueSteel](https://rawgit.com/gilt/BlueSteel/master/Documentation/API/index.html) is generated using [Realm](http://realm.io)’s [jazzy](https://github.com/realm/jazzy/) project, maintained by [JP Simard](https://github.com/jpsim) and [Samuel E. Giddins](https://github.com/segiddins).
 
