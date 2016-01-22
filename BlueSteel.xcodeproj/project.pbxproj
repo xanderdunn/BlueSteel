@@ -139,6 +139,34 @@
 			remoteGlobalIDString = A8580F741BCF5C5B00DA927B;
 			remoteInfo = "SwiftyJSON tvOS Tests";
 		};
+		3B1BA8DD1C51E72D007BBA8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		3B1BA8E61C51E734007BBA8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C7DFC5A1A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX";
+		};
+		3B1BA8E81C51E739007BBA8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7236B4EC1BAC14150020529B;
+			remoteInfo = "SwiftyJSON tvOS";
+		};
+		3B1BA8EA1C51E73E007BBA8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4D7CCDE1B9465A700EE7221;
+			remoteInfo = "SwiftyJSON watchOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -410,6 +438,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3B1BA8DE1C51E72D007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-iOS";
 			productName = "BlueSteel-iOS";
@@ -446,6 +475,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3B1BA8E71C51E734007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-OSX";
 			productName = "BlueSteel-OSX";
@@ -482,6 +512,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3B1BA8E91C51E739007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-tvOS";
 			productName = "BlueSteel-tvOS";
@@ -518,6 +549,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3B1BA8EB1C51E73E007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-watchOS";
 			productName = "BlueSteel-watchOS";
@@ -803,6 +835,26 @@
 			isa = PBXTargetDependency;
 			target = 3B00E5991BA37A420011486D /* BlueSteel-tvOS */;
 			targetProxy = 3B00E5A51BA37A420011486D /* PBXContainerItemProxy */;
+		};
+		3B1BA8DE1C51E72D007BBA8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON iOS";
+			targetProxy = 3B1BA8DD1C51E72D007BBA8B /* PBXContainerItemProxy */;
+		};
+		3B1BA8E71C51E734007BBA8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON OSX";
+			targetProxy = 3B1BA8E61C51E734007BBA8B /* PBXContainerItemProxy */;
+		};
+		3B1BA8E91C51E739007BBA8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON tvOS";
+			targetProxy = 3B1BA8E81C51E739007BBA8B /* PBXContainerItemProxy */;
+		};
+		3B1BA8EB1C51E73E007BBA8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON watchOS";
+			targetProxy = 3B1BA8EA1C51E73E007BBA8B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
