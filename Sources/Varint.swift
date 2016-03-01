@@ -48,7 +48,7 @@ public struct Varint {
                 }
 
                 // Next index
-                idx++
+                idx += 1
                 tmp >>= 7
             }
         }
@@ -63,7 +63,7 @@ public struct Varint {
     public func toUInt64() -> UInt64 {
         var result: UInt64 = 0
 
-        for var idx:Int = 0; idx < backing.count; idx++ {
+        for idx:Int in 0 ..< backing.count {
             let tmp:UInt8 = backing[idx]
 
             result |= UInt64(tmp & 0x7F) << UInt64(7 * idx)
