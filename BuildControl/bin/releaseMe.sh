@@ -407,7 +407,7 @@ fi
 #
 # try to figure out the origin repo name
 #
-REPO_NAME=$(git remote -v | awk '{print $2}' | xargs basename | sed 'sq.git$qq')
+REPO_NAME=$(git remote -v | grep "^origin" | grep "(fetch)" | awk '{print $2}' | xargs basename | sed 'sq.git$qq')
 if [[ -z "$REPO_NAME" ]]; then
 	exitWithErrorSuggestHelp "Couldn't determine repo name"
 fi
@@ -459,7 +459,7 @@ executeCommand "agvtool bump"
 
 if [[ ! $SKIP_DOCUMENTATION ]]; then
 	updateStatus "Rebuilding documentation"
-	executeCommand "$SCRIPT_DIR/generateDocumentation.sh"
+	executeCommand "$SCRIPT_DIR/generateDocumentationForAPI.sh"
 	executeCommand "git add Documentation/."
 fi
 
