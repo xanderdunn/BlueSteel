@@ -62,10 +62,13 @@
 		3B1BA8BC1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
 		3B1BA8BD1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
 		3B1BA8BE1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
-		3B1BA8D81C51DF4F007BBA8B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1BA8CB1C51DF3E007BBA8B /* SwiftyJSON.framework */; };
-		3B1BA8D91C51DF59007BBA8B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1BA8CB1C51DF3E007BBA8B /* SwiftyJSON.framework */; };
-		3B1BA8DA1C51DF5E007BBA8B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1BA8CB1C51DF3E007BBA8B /* SwiftyJSON.framework */; };
-		3B1BA8DB1C51DF63007BBA8B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1BA8CB1C51DF3E007BBA8B /* SwiftyJSON.framework */; };
+		3B42070D1CA2E7CD0044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */; };
+		3B42070E1CA2E7CF0044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */; };
+		3B42070F1CA2E7D20044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */; };
+		3B4207101CA2E7D30044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */; };
+		3B4207111CA2E7D70044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */; };
+		3B4207121CA2E7D80044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */; };
+		3B4207131CA2E7E40044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B42070A1CA2E7A30044E311 /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,83 +92,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 3B00E5991BA37A420011486D;
 			remoteInfo = "BlueSteel-tvOS";
-		};
-		3B1BA8CA1C51DF3E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2E4FEFDB19575BE100351305;
-			remoteInfo = "SwiftyJSON iOS";
-		};
-		3B1BA8CC1C51DF3E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2E4FEFE619575BE100351305;
-			remoteInfo = "SwiftyJSON iOS Tests";
-		};
-		3B1BA8CE1C51DF3E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9C7DFC5B1A9102BD005AA3F7;
-			remoteInfo = "SwiftyJSON OSX";
-		};
-		3B1BA8D01C51DF3E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9C7DFC651A9102BD005AA3F7;
-			remoteInfo = "SwiftyJSON OSX Tests";
-		};
-		3B1BA8D21C51DF3E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E4D7CCE81B9465A700EE7221;
-			remoteInfo = "SwiftyJSON watchOS";
-		};
-		3B1BA8D41C51DF3E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7236B4F61BAC14150020529B;
-			remoteInfo = "SwiftyJSON tvOS";
-		};
-		3B1BA8D61C51DF3E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A8580F741BCF5C5B00DA927B;
-			remoteInfo = "SwiftyJSON tvOS Tests";
-		};
-		3B1BA8DD1C51E72D007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
-			remoteInfo = "SwiftyJSON iOS";
-		};
-		3B1BA8E61C51E734007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9C7DFC5A1A9102BD005AA3F7;
-			remoteInfo = "SwiftyJSON OSX";
-		};
-		3B1BA8E81C51E739007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7236B4EC1BAC14150020529B;
-			remoteInfo = "SwiftyJSON tvOS";
-		};
-		3B1BA8EA1C51E73E007BBA8B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E4D7CCDE1B9465A700EE7221;
-			remoteInfo = "SwiftyJSON watchOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -192,7 +118,6 @@
 		3B1BA8B01C51DF0B007BBA8B /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
 		3B1BA8B11C51DF0B007BBA8B /* AvroValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueTests.swift; sourceTree = "<group>"; };
 		3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarintTests.swift; sourceTree = "<group>"; };
-		3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = Libraries/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
 		3B38DBD01BA76428000986DF /* Debug-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-iOS.xcconfig"; sourceTree = "<group>"; };
 		3B38DBD11BA76428000986DF /* Debug-OSX.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-OSX.xcconfig"; sourceTree = "<group>"; };
 		3B38DBD21BA76428000986DF /* Debug-tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug-tvOS.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +138,10 @@
 		3B38DBE11BA76428000986DF /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		3B38DBE21BA76428000986DF /* tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tvOS.xcconfig; sourceTree = "<group>"; };
 		3B38DBE31BA76428000986DF /* watchOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = watchOS.xcconfig; sourceTree = "<group>"; };
+		3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
+		3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
+		3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
+		3B42070A1CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		3B78C6CE1BA7634E00173EAC /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -221,7 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1BA8D81C51DF4F007BBA8B /* SwiftyJSON.framework in Frameworks */,
+				3B42070D1CA2E7CD0044E311 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B42070E1CA2E7CF0044E311 /* SwiftyJSON.framework in Frameworks */,
 				3B00E5681BA3782D0011486D /* BlueSteel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,7 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1BA8D91C51DF59007BBA8B /* SwiftyJSON.framework in Frameworks */,
+				3B42070F1CA2E7D20044E311 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4207101CA2E7D30044E311 /* SwiftyJSON.framework in Frameworks */,
 				3B00E5861BA379830011486D /* BlueSteel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,7 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1BA8DA1C51DF5E007BBA8B /* SwiftyJSON.framework in Frameworks */,
+				3B4207111CA2E7D70044E311 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4207121CA2E7D80044E311 /* SwiftyJSON.framework in Frameworks */,
 				3B00E5A41BA37A420011486D /* BlueSteel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B1BA8DB1C51DF63007BBA8B /* SwiftyJSON.framework in Frameworks */,
+				3B4207131CA2E7E40044E311 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,23 +290,48 @@
 		3B1BA8BF1C51DF12007BBA8B /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */,
+				3B4206F81CA2E7A30044E311 /* iOS */,
+				3B4206FF1CA2E7A30044E311 /* Mac */,
+				3B4207021CA2E7A30044E311 /* tvOS */,
+				3B4207071CA2E7A30044E311 /* watchOS */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
 		};
-		3B1BA8C11C51DF3E007BBA8B /* Products */ = {
+		3B4206F81CA2E7A30044E311 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3B1BA8CB1C51DF3E007BBA8B /* SwiftyJSON.framework */,
-				3B1BA8CD1C51DF3E007BBA8B /* SwiftyJSON iOS Tests.xctest */,
-				3B1BA8CF1C51DF3E007BBA8B /* SwiftyJSON.framework */,
-				3B1BA8D11C51DF3E007BBA8B /* SwiftyJSON OSX Tests.xctest */,
-				3B1BA8D31C51DF3E007BBA8B /* SwiftyJSON.framework */,
-				3B1BA8D51C51DF3E007BBA8B /* SwiftyJSON.framework */,
-				3B1BA8D71C51DF3E007BBA8B /* SwiftyJSON tvOS Tests.xctest */,
+				3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */,
 			);
-			name = Products;
+			name = iOS;
+			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		3B4206FF1CA2E7A30044E311 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */,
+			);
+			name = Mac;
+			path = Carthage/Build/Mac;
+			sourceTree = "<group>";
+		};
+		3B4207021CA2E7A30044E311 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */,
+			);
+			name = tvOS;
+			path = Carthage/Build/tvOS;
+			sourceTree = "<group>";
+		};
+		3B4207071CA2E7A30044E311 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				3B42070A1CA2E7A30044E311 /* SwiftyJSON.framework */,
+			);
+			name = watchOS;
+			path = Carthage/Build/watchOS;
 			sourceTree = "<group>";
 		};
 		3BCBACE11BA369AD007F1C90 = {
@@ -438,7 +395,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3B1BA8DE1C51E72D007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-iOS";
 			productName = "BlueSteel-iOS";
@@ -475,7 +431,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3B1BA8E71C51E734007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-OSX";
 			productName = "BlueSteel-OSX";
@@ -512,7 +467,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3B1BA8E91C51E739007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-tvOS";
 			productName = "BlueSteel-tvOS";
@@ -549,7 +503,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3B1BA8EB1C51E73E007BBA8B /* PBXTargetDependency */,
 			);
 			name = "BlueSteel-watchOS";
 			productName = "BlueSteel-watchOS";
@@ -597,12 +550,6 @@
 			mainGroup = 3BCBACE11BA369AD007F1C90;
 			productRefGroup = 3B00E55E1BA3782D0011486D /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3B1BA8C11C51DF3E007BBA8B /* Products */;
-					ProjectRef = 3B1BA8C01C51DF3E007BBA8B /* SwiftyJSON.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3B00E55C1BA3782D0011486D /* BlueSteel-iOS */,
@@ -615,58 +562,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3B1BA8CB1C51DF3E007BBA8B /* SwiftyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftyJSON.framework;
-			remoteRef = 3B1BA8CA1C51DF3E007BBA8B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3B1BA8CD1C51DF3E007BBA8B /* SwiftyJSON iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftyJSON iOS Tests.xctest";
-			remoteRef = 3B1BA8CC1C51DF3E007BBA8B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3B1BA8CF1C51DF3E007BBA8B /* SwiftyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftyJSON.framework;
-			remoteRef = 3B1BA8CE1C51DF3E007BBA8B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3B1BA8D11C51DF3E007BBA8B /* SwiftyJSON OSX Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftyJSON OSX Tests.xctest";
-			remoteRef = 3B1BA8D01C51DF3E007BBA8B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3B1BA8D31C51DF3E007BBA8B /* SwiftyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftyJSON.framework;
-			remoteRef = 3B1BA8D21C51DF3E007BBA8B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3B1BA8D51C51DF3E007BBA8B /* SwiftyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftyJSON.framework;
-			remoteRef = 3B1BA8D41C51DF3E007BBA8B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3B1BA8D71C51DF3E007BBA8B /* SwiftyJSON tvOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftyJSON tvOS Tests.xctest";
-			remoteRef = 3B1BA8D61C51DF3E007BBA8B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3B00E55B1BA3782D0011486D /* Resources */ = {
@@ -836,26 +731,6 @@
 			target = 3B00E5991BA37A420011486D /* BlueSteel-tvOS */;
 			targetProxy = 3B00E5A51BA37A420011486D /* PBXContainerItemProxy */;
 		};
-		3B1BA8DE1C51E72D007BBA8B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SwiftyJSON iOS";
-			targetProxy = 3B1BA8DD1C51E72D007BBA8B /* PBXContainerItemProxy */;
-		};
-		3B1BA8E71C51E734007BBA8B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SwiftyJSON OSX";
-			targetProxy = 3B1BA8E61C51E734007BBA8B /* PBXContainerItemProxy */;
-		};
-		3B1BA8E91C51E739007BBA8B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SwiftyJSON tvOS";
-			targetProxy = 3B1BA8E81C51E739007BBA8B /* PBXContainerItemProxy */;
-		};
-		3B1BA8EB1C51E73E007BBA8B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SwiftyJSON watchOS";
-			targetProxy = 3B1BA8EA1C51E73E007BBA8B /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -884,6 +759,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -932,6 +811,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -973,6 +856,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1016,6 +903,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1058,6 +949,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1109,6 +1004,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1149,6 +1048,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1193,6 +1096,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1230,6 +1137,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1278,6 +1189,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1319,6 +1234,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1362,6 +1281,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1400,6 +1323,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1448,6 +1375,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
