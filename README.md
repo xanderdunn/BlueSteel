@@ -9,12 +9,12 @@ BlueSteel is part of [the Cleanroom Project](https://github.com/gilt/Cleanroom) 
 
 ### Swift compatibility
 
-This is the `master` branch. It uses **Swift 2.2** and **requires Xcode 7.3** (or higher) to compile.
+**Important:** This is the `swift3` branch. It uses **Swift 3.0** and **requires Xcode 8.0 beta 6** (or higher) to compile.
 
 2 other branches are also available:
 
+- The [`master`](https://github.com/gilt/BlueSteel) branch uses **Swift 2.2**, requiring Xcode 7.3
 - The [`swift2.3`](https://github.com/gilt/BlueSteel/tree/swift2.3) branch uses **Swift 2.3**, requiring Xcode 8.0 beta 6
-- The [`swift3`](https://github.com/gilt/BlueSteel/tree/swift3) branch uses **Swift 3.0**, requiring Xcode 8.0 beta 6
 
 
 #### Current status
@@ -24,10 +24,11 @@ Branch|Build status
 [`master`](https://github.com/gilt/BlueSteel)|[![Build status: master branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=master)](https://travis-ci.org/gilt/BlueSteel)
 [`swift2.3`](https://github.com/gilt/BlueSteel/tree/swift2.3)|[![Build status: swift2.3 branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=swift2.3)](https://travis-ci.org/gilt/BlueSteel)
 [`swift3`](https://github.com/gilt/BlueSteel/tree/swift3)|[![Build status: swift3 branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=swift3)](https://travis-ci.org/gilt/BlueSteel)
+
+
 ### Never heard of Avro?
 
 Take a gander at the [official documentation for Avro](http://avro.apache.org/docs/current/) before reading further.
-
 
 
 ### Adding BlueSteel to your project
