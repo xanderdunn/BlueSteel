@@ -7,14 +7,29 @@ An Avro encoding/decoding library for Swift.
 BlueSteel is part of [the Cleanroom Project](https://github.com/gilt/Cleanroom) from [Gilt Tech](http://tech.gilt.com).
 
 
+### Swift compatibility
+
+**Important:** This is the `swift2.3` branch. It uses **Swift 2.3** and **requires Xcode 8.0 beta 6** (or higher) to compile.
+
+2 other branches are also available:
+
+- The [`master`](https://github.com/gilt/BlueSteel) branch uses **Swift 2.2**, requiring Xcode 7.3
+- The [`swift3`](https://github.com/gilt/BlueSteel/tree/swift3) branch uses **Swift 3.0**, requiring Xcode 8.0 beta 6
+
+
+#### Current status
+
+Branch|Build status
+--------|------------------------
+[`master`](https://github.com/gilt/BlueSteel)|[![Build status: master branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=master)](https://travis-ci.org/gilt/BlueSteel)
+[`swift2.3`](https://github.com/gilt/BlueSteel/tree/swift2.3)|[![Build status: swift2.3 branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=swift2.3)](https://travis-ci.org/gilt/BlueSteel)
+[`swift3`](https://github.com/gilt/BlueSteel/tree/swift3)|[![Build status: swift3 branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=swift3)](https://travis-ci.org/gilt/BlueSteel)
+
+
 ### Never heard of Avro?
 
 Take a gander at the [official documentation for Avro](http://avro.apache.org/docs/current/) before reading further.
 
-
-### Swift 2.2 compatibility
-
-The `master` branch of this project is **Swift 2.2 compliant** and therefore **requires Xcode 7.3 or higher** to compile.
 
 ### Adding BlueSteel to your project
 
@@ -151,7 +166,7 @@ So that just about covers a very quick introduction to BlueSteel. Please note th
 
 The Cleanroom Project began as an experiment to re-imagine Gilt’s iOS codebase in a legacy-free, Swift-based incarnation.
 
-Since then, we’ve expanded the Cleanroom Project to include multi-platform support. Much of our codebase now supports tvOS in addition to iOS, and our lower-level code is usable on Mac OS X and watchOS as well.
+Since then, we’ve expanded the Cleanroom Project to include multi-platform support. Much of our codebase now supports tvOS in addition to iOS, and our lower-level code is usable on macOS and watchOS as well.
 
 Cleanroom Project code serves as the foundation of Gilt on TV, our tvOS app [featured by Apple during the launch of the new Apple TV](http://www.apple.com/apple-events/september-2015/). And as time goes on, we'll be replacing more and more of our existing Objective-C codebase with Cleanroom implementations.
 
