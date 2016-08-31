@@ -13,11 +13,11 @@ extension Dictionary {
 
 }
 
-public func +=<K, V> (left: inout Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
+public func +=<K, V>(left: inout Dictionary<K, V>, right: Dictionary<K, V>)
+{
     for (k, v) in right {
         left.updateValue(v, forKey: k)
     }
-    return left
 }
 
 public enum AvroValue {
