@@ -229,7 +229,7 @@ public enum AvroValue {
         case .avroArrayValue(let values) :
             encoder.encodeLong(Int64(values.count))
             for value in values {
-                value.encode(encoder)
+                _ = value.encode(encoder)
             }
             encoder.encodeLong(0)
 
@@ -238,7 +238,7 @@ public enum AvroValue {
             for key in pairs.keys {
                 encoder.encodeString(key)
                 if let value = pairs[key] {
-                    value.encode(encoder)
+                    _ = value.encode(encoder)
                 } else {
                     return nil
                 }
@@ -248,7 +248,7 @@ public enum AvroValue {
             for key in pairs.keys {
                 encoder.encodeString(key)
                 if let value = pairs[key] {
-                    value.encode(encoder)
+                    _ = value.encode(encoder)
                 } else {
                     return nil
                 }
@@ -259,7 +259,7 @@ public enum AvroValue {
 
         case .avroUnionValue(let index, let box) :
             encoder.encodeLong(Int64(index))
-            box.value.encode(encoder)
+            _ = box.value.encode(encoder)
         default :
             return nil
         }
