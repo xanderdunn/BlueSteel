@@ -19,7 +19,7 @@ class AvroSchemaTests: XCTestCase {
         super.tearDown()
     }
 
-    func testSchemaEquality(s1: String, s2: String) {
+    func testSchemaEquality(_ s1: String, s2: String) {
         let lhs = Schema(s1)
         let rhsEqual = Schema(s1)
         let rhsNotEqual = Schema(s2)
@@ -33,7 +33,7 @@ class AvroSchemaTests: XCTestCase {
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroLongSchema :
+        case .avroLongSchema :
             XCTAssert(true, "Passed.")
         default:
             XCTAssert(false, "Failed.")
@@ -45,9 +45,9 @@ class AvroSchemaTests: XCTestCase {
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroMapSchema(let box):
+        case .avroMapSchema(let box):
             switch box.value {
-            case .AvroIntSchema:
+            case .avroIntSchema:
                 XCTAssert(true, "Passed.")
             default:
                 XCTAssert(false, "Failed: Map of wrong type.")
@@ -69,9 +69,9 @@ class AvroSchemaTests: XCTestCase {
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroArraySchema(let box):
+        case .avroArraySchema(let box):
             switch box.value {
-            case .AvroDoubleSchema:
+            case .avroDoubleSchema:
                 XCTAssert(true, "Passed.")
             default:
                 XCTAssert(false, "Failed: Map of wrong type.")
@@ -93,11 +93,11 @@ class AvroSchemaTests: XCTestCase {
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroArraySchema(let arrayBox) :
+        case .avroArraySchema(let arrayBox) :
             switch arrayBox.value {
-            case .AvroMapSchema(let mapBox) :
+            case .avroMapSchema(let mapBox) :
                 switch mapBox.value {
-                case .AvroIntSchema :
+                case .avroIntSchema :
                     XCTAssert(true, "Passed.")
                 default:
                     XCTAssert(false, "Failed: Map of wrong type.")
@@ -112,11 +112,11 @@ class AvroSchemaTests: XCTestCase {
 
     func testUnion() {
         let jsonSchema = "{ \"type\" : [ \"double\", \"int\", \"long\", \"float\" ] }"
-        let expected: [Schema] = [.AvroDoubleSchema, .AvroIntSchema, .AvroLongSchema, .AvroFloatSchema]
+        let expected: [Schema] = [.avroDoubleSchema, .avroIntSchema, .avroLongSchema, .avroFloatSchema]
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroUnionSchema(let schemas):
+        case .avroUnionSchema(let schemas):
             XCTAssert(schemas.count == 4, "Wrong number of schemas in union.")
             for idx in 0...3 {
                 switch schemas[idx] {
@@ -140,15 +140,15 @@ class AvroSchemaTests: XCTestCase {
 
     func testUnionMap() {
         let jsonSchema = "{ \"type\" : [ { \"type\" : \"map\", \"values\" : \"int\" }, { \"type\" : \"map\", \"values\" : \"double\" } ] }"
-        let expected: [Schema] = [.AvroIntSchema, .AvroDoubleSchema]
+        let expected: [Schema] = [.avroIntSchema, .avroDoubleSchema]
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroUnionSchema(let schemas):
+        case .avroUnionSchema(let schemas):
             XCTAssert(schemas.count == 2, "Wrong number of schemas in union.")
             for idx in 0...1 {
                 switch schemas[idx] {
-                case .AvroMapSchema(let box) :
+                case .avroMapSchema(let box) :
                     switch box.value {
                     case let res where res == expected[idx] :
                         XCTAssert(true, "Passed")
@@ -174,20 +174,20 @@ class AvroSchemaTests: XCTestCase {
         "{ \"name\" : \"skuId\",\"type\" : \"long\" }]}"
 
         let fieldNames = ["lookId", "productId", "quantity", "saleId", "skuId"]
-        let fieldType: [Schema] = [.AvroLongSchema, .AvroLongSchema, .AvroIntSchema, .AvroInvalidSchema, .AvroLongSchema]
-        let unionFieldTypes: [Schema] = [.AvroNullSchema, .AvroLongSchema]
+        let fieldType: [Schema] = [.avroLongSchema, .avroLongSchema, .avroIntSchema, .avroInvalidSchema, .avroLongSchema]
+        let unionFieldTypes: [Schema] = [.avroNullSchema, .avroLongSchema]
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroRecordSchema("AddToCartActionEvent", let fields) :
+        case .avroRecordSchema("AddToCartActionEvent", let fields) :
             XCTAssert(fields.count == 5, "Record schema should consist of 5 fields.")
             for idx in 0...4 {
                 switch fields[idx] {
-                case .AvroFieldSchema(fieldNames[idx], let typeSchema) :
+                case .avroFieldSchema(fieldNames[idx], let typeSchema) :
                     switch typeSchema.value {
                     case let res where res == fieldType[idx] :
                         XCTAssert(true, "")
-                    case .AvroUnionSchema(let unionSchemas) :
+                    case .avroUnionSchema(let unionSchemas) :
                         XCTAssert(unionSchemas.count == 2, "Union schema should consist of 2 fields.")
                         for uidx in 0...1 {
                             switch unionSchemas[uidx] {
@@ -236,7 +236,7 @@ class AvroSchemaTests: XCTestCase {
         let schema = Schema(jsonSchema)
 
         switch schema {
-        case .AvroEnumSchema(let enumName, let symbols) :
+        case .avroEnumSchema(let enumName, let symbols) :
             XCTAssertEqual(enumName, "ChannelKey", "Unexpected enum name.")
             XCTAssertEqual(symbols, expectedSymbols, "Symbols dont match.")
         default :
@@ -261,7 +261,7 @@ class AvroSchemaTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"fixed\", \"name\" : \"Uuid\", \"size\" : 16 }"
         let schema = Schema(jsonSchema)
         switch schema {
-        case .AvroFixedSchema(let fixedName, let size) :
+        case .avroFixedSchema(let fixedName, let size) :
             XCTAssertEqual("Uuid", fixedName, "Unexpected fixed name.")
             XCTAssertEqual(16, size, "Unexpected fixed size.")
         default :
@@ -301,7 +301,7 @@ class AvroSchemaTests: XCTestCase {
     }
 
     func testPerformanceExample() {
-        self.measureBlock() {
+        self.measure() {
 
         }
     }

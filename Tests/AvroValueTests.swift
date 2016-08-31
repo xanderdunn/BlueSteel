@@ -155,7 +155,7 @@ class AvroValueTests: XCTestCase {
 
     }
     func testPerformanceStub() {
-        self.measureBlock() {
+        self.measure() {
         }
     }
 }

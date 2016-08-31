@@ -71,7 +71,7 @@ public struct Varint {
         return result
     }
 
-    public static func VarintFromBytes(bytes: [UInt8]) -> Varint? {
+    public static func VarintFromBytes(_ bytes: [UInt8]) -> Varint? {
         var buf = [UInt8]()
 
         for x in bytes {

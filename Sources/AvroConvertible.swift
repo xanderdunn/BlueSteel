@@ -14,42 +14,42 @@ public protocol AvroValueConvertible {
 
 extension String: AvroValueConvertible {
     public func toAvro() -> AvroValue {
-        return .AvroStringValue(self)
+        return .avroStringValue(self)
     }
 }
 
 extension Bool: AvroValueConvertible {
     public func toAvro() -> AvroValue {
-        return .AvroBooleanValue(self)
+        return .avroBooleanValue(self)
     }
 }
 
 extension Int: AvroValueConvertible {
     public func toAvro() -> AvroValue {
-        return .AvroLongValue(Int64(self))
+        return .avroLongValue(Int64(self))
     }
 }
 
 extension Int32: AvroValueConvertible {
     public func toAvro() -> AvroValue {
-        return .AvroIntValue(self)
+        return .avroIntValue(self)
     }
 }
 
 extension Int64: AvroValueConvertible {
     public func toAvro() -> AvroValue {
-        return .AvroLongValue(self)
+        return .avroLongValue(self)
     }
 }
 
 extension Float: AvroValueConvertible {
     public func toAvro() -> AvroValue {
-        return .AvroFloatValue(self)
+        return .avroFloatValue(self)
     }
 }
 
 extension Double: AvroValueConvertible {
     public func toAvro() -> AvroValue {
-        return .AvroDoubleValue(self)
+        return .avroDoubleValue(self)
     }
 }

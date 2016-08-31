@@ -11,86 +11,86 @@ import SwiftyJSON
 
 public enum AvroType {
     // Primitives
-    case ANull
-    case ABoolean
-    case AInt
-    case ALong
-    case AFloat
-    case ADouble
-    case AString
-    case ABytes
+    case aNull
+    case aBoolean
+    case aInt
+    case aLong
+    case aFloat
+    case aDouble
+    case aString
+    case aBytes
 
     // Complex
-    case AEnum
-    case AFixed
-    case ARecord
-    case AArray
-    case AMap
+    case aEnum
+    case aFixed
+    case aRecord
+    case aArray
+    case aMap
 
     // Invalid
-    case AInvalidType
+    case aInvalidType
 
     init(_ typeString: String) {
 
         if typeString == "boolean" {
-            self = .ABoolean
+            self = .aBoolean
         } else if typeString == "int" {
-            self = .AInt
+            self = .aInt
         } else if typeString == "long" {
-            self = .ALong
+            self = .aLong
         } else if typeString == "float"  {
-            self = .AFloat
+            self = .aFloat
         } else if typeString == "double" {
-            self = .ADouble
+            self = .aDouble
         } else if typeString == "string" {
-            self = .AString
+            self = .aString
         } else if typeString == "bytes" {
-            self = .ABytes
+            self = .aBytes
         } else if typeString == "enum" {
-            self = .AEnum
+            self = .aEnum
         } else if typeString == "fixed" {
-            self = .AFixed
+            self = .aFixed
         } else if typeString == "record" {
-            self = .ARecord
+            self = .aRecord
         } else if typeString == "array" {
-            self = .AArray
+            self = .aArray
         } else if typeString == "map" {
-            self = .AMap
+            self = .aMap
         } else if typeString == "null" {
-            self = .ANull
+            self = .aNull
         } else {
-            self = .AInvalidType
+            self = .aInvalidType
         }
         return
     }
 }
 
 public enum Schema {
-    case AvroNullSchema
-    case AvroBooleanSchema
-    case AvroIntSchema
-    case AvroLongSchema
-    case AvroFloatSchema
-    case AvroDoubleSchema
-    case AvroStringSchema
-    case AvroBytesSchema
+    case avroNullSchema
+    case avroBooleanSchema
+    case avroIntSchema
+    case avroLongSchema
+    case avroFloatSchema
+    case avroDoubleSchema
+    case avroStringSchema
+    case avroBytesSchema
 
-    case AvroArraySchema(Box<Schema>)
-    case AvroMapSchema(Box<Schema>)
-    case AvroUnionSchema(Array<Schema>)
+    case avroArraySchema(Box<Schema>)
+    case avroMapSchema(Box<Schema>)
+    case avroUnionSchema(Array<Schema>)
 
     // Named Types
-    case AvroFixedSchema(String, Int)
-    case AvroEnumSchema(String, Array<String>)
-    case AvroRecordSchema(String, Array<Schema>)
-    case AvroFieldSchema(String, Box<Schema>)
+    case avroFixedSchema(String, Int)
+    case avroEnumSchema(String, Array<String>)
+    case avroRecordSchema(String, Array<Schema>)
+    case avroFieldSchema(String, Box<Schema>)
 
     // TODO: Report errors for invalid schemas.
-    case AvroInvalidSchema
+    case avroInvalidSchema
 
-    static func assembleFullName(namespace:String?, name: String) -> String {
+    static func assembleFullName(_ namespace:String?, name: String) -> String {
 
-        if name.rangeOfString(".") == nil {
+        if name.range(of: ".") == nil {
             if let space = namespace {
                 return space + "." + name
             }
@@ -99,42 +99,42 @@ public enum Schema {
 
     }
 
-    public func parsingCanonicalForm(inout existingTypes: [String]) -> String? {
+    public func parsingCanonicalForm(_ existingTypes: inout [String]) -> String? {
         switch self {
-        case .AvroNullSchema :
+        case .avroNullSchema :
             return "\"null\""
-        case .AvroBooleanSchema :
+        case .avroBooleanSchema :
             return "\"boolean\""
-        case .AvroIntSchema :
+        case .avroIntSchema :
             return "\"int\""
-        case .AvroLongSchema :
+        case .avroLongSchema :
             return "\"long\""
-        case .AvroFloatSchema :
+        case .avroFloatSchema :
             return "\"float\""
-        case .AvroDoubleSchema :
+        case .avroDoubleSchema :
             return "\"double\""
-        case .AvroStringSchema :
+        case .avroStringSchema :
             return "\"string\""
-        case .AvroBytesSchema :
+        case .avroBytesSchema :
             return "\"bytes\""
 
 
-        case .AvroArraySchema(let boxed) :
+        case .avroArraySchema(let boxed) :
             if let arrayPCF = boxed.value.parsingCanonicalForm(&existingTypes) {
                 return "{\"type\":\"array\",\"items\":" + arrayPCF + "}"
             } else {
                 return nil
             }
 
-        case .AvroMapSchema(let boxed) :
+        case .avroMapSchema(let boxed) :
             if let mapPCF = boxed.value.parsingCanonicalForm(&existingTypes) {
                 return "{\"type\":\"map\",\"values\":" + mapPCF + "}"
             } else {
                 return nil
             }
 
-        case .AvroEnumSchema(let name, let enumValues) :
-            if existingTypes.indexOf(name) != nil {
+        case .avroEnumSchema(let name, let enumValues) :
+            if existingTypes.index(of: name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -152,8 +152,8 @@ public enum Schema {
                 return str
             }
 
-        case .AvroRecordSchema(let name, let fields) :
-            if existingTypes.indexOf(name) != nil {
+        case .avroRecordSchema(let name, let fields) :
+            if existingTypes.index(of: name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -167,7 +167,7 @@ public enum Schema {
                     }
 
                     switch field {
-                    case .AvroFieldSchema(let fieldName, let fieldType) :
+                    case .avroFieldSchema(let fieldName, let fieldType) :
                         if let fieldPCF = fieldType.value.parsingCanonicalForm(&existingTypes) {
                             str += "{\"name\":\"" + fieldName + "\",\"type\":" + fieldPCF + "}"
                         } else {
@@ -182,15 +182,15 @@ public enum Schema {
                 return str
             }
 
-        case .AvroFixedSchema(let name, let size) :
-            if existingTypes.indexOf(name) != nil {
+        case .avroFixedSchema(let name, let size) :
+            if existingTypes.index(of: name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
                 return "{\"name\":\"" + name + "\",\"type\":\"fixed\",\"size\":\(size)}"
             }
 
-        case .AvroUnionSchema(let unionSchemas) :
+        case .avroUnionSchema(let unionSchemas) :
             var str = "["
             var first = true
             for uschema in unionSchemas {
@@ -216,8 +216,8 @@ public enum Schema {
     public func fingerprint() -> [UInt8]? {
         var etypes: [String] = []
         if let pcf = self.parsingCanonicalForm(&etypes) {
-            var hash = [UInt8](count: 32, repeatedValue: 0)
-            if let cString = pcf.cStringUsingEncoding(NSUTF8StringEncoding) {
+            var hash = [UInt8](repeating: 0, count: 32)
+            if let cString = pcf.cString(using: String.Encoding.utf8) {
                 // Compute hash of PCF string without the NULL terminator.
 
                 BlueSteel_SHA256(cString, UInt32(cString.count - 1), &hash)
@@ -229,20 +229,20 @@ public enum Schema {
 
     init(_ json: Dictionary<String, JSON>) {
         // Stub
-        self = .AvroInvalidSchema
+        self = .avroInvalidSchema
     }
 
-    public init(_ json: NSData?) {
+    public init(_ json: Data?) {
         var cached: [String:Schema] = [:]
-        self = Schema(JSON(data: json!, options: NSJSONReadingOptions(), error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
+        self = Schema(JSON(data: json!, options: JSONSerialization.ReadingOptions(), error: nil), typeKey:"type", namespace: nil, cachedSchemas: &cached)
     }
 
     public init(_ json: String) {
-        let schemaData = json.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let schemaData = json.data(using: String.Encoding.utf8, allowLossyConversion: false)
         self.init(schemaData)
     }
 
-    init(_ json: JSON, typeKey key: String, namespace ns: String?, inout cachedSchemas cache: [String:Schema]) {
+    init(_ json: JSON, typeKey key: String, namespace ns: String?, cachedSchemas cache: inout [String:Schema]) {
         var schemaNamespace: String?
         if let jsonNamespace = json["namespace"].string {
             schemaNamespace = jsonNamespace
@@ -255,51 +255,51 @@ public enum Schema {
             let avroType = AvroType(typeString)
 
             switch avroType {
-            case .ABoolean :
-                self = .AvroBooleanSchema
-            case .AInt :
-                self = .AvroIntSchema
-            case .ALong :
-                self = .AvroLongSchema
-            case .AFloat :
-                self = .AvroFloatSchema
-            case .ADouble :
-                self = .AvroDoubleSchema
-            case .AString :
-                self = .AvroStringSchema
-            case .ANull :
-                self = .AvroNullSchema
-            case .ABytes :
-                self = .AvroBytesSchema
+            case .aBoolean :
+                self = .avroBooleanSchema
+            case .aInt :
+                self = .avroIntSchema
+            case .aLong :
+                self = .avroLongSchema
+            case .aFloat :
+                self = .avroFloatSchema
+            case .aDouble :
+                self = .avroDoubleSchema
+            case .aString :
+                self = .avroStringSchema
+            case .aNull :
+                self = .avroNullSchema
+            case .aBytes :
+                self = .avroBytesSchema
 
-            case .AMap :
+            case .aMap :
                 let schema = Schema(json, typeKey: "values", namespace: schemaNamespace, cachedSchemas: &cache)
 
                 switch schema {
-                case .AvroInvalidSchema :
-                    self = .AvroInvalidSchema
+                case .avroInvalidSchema :
+                    self = .avroInvalidSchema
                 default :
-                    self = .AvroMapSchema(Box(schema))
+                    self = .avroMapSchema(Box(schema))
                 }
 
-            case .AArray :
+            case .aArray :
                 let schema = Schema(json, typeKey: "items", namespace: schemaNamespace, cachedSchemas: &cache)
 
                 switch schema {
-                case .AvroInvalidSchema :
-                    self = .AvroInvalidSchema
+                case .avroInvalidSchema :
+                    self = .avroInvalidSchema
                 default :
-                    self = .AvroArraySchema(Box(schema))
+                    self = .avroArraySchema(Box(schema))
                 }
 
-            case .ARecord :
+            case .aRecord :
                 // Records must be named
                 if let recordName = json["name"].string {
                     let fullRecordName = Schema.assembleFullName(schemaNamespace, name: recordName)
                     let fields = json["fields"]
 
                     switch fields.type {
-                    case .Array :
+                    case .array :
                         var recordFields: [Schema] = []
 
                         for field in fields.arrayValue {
@@ -308,28 +308,28 @@ public enum Schema {
                                 let schema = Schema(field, typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
 
                                 switch schema {
-                                case .AvroInvalidSchema :
-                                    self = .AvroInvalidSchema
+                                case .avroInvalidSchema :
+                                    self = .avroInvalidSchema
                                     return
 
                                 default :
-                                    recordFields.append(.AvroFieldSchema(fieldName, Box(schema)))
+                                    recordFields.append(.avroFieldSchema(fieldName, Box(schema)))
                                 }
                             } else {
-                                self = .AvroInvalidSchema
+                                self = .avroInvalidSchema
                                 return
                             }
                         }
-                        self = .AvroRecordSchema(fullRecordName, recordFields)
+                        self = .avroRecordSchema(fullRecordName, recordFields)
                         cache[fullRecordName] = self
                     default :
-                        self = .AvroInvalidSchema
+                        self = .avroInvalidSchema
                     }
                 } else {
-                    self = .AvroInvalidSchema
+                    self = .avroInvalidSchema
                 }
 
-            case .AEnum :
+            case .aEnum :
                 if let enumName = json["name"].string {
                     if let symbols = json["symbols"].array {
                         var symbolStrings: [String] = []
@@ -337,32 +337,32 @@ public enum Schema {
                             if let symbol = sym.string {
                                 symbolStrings.append(symbol)
                             } else {
-                                self = .AvroInvalidSchema
+                                self = .avroInvalidSchema
                                 return
                             }
                         }
 
                         let fullEnumName = Schema.assembleFullName(schemaNamespace, name: enumName)
 
-                        self = .AvroEnumSchema(fullEnumName, symbolStrings)
+                        self = .avroEnumSchema(fullEnumName, symbolStrings)
                         cache[fullEnumName] = self
                     } else {
-                        self = .AvroInvalidSchema
+                        self = .avroInvalidSchema
                     }
                 } else {
-                    self = .AvroInvalidSchema
+                    self = .avroInvalidSchema
                 }
 
-            case .AFixed :
+            case .aFixed :
                 if let fixedName = json["name"].string {
                     if let size = json["size"].int {
                         let fullFixedName = Schema.assembleFullName(schemaNamespace, name: fixedName)
-                        self = .AvroFixedSchema(fullFixedName, size)
+                        self = .avroFixedSchema(fullFixedName, size)
                         cache[fullFixedName] = self
                         return
                     }
                 }
-                self = .AvroInvalidSchema
+                self = .avroInvalidSchema
 
             default:
                 // Schema type is invalid
@@ -371,7 +371,7 @@ public enum Schema {
                 if let cachedSchema = cache[fullTypeName] {
                     self = cachedSchema
                 } else {
-                    self = .AvroInvalidSchema
+                    self = .avroInvalidSchema
                 }
             }
 
@@ -381,56 +381,56 @@ public enum Schema {
             // Union
             var schemas: [Schema] = []
             for def in unionSchema {
-                var schema: Schema = .AvroInvalidSchema
+                var schema: Schema = .avroInvalidSchema
                 if let typeString = def.string {
                     let fullTypeName = Schema.assembleFullName(schemaNamespace, name: typeString)
                     let avroType = AvroType(typeString)
 
-                    if  avroType != .AInvalidType {
+                    if  avroType != .aInvalidType {
                         //schema = .PrimitiveSchema(avroType)
                         switch avroType {
-                        case .ABoolean :
-                            schema = .AvroBooleanSchema
-                        case .AInt :
-                            schema = .AvroIntSchema
-                        case .ALong :
-                            schema = .AvroLongSchema
-                        case .AFloat :
-                            schema = .AvroFloatSchema
-                        case .ADouble :
-                            schema = .AvroDoubleSchema
-                        case .AString :
-                            schema = .AvroStringSchema
-                        case .ANull :
-                            schema = .AvroNullSchema
-                        case .ABytes :
-                            schema = .AvroBytesSchema
+                        case .aBoolean :
+                            schema = .avroBooleanSchema
+                        case .aInt :
+                            schema = .avroIntSchema
+                        case .aLong :
+                            schema = .avroLongSchema
+                        case .aFloat :
+                            schema = .avroFloatSchema
+                        case .aDouble :
+                            schema = .avroDoubleSchema
+                        case .aString :
+                            schema = .avroStringSchema
+                        case .aNull :
+                            schema = .avroNullSchema
+                        case .aBytes :
+                            schema = .avroBytesSchema
                         default :
-                            schema = .AvroInvalidSchema
+                            schema = .avroInvalidSchema
                         }
                     } else if let cachedSchema = cache[fullTypeName] {
                         schema = cachedSchema
                     } else {
-                        schema = .AvroInvalidSchema
+                        schema = .avroInvalidSchema
                     }
 
                 } else if let _ = def.dictionary {
                     schema = Schema(def, typeKey: "type", namespace: schemaNamespace, cachedSchemas: &cache)
                 } else {
-                    schema = .AvroInvalidSchema
+                    schema = .avroInvalidSchema
                 }
 
                 switch schema {
-                case .AvroInvalidSchema:
-                    self = .AvroInvalidSchema
+                case .avroInvalidSchema:
+                    self = .avroInvalidSchema
                     return
                 default:
                     schemas.append(schema)
                 }
             }
-            self = .AvroUnionSchema(schemas)
+            self = .avroUnionSchema(schemas)
         } else {
-            self = .AvroInvalidSchema
+            self = .avroInvalidSchema
         }
     }
 }
@@ -441,72 +441,72 @@ extension Schema : Equatable {
 
 public func ==(lhs: Schema, rhs: Schema) -> Bool {
     switch (lhs) {
-    case .AvroBooleanSchema :
+    case .avroBooleanSchema :
         switch rhs {
-        case .AvroBooleanSchema :
+        case .avroBooleanSchema :
             return true
         default :
             return false
         }
 
-    case .AvroIntSchema :
+    case .avroIntSchema :
         switch rhs {
-        case .AvroIntSchema :
+        case .avroIntSchema :
             return true
         default :
             return false
         }
-    case .AvroLongSchema :
+    case .avroLongSchema :
         switch rhs {
-        case .AvroLongSchema :
-            return true
-        default :
-            return false
-        }
-
-    case .AvroFloatSchema :
-        switch rhs {
-        case .AvroFloatSchema :
+        case .avroLongSchema :
             return true
         default :
             return false
         }
 
-    case .AvroDoubleSchema :
+    case .avroFloatSchema :
         switch rhs {
-        case .AvroDoubleSchema :
+        case .avroFloatSchema :
             return true
         default :
             return false
         }
 
-    case .AvroBytesSchema :
+    case .avroDoubleSchema :
         switch rhs {
-        case .AvroBytesSchema :
+        case .avroDoubleSchema :
             return true
         default :
             return false
         }
 
-    case .AvroStringSchema :
+    case .avroBytesSchema :
         switch rhs {
-        case .AvroStringSchema :
+        case .avroBytesSchema :
             return true
         default :
             return false
         }
 
-    case .AvroNullSchema :
+    case .avroStringSchema :
         switch rhs {
-        case .AvroNullSchema :
+        case .avroStringSchema :
             return true
         default :
             return false
         }
 
-    case .AvroArraySchema(let lbox) :
+    case .avroNullSchema :
         switch rhs {
-        case .AvroArraySchema(let rbox) :
+        case .avroNullSchema :
+            return true
+        default :
+            return false
+        }
+
+    case .avroArraySchema(let lbox) :
+        switch rhs {
+        case .avroArraySchema(let rbox) :
             if lbox.value == rbox.value {
                 return true
             }
@@ -515,9 +515,9 @@ public func ==(lhs: Schema, rhs: Schema) -> Bool {
             return false
         }
 
-    case .AvroMapSchema(let lbox) :
+    case .avroMapSchema(let lbox) :
         switch rhs {
-        case .AvroMapSchema(let rbox) :
+        case .avroMapSchema(let rbox) :
             if lbox.value == rbox.value {
                 return true
             }
@@ -526,9 +526,9 @@ public func ==(lhs: Schema, rhs: Schema) -> Bool {
             return false
         }
 
-    case .AvroRecordSchema(let lRecordName, let lRecordSchemas) :
+    case .avroRecordSchema(let lRecordName, let lRecordSchemas) :
         switch rhs {
-        case .AvroRecordSchema(let rRecordName, let rRecordSchemas) :
+        case .avroRecordSchema(let rRecordName, let rRecordSchemas) :
             if (lRecordName == rRecordName) && (lRecordSchemas.count == rRecordSchemas.count) {
                 for idx in 0..<lRecordSchemas.count {
                     if lRecordSchemas[idx] != rRecordSchemas[idx] {
@@ -542,9 +542,9 @@ public func ==(lhs: Schema, rhs: Schema) -> Bool {
             return false
         }
 
-    case .AvroFieldSchema(let lFieldName, let lFieldBox) :
+    case .avroFieldSchema(let lFieldName, let lFieldBox) :
         switch rhs {
-        case .AvroFieldSchema(let rFieldName, let rFieldBox) :
+        case .avroFieldSchema(let rFieldName, let rFieldBox) :
             if (lFieldName == rFieldName) && (lFieldBox.value == rFieldBox.value) {
                 return true
             }
@@ -553,9 +553,9 @@ public func ==(lhs: Schema, rhs: Schema) -> Bool {
             return false
         }
 
-    case .AvroUnionSchema(let lUnionSchemas) :
+    case .avroUnionSchema(let lUnionSchemas) :
         switch rhs {
-        case .AvroUnionSchema(let rUnionSchemas) :
+        case .avroUnionSchema(let rUnionSchemas) :
             if lUnionSchemas.count == rUnionSchemas.count {
                 for idx in 0..<lUnionSchemas.count {
                     if lUnionSchemas[idx] != rUnionSchemas[idx] {
@@ -569,9 +569,9 @@ public func ==(lhs: Schema, rhs: Schema) -> Bool {
             return false
         }
 
-    case .AvroEnumSchema(let lEnumName, let lSymbols) :
+    case .avroEnumSchema(let lEnumName, let lSymbols) :
         switch rhs {
-        case .AvroEnumSchema(let rEnumName, let rSymbols) :
+        case .avroEnumSchema(let rEnumName, let rSymbols) :
             if (lEnumName == rEnumName) && (lSymbols.count == rSymbols.count) {
                 for idx in 0..<lSymbols.count {
                     if lSymbols[idx] != rSymbols[idx] {
@@ -585,9 +585,9 @@ public func ==(lhs: Schema, rhs: Schema) -> Bool {
             return false
         }
 
-    case .AvroFixedSchema(let lFixedName, let lSize) :
+    case .avroFixedSchema(let lFixedName, let lSize) :
         switch rhs {
-        case .AvroFixedSchema(let rFixedName, let rSize) :
+        case .avroFixedSchema(let rFixedName, let rSize) :
             if (lFixedName == rFixedName) && (lSize == rSize) {
                 return true
             }
