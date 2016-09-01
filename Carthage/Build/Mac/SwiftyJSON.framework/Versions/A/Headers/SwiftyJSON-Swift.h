@@ -99,6 +99,7 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
 
 @interface NSNumber (SWIFT_EXTENSION(SwiftyJSON))
+@property (nonatomic, readonly) BOOL isBool;
 @end
 
 #pragma clang diagnostic pop
