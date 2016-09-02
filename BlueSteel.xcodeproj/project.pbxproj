@@ -62,13 +62,10 @@
 		3B1BA8BC1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
 		3B1BA8BD1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
 		3B1BA8BE1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
-		3B42070D1CA2E7CD0044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */; };
-		3B42070E1CA2E7CF0044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */; };
-		3B42070F1CA2E7D20044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */; };
-		3B4207101CA2E7D30044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */; };
-		3B4207111CA2E7D70044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */; };
-		3B4207121CA2E7D80044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */; };
-		3B4207131CA2E7E40044E311 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B42070A1CA2E7A30044E311 /* SwiftyJSON.framework */; };
+		3BDFF9D91D7919C100108B7E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF9D81D7919C100108B7E /* SwiftyJSON.framework */; };
+		3BDFF9DB1D7919C700108B7E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF9DA1D7919C700108B7E /* SwiftyJSON.framework */; };
+		3BDFF9DD1D7919CC00108B7E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF9DC1D7919CC00108B7E /* SwiftyJSON.framework */; };
+		3BDFF9DF1D791A0800108B7E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF9DE1D791A0800108B7E /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,11 +135,12 @@
 		3B38DBE11BA76428000986DF /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		3B38DBE21BA76428000986DF /* tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tvOS.xcconfig; sourceTree = "<group>"; };
 		3B38DBE31BA76428000986DF /* watchOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = watchOS.xcconfig; sourceTree = "<group>"; };
-		3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
-		3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
-		3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
-		3B42070A1CA2E7A30044E311 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		3B78C6CE1BA7634E00173EAC /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BDFF9D61D7919BA00108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Carthage/Checkouts/SwiftyJSON/build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		3BDFF9D81D7919C100108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Checkouts/SwiftyJSON/build/Debug/SwiftyJSON.framework; sourceTree = "<group>"; };
+		3BDFF9DA1D7919C700108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Carthage/Checkouts/SwiftyJSON/build/Debug-appletvos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		3BDFF9DC1D7919CC00108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Carthage/Checkouts/SwiftyJSON/build/Debug-watchos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		3BDFF9DE1D791A0800108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Carthage/Checkouts/SwiftyJSON/build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B42070D1CA2E7CD0044E311 /* SwiftyJSON.framework in Frameworks */,
+				3BDFF9DF1D791A0800108B7E /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +156,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B42070E1CA2E7CF0044E311 /* SwiftyJSON.framework in Frameworks */,
 				3B00E5681BA3782D0011486D /* BlueSteel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B42070F1CA2E7D20044E311 /* SwiftyJSON.framework in Frameworks */,
+				3BDFF9D91D7919C100108B7E /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +172,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4207101CA2E7D30044E311 /* SwiftyJSON.framework in Frameworks */,
 				3B00E5861BA379830011486D /* BlueSteel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,7 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4207111CA2E7D70044E311 /* SwiftyJSON.framework in Frameworks */,
+				3BDFF9DB1D7919C700108B7E /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +188,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4207121CA2E7D80044E311 /* SwiftyJSON.framework in Frameworks */,
 				3B00E5A41BA37A420011486D /* BlueSteel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4207131CA2E7E40044E311 /* SwiftyJSON.framework in Frameworks */,
+				3BDFF9DD1D7919CC00108B7E /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,62 +282,27 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		3B1BA8BF1C51DF12007BBA8B /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				3B4206F81CA2E7A30044E311 /* iOS */,
-				3B4206FF1CA2E7A30044E311 /* Mac */,
-				3B4207021CA2E7A30044E311 /* tvOS */,
-				3B4207071CA2E7A30044E311 /* watchOS */,
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
-		3B4206F81CA2E7A30044E311 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				3B4206FD1CA2E7A30044E311 /* SwiftyJSON.framework */,
-			);
-			name = iOS;
-			path = Carthage/Build/iOS;
-			sourceTree = "<group>";
-		};
-		3B4206FF1CA2E7A30044E311 /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				3B4207001CA2E7A30044E311 /* SwiftyJSON.framework */,
-			);
-			name = Mac;
-			path = Carthage/Build/Mac;
-			sourceTree = "<group>";
-		};
-		3B4207021CA2E7A30044E311 /* tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				3B4207051CA2E7A30044E311 /* SwiftyJSON.framework */,
-			);
-			name = tvOS;
-			path = Carthage/Build/tvOS;
-			sourceTree = "<group>";
-		};
-		3B4207071CA2E7A30044E311 /* watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				3B42070A1CA2E7A30044E311 /* SwiftyJSON.framework */,
-			);
-			name = watchOS;
-			path = Carthage/Build/watchOS;
-			sourceTree = "<group>";
-		};
 		3BCBACE11BA369AD007F1C90 = {
 			isa = PBXGroup;
 			children = (
 				3B1BA87B1C51DEF9007BBA8B /* Sources */,
 				3B1BA8AE1C51DF0B007BBA8B /* Tests */,
-				3B1BA8BF1C51DF12007BBA8B /* Libraries */,
 				3B00E4B91BA36B840011486D /* BuildControl */,
 				3B00E55E1BA3782D0011486D /* Products */,
+				3BDFF9D51D7919BA00108B7E /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		3BDFF9D51D7919BA00108B7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BDFF9DE1D791A0800108B7E /* SwiftyJSON.framework */,
+				3BDFF9DC1D7919CC00108B7E /* SwiftyJSON.framework */,
+				3BDFF9DA1D7919C700108B7E /* SwiftyJSON.framework */,
+				3BDFF9D81D7919C100108B7E /* SwiftyJSON.framework */,
+				3BDFF9D61D7919BA00108B7E /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -766,10 +726,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -818,10 +775,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -955,10 +909,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1009,10 +960,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1143,10 +1091,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1196,10 +1141,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1331,10 +1273,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1384,10 +1323,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
