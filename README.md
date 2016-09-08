@@ -24,10 +24,18 @@ Branch|Build status
 [`master`](https://github.com/gilt/BlueSteel)|[![Build status: master branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=master)](https://travis-ci.org/gilt/BlueSteel)
 [`swift2.3`](https://github.com/gilt/BlueSteel/tree/swift2.3)|[![Build status: swift2.3 branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=swift2.3)](https://travis-ci.org/gilt/BlueSteel)
 [`swift3`](https://github.com/gilt/BlueSteel/tree/swift3)|[![Build status: swift3 branch](https://travis-ci.org/gilt/BlueSteel.svg?branch=swift3)](https://travis-ci.org/gilt/BlueSteel)
+
+
 ### Never heard of Avro?
 
 Take a gander at the [official documentation for Avro](http://avro.apache.org/docs/current/) before reading further.
 
+
+### License
+
+BlueSteel is distributed under [the MIT license](https://github.com/gilt/BlueSteel/blob/master/LICENSE).
+
+BlueSteel is provided for your use—free-of-charge—on an as-is basis. We make no guarantees, promises or apologies. *Caveat developer.*
 
 
 ### Adding BlueSteel to your project
