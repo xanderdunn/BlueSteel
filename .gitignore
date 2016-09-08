@@ -21,4 +21,4 @@ DerivedData
 *.ipa
 *.xcuserstate
 *.xcscmblueprint
-Carthage/Build
+Carthage/Build/
