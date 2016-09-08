@@ -62,9 +62,10 @@
 		3B1BA8BC1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
 		3B1BA8BD1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
 		3B1BA8BE1C51DF0B007BBA8B /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */; };
-		3BDFF9D91D7919C100108B7E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF9D81D7919C100108B7E /* SwiftyJSON.framework */; };
-		3BDFF9DB1D7919C700108B7E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF9DA1D7919C700108B7E /* SwiftyJSON.framework */; };
-		3BDFF9DD1D7919CC00108B7E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BDFF9DC1D7919CC00108B7E /* SwiftyJSON.framework */; };
+		3B5F4DDC1D814F07004C7B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4DDB1D814F07004C7B2C /* SwiftyJSON.framework */; };
+		3B5F4DDE1D814F0D004C7B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4DDD1D814F0D004C7B2C /* SwiftyJSON.framework */; };
+		3B5F4DE01D814F14004C7B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4DDF1D814F14004C7B2C /* SwiftyJSON.framework */; };
+		3B5F4DE21D814F1A004C7B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4DE11D814F1A004C7B2C /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,12 +135,11 @@
 		3B38DBE11BA76428000986DF /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		3B38DBE21BA76428000986DF /* tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = tvOS.xcconfig; sourceTree = "<group>"; };
 		3B38DBE31BA76428000986DF /* watchOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = watchOS.xcconfig; sourceTree = "<group>"; };
-		3B78C6CE1BA7634E00173EAC /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BDFF9D61D7919BA00108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BDFF9D81D7919C100108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BDFF9DA1D7919C700108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BDFF9DC1D7919CC00108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BDFF9DE1D791A0800108B7E /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5F4DDB1D814F07004C7B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5F4DDD1D814F0D004C7B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5F4DDF1D814F14004C7B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B5F4DE11D814F1A004C7B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B78C6CE1BA7634E00173EAC /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5F4DDC1D814F07004C7B2C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDFF9D91D7919C100108B7E /* SwiftyJSON.framework in Frameworks */,
+				3B5F4DDE1D814F0D004C7B2C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,7 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDFF9DB1D7919C700108B7E /* SwiftyJSON.framework in Frameworks */,
+				3B5F4DE01D814F14004C7B2C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BDFF9DD1D7919CC00108B7E /* SwiftyJSON.framework in Frameworks */,
+				3B5F4DE21D814F1A004C7B2C /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,11 +295,14 @@
 		3BDFF9D51D7919BA00108B7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B5F4DE11D814F1A004C7B2C /* SwiftyJSON.framework */,
+				3B5F4DDF1D814F14004C7B2C /* SwiftyJSON.framework */,
+				3B5F4DDD1D814F0D004C7B2C /* SwiftyJSON.framework */,
+				3B5F4DDB1D814F07004C7B2C /* SwiftyJSON.framework */,
 				3BDFF9DE1D791A0800108B7E /* SwiftyJSON.framework */,
 				3BDFF9DC1D7919CC00108B7E /* SwiftyJSON.framework */,
 				3BDFF9DA1D7919C700108B7E /* SwiftyJSON.framework */,
 				3BDFF9D81D7919C100108B7E /* SwiftyJSON.framework */,
-				3BDFF9D61D7919BA00108B7E /* SwiftyJSON.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
