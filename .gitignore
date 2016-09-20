@@ -21,5 +21,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 *.xcscmblueprint
-Carthage/Checkouts
-!Carthage/Build
+
+# Carthage: we --use-submodules for our non-leaf dependencies
+#
+Carthage/*
+!Carthage/Checkouts/
+**/Carthage/

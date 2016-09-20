@@ -31,7 +31,7 @@ rm -rf Documentation/API	# clear out any old docs; they may have remnant files
 	--swift-version 3.0 \
 	--readme Sources/README.md \
 	--github_url "$PUBLIC_GITHUB_URL" \
-	--author "Gilt Groupe" \
+	--author "Matt Isaacs, Gilt Groupe" \
 	--author_url "$AUTHOR_GITHUB_URL" \
 	--copyright "© $COPYRIGHT_YEAR [Gilt Groupe](http://tech.gilt.com/)"
 
