@@ -13,11 +13,28 @@ install:
   - gem install xcpretty
 
 script:
-- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -scheme BlueSteel-iOS -configuration Release -destination 'platform=iOS Simulator,OS=10.0,name=iPhone 6s Plus' -destination-timeout 120 clean build | xcpretty
-- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -scheme BlueSteel-iOS -configuration Release -destination 'platform=iOS Simulator,OS=10.0,name=iPhone 6s Plus' -destination-timeout 120 test | xcpretty
-- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -scheme BlueSteel-OSX -configuration Release -destination 'platform=macOS' -destination-timeout 120 clean build | xcpretty
-- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -scheme BlueSteel-OSX -configuration Release -destination 'platform=macOS' -destination-timeout 120 test | xcpretty
-- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -scheme BlueSteel-tvOS -configuration Release -destination 'platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p' -destination-timeout 120 clean build | xcpretty
-- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -scheme BlueSteel-tvOS -configuration Release -destination 'platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p' -destination-timeout 120 test | xcpretty
-- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -scheme BlueSteel-watchOS -configuration Release -destination 'platform=watchOS Simulator,OS=3.0,name=Apple Watch - 42mm' -destination-timeout 120 clean build | xcpretty
+- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-iOS -destination 'platform=iOS Simulator,OS=10.0,name=iPhone 6s Plus' -destination-timeout 300 clean build | tee "BlueSteel-iOS-build.log" | xcpretty
+- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-iOS -destination 'platform=iOS Simulator,OS=10.0,name=iPhone 6s Plus' -destination-timeout 300 test | tee "BlueSteel-iOS-test.log" | xcpretty
+- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-OSX -destination 'platform=macOS' -destination-timeout 300 clean build | tee "BlueSteel-macOS-build.log" | xcpretty
+- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-OSX -destination 'platform=macOS' -destination-timeout 300 test | tee "BlueSteel-macOS-test.log" | xcpretty
+- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-tvOS -destination 'platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p' -destination-timeout 300 clean build | tee "BlueSteel-tvOS-build.log" | xcpretty
+- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-tvOS -destination 'platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p' -destination-timeout 300 test | tee "BlueSteel-tvOS-test.log" | xcpretty
+- set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-watchOS -destination 'platform=watchOS Simulator,OS=3.0,name=Apple Watch - 42mm' -destination-timeout 300 clean build | tee "BlueSteel-watchOS-build.log" | xcpretty
+
+after_failure:
+- echo "Travis test result is $TRAVIS_TEST_RESULT"
+- printf "\niOS build log:\n"
+- cat "BlueSteel-iOS-build.log"
+- printf "\niOS test log:\n"
+- cat "BlueSteel-iOS-test.log"
+- printf "\nmacOS build log:\n"
+- cat "BlueSteel-macOS-build.log"
+- printf "\nmacOS test log:\n"
+- cat "BlueSteel-macOS-test.log"
+- printf "\ntvOS build log:\n"
+- cat "BlueSteel-tvOS-build.log"
+- printf "\ntvOS test log:\n"
+- cat "BlueSteel-tvOS-test.log"
+- printf "\nwatchOS build log:\n"
+- cat "BlueSteel-watchOS-build.log"
 
