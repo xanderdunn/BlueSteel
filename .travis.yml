@@ -2,7 +2,7 @@ language: objective-c
 xcode_workspace: BlueSteel.xcworkspace
 osx_image: xcode8
 
-git:
+git: 
   depth: 1
   submodules: false
 
