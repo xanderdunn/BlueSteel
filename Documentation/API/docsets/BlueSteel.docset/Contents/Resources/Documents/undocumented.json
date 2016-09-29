@@ -1,1 +1,838 @@
-{"warnings":[{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":12,"symbol":"AvroType","symbol_kind":"source.lang.swift.decl.enum","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":14,"symbol":"ANull","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":15,"symbol":"ABoolean","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":16,"symbol":"AInt","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":17,"symbol":"ALong","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":18,"symbol":"AFloat","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":19,"symbol":"ADouble","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":20,"symbol":"AString","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":21,"symbol":"ABytes","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":24,"symbol":"AEnum","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":25,"symbol":"AFixed","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":26,"symbol":"ARecord","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":27,"symbol":"AArray","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":28,"symbol":"AMap","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":31,"symbol":"AInvalidType","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":68,"symbol":"Schema","symbol_kind":"source.lang.swift.decl.enum","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":69,"symbol":"AvroNullSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":70,"symbol":"AvroBooleanSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":71,"symbol":"AvroIntSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":72,"symbol":"AvroLongSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":73,"symbol":"AvroFloatSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":74,"symbol":"AvroDoubleSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":75,"symbol":"AvroStringSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":76,"symbol":"AvroBytesSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":78,"symbol":"AvroArraySchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":79,"symbol":"AvroMapSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":80,"symbol":"AvroUnionSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":83,"symbol":"AvroFixedSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":84,"symbol":"AvroEnumSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":85,"symbol":"AvroRecordSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":86,"symbol":"AvroFieldSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":89,"symbol":"AvroInvalidSchema","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":102,"symbol":"parsingCanonicalForm(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":216,"symbol":"fingerprint()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":235,"symbol":"init(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":240,"symbol":"init(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift","line":442,"symbol":"==(_:_:)","symbol_kind":"source.lang.swift.decl.function.free","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":13,"symbol":"AvroDecoder","symbol_kind":"source.lang.swift.decl.class","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":16,"symbol":"init(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":22,"symbol":"init(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":26,"symbol":"decodeNull()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":31,"symbol":"decodeBoolean()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":42,"symbol":"decodeDouble()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":67,"symbol":"decodeFloat()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":87,"symbol":"decodeInt()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":97,"symbol":"decodeLong()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":113,"symbol":"decodeBytes()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":124,"symbol":"decodeString()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift","line":135,"symbol":"decodeFixed(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift","line":11,"symbol":"Box","symbol_kind":"source.lang.swift.decl.class","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift","line":14,"symbol":"init(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift","line":18,"symbol":"value","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift","line":22,"symbol":"map(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroEncoder.swift","line":11,"symbol":"AvroEncoder","symbol_kind":"source.lang.swift.decl.class","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroEncoder.swift","line":87,"symbol":"init()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":11,"symbol":"AvroValueConvertible","symbol_kind":"source.lang.swift.decl.protocol","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":12,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":16,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":22,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":28,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":34,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":40,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":46,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift","line":52,"symbol":"toAvro()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":13,"symbol":"Varint","symbol_kind":"source.lang.swift.decl.struct","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":16,"symbol":"count","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":20,"symbol":"description","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":33,"symbol":"init(fromValue:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":37,"symbol":"init(fromValue:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":59,"symbol":"toInt64()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":63,"symbol":"toUInt64()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":74,"symbol":"VarintFromBytes(_:)","symbol_kind":"source.lang.swift.decl.function.method.static","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":null,"symbol":"Varint","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":93,"symbol":"init(fromValue:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":97,"symbol":"init(fromValue:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":146,"symbol":"encodeZigZag()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift","line":153,"symbol":"decodeZigZag()","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":16,"symbol":"+=(_:_:)","symbol_kind":"source.lang.swift.decl.function.free","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":23,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.enum","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":25,"symbol":"AvroNullValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":26,"symbol":"AvroBooleanValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":27,"symbol":"AvroIntValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":28,"symbol":"AvroLongValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":29,"symbol":"AvroFloatValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":30,"symbol":"AvroDoubleValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":31,"symbol":"AvroBytesValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":32,"symbol":"AvroStringValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":35,"symbol":"AvroArrayValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":36,"symbol":"AvroMapValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":37,"symbol":"AvroUnionValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":38,"symbol":"AvroRecordValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":39,"symbol":"AvroEnumValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":40,"symbol":"AvroFixedValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":42,"symbol":"AvroInvalidValue","symbol_kind":"source.lang.swift.decl.enumelement","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":44,"symbol":"boolean","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":55,"symbol":"string","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":66,"symbol":"integer","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":77,"symbol":"long","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":88,"symbol":"float","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":99,"symbol":"double","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":110,"symbol":"bytes","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":121,"symbol":"array","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":132,"symbol":"map","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":143,"symbol":"record","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":154,"symbol":"enumeration","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":165,"symbol":"fixed","symbol_kind":"source.lang.swift.decl.var.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":208,"symbol":"encode(_:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":269,"symbol":"init(jsonSchema:withBytes:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":275,"symbol":"init(jsonSchema:withData:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":281,"symbol":"init(schema:withBytes:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":287,"symbol":"init(schema:withData:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":429,"symbol":"init(nilLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":435,"symbol":"init(booleanLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":441,"symbol":"init(integerLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":447,"symbol":"init(floatLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":454,"symbol":"init(unicodeScalarLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":458,"symbol":"init(extendedGraphemeClusterLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":462,"symbol":"init(stringLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":468,"symbol":"init(arrayLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":475,"symbol":"init(dictionaryLiteral:)","symbol_kind":"source.lang.swift.decl.function.method.instance","warning":"undocumented"},{"file":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift","line":null,"symbol":"AvroValue","symbol_kind":"source.lang.swift.decl.extension","warning":"undocumented"}],"source_directory":"/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel"}
+{
+  "warnings": [
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 11,
+      "symbol": "AvroValueConvertible",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 12,
+      "symbol": "AvroValueConvertible.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 16,
+      "symbol": "String.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 22,
+      "symbol": "Bool.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 28,
+      "symbol": "Int.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 34,
+      "symbol": "Int32.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 40,
+      "symbol": "Int64.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 46,
+      "symbol": "Float.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroConvertible.swift",
+      "line": 52,
+      "symbol": "Double.toAvro()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 13,
+      "symbol": "AvroDecoder",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 16,
+      "symbol": "AvroDecoder.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 22,
+      "symbol": "AvroDecoder.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 26,
+      "symbol": "AvroDecoder.decodeNull()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 31,
+      "symbol": "AvroDecoder.decodeBoolean()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 42,
+      "symbol": "AvroDecoder.decodeDouble()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 67,
+      "symbol": "AvroDecoder.decodeFloat()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 87,
+      "symbol": "AvroDecoder.decodeInt()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 97,
+      "symbol": "AvroDecoder.decodeLong()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 113,
+      "symbol": "AvroDecoder.decodeBytes()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 124,
+      "symbol": "AvroDecoder.decodeString()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroDecoder.swift",
+      "line": 135,
+      "symbol": "AvroDecoder.decodeFixed(size:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroEncoder.swift",
+      "line": 11,
+      "symbol": "AvroEncoder",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroEncoder.swift",
+      "line": 87,
+      "symbol": "AvroEncoder.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": null,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 16,
+      "symbol": "+=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 23,
+      "symbol": "AvroValue",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 25,
+      "symbol": "AvroValue.AvroNullValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 26,
+      "symbol": "AvroValue.AvroBooleanValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 27,
+      "symbol": "AvroValue.AvroIntValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 28,
+      "symbol": "AvroValue.AvroLongValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 29,
+      "symbol": "AvroValue.AvroFloatValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 30,
+      "symbol": "AvroValue.AvroDoubleValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 31,
+      "symbol": "AvroValue.AvroBytesValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 32,
+      "symbol": "AvroValue.AvroStringValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 35,
+      "symbol": "AvroValue.AvroArrayValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 36,
+      "symbol": "AvroValue.AvroMapValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 37,
+      "symbol": "AvroValue.AvroUnionValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 38,
+      "symbol": "AvroValue.AvroRecordValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 39,
+      "symbol": "AvroValue.AvroEnumValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 40,
+      "symbol": "AvroValue.AvroFixedValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 42,
+      "symbol": "AvroValue.AvroInvalidValue",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 44,
+      "symbol": "AvroValue.boolean",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 55,
+      "symbol": "AvroValue.string",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 66,
+      "symbol": "AvroValue.integer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 77,
+      "symbol": "AvroValue.long",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 88,
+      "symbol": "AvroValue.float",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 99,
+      "symbol": "AvroValue.double",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 110,
+      "symbol": "AvroValue.bytes",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 121,
+      "symbol": "AvroValue.array",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 132,
+      "symbol": "AvroValue.map",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 143,
+      "symbol": "AvroValue.record",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 154,
+      "symbol": "AvroValue.enumeration",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 165,
+      "symbol": "AvroValue.fixed",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 208,
+      "symbol": "AvroValue.encode(encoder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 269,
+      "symbol": "AvroValue.init(jsonSchema:withBytes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 275,
+      "symbol": "AvroValue.init(jsonSchema:withData:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 281,
+      "symbol": "AvroValue.init(schema:withBytes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/AvroValue.swift",
+      "line": 287,
+      "symbol": "AvroValue.init(schema:withData:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift",
+      "line": 11,
+      "symbol": "Box",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift",
+      "line": 14,
+      "symbol": "Box.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift",
+      "line": 18,
+      "symbol": "Box.value",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Boxes.swift",
+      "line": 22,
+      "symbol": "Box.map(f:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 12,
+      "symbol": "AvroType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 14,
+      "symbol": "AvroType.ANull",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 15,
+      "symbol": "AvroType.ABoolean",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 16,
+      "symbol": "AvroType.AInt",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 17,
+      "symbol": "AvroType.ALong",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 18,
+      "symbol": "AvroType.AFloat",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 19,
+      "symbol": "AvroType.ADouble",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 20,
+      "symbol": "AvroType.AString",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 21,
+      "symbol": "AvroType.ABytes",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 24,
+      "symbol": "AvroType.AEnum",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 25,
+      "symbol": "AvroType.AFixed",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 26,
+      "symbol": "AvroType.ARecord",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 27,
+      "symbol": "AvroType.AArray",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 28,
+      "symbol": "AvroType.AMap",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 31,
+      "symbol": "AvroType.AInvalidType",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 68,
+      "symbol": "Schema",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 69,
+      "symbol": "Schema.AvroNullSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 70,
+      "symbol": "Schema.AvroBooleanSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 71,
+      "symbol": "Schema.AvroIntSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 72,
+      "symbol": "Schema.AvroLongSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 73,
+      "symbol": "Schema.AvroFloatSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 74,
+      "symbol": "Schema.AvroDoubleSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 75,
+      "symbol": "Schema.AvroStringSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 76,
+      "symbol": "Schema.AvroBytesSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 78,
+      "symbol": "Schema.AvroArraySchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 79,
+      "symbol": "Schema.AvroMapSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 80,
+      "symbol": "Schema.AvroUnionSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 83,
+      "symbol": "Schema.AvroFixedSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 84,
+      "symbol": "Schema.AvroEnumSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 85,
+      "symbol": "Schema.AvroRecordSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 86,
+      "symbol": "Schema.AvroFieldSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 89,
+      "symbol": "Schema.AvroInvalidSchema",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 102,
+      "symbol": "Schema.parsingCanonicalForm(existingTypes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 216,
+      "symbol": "Schema.fingerprint()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 235,
+      "symbol": "Schema.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 240,
+      "symbol": "Schema.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Schema.swift",
+      "line": 442,
+      "symbol": "==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": null,
+      "symbol": "Varint",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 13,
+      "symbol": "Varint",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 16,
+      "symbol": "Varint.count",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 20,
+      "symbol": "Varint.description",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 33,
+      "symbol": "Varint.init(fromValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 37,
+      "symbol": "Varint.init(fromValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 59,
+      "symbol": "Varint.toInt64()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 63,
+      "symbol": "Varint.toUInt64()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 74,
+      "symbol": "Varint.VarintFromBytes(bytes:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 93,
+      "symbol": "Varint.init(fromValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 97,
+      "symbol": "Varint.init(fromValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 146,
+      "symbol": "Int64.encodeZigZag()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel/Sources/Varint.swift",
+      "line": 153,
+      "symbol": "UInt64.decodeZigZag()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/emaloney/Documents/Code/CleanroomProject/BlueSteel"
+}
