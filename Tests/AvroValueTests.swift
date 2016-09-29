@@ -144,6 +144,21 @@ class AvroValueTests: XCTestCase {
         }
     }
 
+    func testEnumValue() {
+        let avroBytes: [UInt8] = [0x12]
+        let jsonSchema = "{ \"type\" : \"enum\", \"name\" : \"ChannelKey\", \"doc\" : \"Enum of valid channel keys.\", \"symbols\" : [ \"CityIphone\", \"CityMobileWeb\", \"GiltAndroid\", \"GiltcityCom\", \"GiltCom\", \"GiltIpad\", \"GiltIpadSafari\", \"GiltIphone\", \"GiltMobileWeb\", \"NoChannel\" ]}"
+
+        let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)
+
+        switch value {
+        case .AvroEnumValue(let index, let string):
+            XCTAssertEqual(index, 9)
+            XCTAssertEqual(string, "NoChannel")
+        case _:
+            XCTAssert(false, "Invalid avro value")
+        }
+    }
+
     func testUnionValue() {
         let avroBytes: [UInt8] = [0x02, 0x02, 0x61]
         let jsonSchema = "{\"type\" : [\"null\",\"string\"] }"
