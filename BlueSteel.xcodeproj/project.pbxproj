@@ -66,6 +66,9 @@
 		3B5F4DDE1D814F0D004C7B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4DDD1D814F0D004C7B2C /* SwiftyJSON.framework */; };
 		3B5F4DE01D814F14004C7B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4DDF1D814F14004C7B2C /* SwiftyJSON.framework */; };
 		3B5F4DE21D814F1A004C7B2C /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5F4DE11D814F1A004C7B2C /* SwiftyJSON.framework */; };
+		4B0BE55F1D9D3F3600A33E0B /* AvroValueEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BE55D1D9D3F2600A33E0B /* AvroValueEncodingTests.swift */; };
+		4B0BE5601D9D3F3600A33E0B /* AvroValueEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BE55D1D9D3F2600A33E0B /* AvroValueEncodingTests.swift */; };
+		4B0BE5611D9D3F3600A33E0B /* AvroValueEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0BE55D1D9D3F2600A33E0B /* AvroValueEncodingTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +143,7 @@
 		3B5F4DDF1D814F14004C7B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B5F4DE11D814F1A004C7B2C /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B78C6CE1BA7634E00173EAC /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B0BE55D1D9D3F2600A33E0B /* AvroValueEncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueEncodingTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +280,7 @@
 				3B1BA8AF1C51DF0B007BBA8B /* AvroDecoderTests.swift */,
 				3B1BA8B01C51DF0B007BBA8B /* AvroSchemaTests.swift */,
 				3B1BA8B11C51DF0B007BBA8B /* AvroValueTests.swift */,
+				4B0BE55D1D9D3F2600A33E0B /* AvroValueEncodingTests.swift */,
 				3B1BA8B21C51DF0B007BBA8B /* VarintTests.swift */,
 			);
 			path = Tests;
@@ -602,6 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B1BA8B61C51DF0B007BBA8B /* AvroSchemaTests.swift in Sources */,
+				4B0BE55F1D9D3F3600A33E0B /* AvroValueEncodingTests.swift in Sources */,
 				3B1BA8B91C51DF0B007BBA8B /* AvroValueTests.swift in Sources */,
 				3B1BA8B31C51DF0B007BBA8B /* AvroDecoderTests.swift in Sources */,
 				3B1BA8BC1C51DF0B007BBA8B /* VarintTests.swift in Sources */,
@@ -629,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B1BA8B71C51DF0B007BBA8B /* AvroSchemaTests.swift in Sources */,
+				4B0BE5601D9D3F3600A33E0B /* AvroValueEncodingTests.swift in Sources */,
 				3B1BA8BA1C51DF0B007BBA8B /* AvroValueTests.swift in Sources */,
 				3B1BA8B41C51DF0B007BBA8B /* AvroDecoderTests.swift in Sources */,
 				3B1BA8BD1C51DF0B007BBA8B /* VarintTests.swift in Sources */,
@@ -656,6 +663,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B1BA8B81C51DF0B007BBA8B /* AvroSchemaTests.swift in Sources */,
+				4B0BE5611D9D3F3600A33E0B /* AvroValueEncodingTests.swift in Sources */,
 				3B1BA8BB1C51DF0B007BBA8B /* AvroValueTests.swift in Sources */,
 				3B1BA8B51C51DF0B007BBA8B /* AvroDecoderTests.swift in Sources */,
 				3B1BA8BE1C51DF0B007BBA8B /* VarintTests.swift in Sources */,
