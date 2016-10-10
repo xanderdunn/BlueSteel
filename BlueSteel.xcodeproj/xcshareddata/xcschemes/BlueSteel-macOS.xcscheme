@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3B00E57B1BA379830011486D"
                BuildableName = "BlueSteel.framework"
-               BlueprintName = "BlueSteel-OSX"
+               BlueprintName = "BlueSteel-macOS"
                ReferencedContainer = "container:BlueSteel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3B00E5841BA379830011486D"
                BuildableName = "BlueSteelUnitTests.xctest"
-               BlueprintName = "BlueSteelUnitTests-OSX"
+               BlueprintName = "BlueSteelUnitTests-macOS"
                ReferencedContainer = "container:BlueSteel.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B00E57B1BA379830011486D"
             BuildableName = "BlueSteel.framework"
-            BlueprintName = "BlueSteel-OSX"
+            BlueprintName = "BlueSteel-macOS"
             ReferencedContainer = "container:BlueSteel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B00E57B1BA379830011486D"
             BuildableName = "BlueSteel.framework"
-            BlueprintName = "BlueSteel-OSX"
+            BlueprintName = "BlueSteel-macOS"
             ReferencedContainer = "container:BlueSteel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +84,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B00E57B1BA379830011486D"
             BuildableName = "BlueSteel.framework"
-            BlueprintName = "BlueSteel-OSX"
+            BlueprintName = "BlueSteel-macOS"
             ReferencedContainer = "container:BlueSteel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
