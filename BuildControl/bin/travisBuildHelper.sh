@@ -15,13 +15,20 @@ PLATFORM="$2"
 # and therefore a more sensible implementation using associative
 # arrays is not currently possible
 #
-runDestinationForPlatform()
+destinationForPlatform()
 {
 	case $1 in
-	iOS) 		echo "platform=iOS Simulator,OS=10.0,name=iPhone 7";;
-	macOS) 		echo "platform=macOS";;	
-	tvOS) 		echo "platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p";;
-	watchOS)	echo "platform=watchOS Simulator,OS=3.0,name=Apple Watch Series 2 - 42mm";;
+	iOS)
+		echo "platform=iOS Simulator,OS=10.0,name=iPhone 7";;
+
+	macOS)
+		echo "platform=macOS";;
+
+	tvOS)
+		echo "platform=tvOS Simulator,OS=10.0,name=Apple TV 1080p";;
+
+	watchOS)
+		echo "platform=watchOS Simulator,OS=3.0,name=Apple Watch Series 2 - 42mm";;
 	esac
 }
 
@@ -39,7 +46,7 @@ case $OPERATION in
 		exit 1;;
 esac
 
-DESTINATION=$(runDestinationForPlatform $PLATFORM)
+DESTINATION=$(destinationForPlatform $PLATFORM)
 
 #
 # this retry loop is an unfortunate hack; Travis unit tests periodically fail
@@ -55,7 +62,7 @@ while [[ $THIS_TRY < $MAXIMUM_TRIES ]]; do
 		echo "Attempt $THIS_TRY of $MAXIMUM_TRIES..."
 	fi
 	
-	( set -o pipefail && xcodebuild -project BlueSteel.xcodeproj -configuration Debug -scheme "BlueSteel" -destination "$DESTINATION" -destination-timeout 300 $XCODE_ACTION 2>&1 | tee "BlueSteel-$PLATFORM-$OPERATION.log" | xcpretty )
+	( set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Debug -scheme BlueSteel-$PLATFORM -destination "$DESTINATION" -destination-timeout 300 $XCODE_ACTION 2>&1 | tee "BlueSteel-$PLATFORM-$OPERATION.log" | xcpretty )
 	XCODE_RESULT="${PIPESTATUS[0]}"
 	if [[ "$XCODE_RESULT" == "0" ]]; then
 		rm "BlueSteel-$PLATFORM-$OPERATION.log"
