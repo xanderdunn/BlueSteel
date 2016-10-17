@@ -62,7 +62,7 @@ while [[ $THIS_TRY < $MAXIMUM_TRIES ]]; do
 		echo "Attempt $THIS_TRY of $MAXIMUM_TRIES..."
 	fi
 	
-	( set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Release ONLY_ACTIVE_ARCH=YES -scheme BlueSteel-$PLATFORM -destination "$DESTINATION" -destination-timeout 300 $XCODE_ACTION 2>&1 | tee "BlueSteel-$PLATFORM-$OPERATION.log" | xcpretty )
+	( set -o pipefail && xcodebuild -workspace BlueSteel.xcworkspace -configuration Debug -scheme BlueSteel-$PLATFORM -destination "$DESTINATION" -destination-timeout 300 $XCODE_ACTION 2>&1 | tee "BlueSteel-$PLATFORM-$OPERATION.log" | xcpretty )
 	XCODE_RESULT="${PIPESTATUS[0]}"
 	if [[ "$XCODE_RESULT" == "0" ]]; then
 		rm "BlueSteel-$PLATFORM-$OPERATION.log"
