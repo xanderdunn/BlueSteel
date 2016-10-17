@@ -23,7 +23,7 @@ class AvroValueTests: XCTestCase {
         let avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
         let jsonSchema = "{ \"type\" : \"string\" }"
 
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).string {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.string {
             XCTAssertEqual(value, "foo", "Strings don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
@@ -34,7 +34,7 @@ class AvroValueTests: XCTestCase {
         let avroBytes: [UInt8] = [0x06, 0x66, 0x6f, 0x6f]
         let jsonSchema = "{ \"type\" : \"bytes\" }"
 
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).bytes {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.bytes {
             XCTAssertEqual(value, [0x66, 0x6f, 0x6f], "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
@@ -45,7 +45,7 @@ class AvroValueTests: XCTestCase {
         let avroBytes: [UInt8] = [0x96, 0xde, 0x87, 0x3]
         let jsonSchema = "{ \"type\" : \"int\" }"
 
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).integer {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.integer {
             XCTAssertEqual(Int(value), 3209099, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
@@ -56,7 +56,7 @@ class AvroValueTests: XCTestCase {
         let avroBytes: [UInt8] = [0x96, 0xde, 0x87, 0x3]
         let jsonSchema = "{ \"type\" : \"long\" }"
 
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).long {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.long {
             XCTAssertEqual(Int(value), 3209099, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
@@ -68,7 +68,7 @@ class AvroValueTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"float\" }"
 
         let expected: Float = 3.14
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).float {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.float {
             XCTAssertEqual(value, expected, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
@@ -80,7 +80,7 @@ class AvroValueTests: XCTestCase {
         let jsonSchema = "{ \"type\" : \"double\" }"
 
         let expected: Double = 3.14
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).double {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.double {
             XCTAssertEqual(value, expected, "Byte arrays don't match.")
         } else {
             XCTAssert(false, "Failed. Nil value")
@@ -93,13 +93,13 @@ class AvroValueTests: XCTestCase {
 
         let jsonSchema = "{ \"type\" : \"boolean\" }"
 
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroTrueBytes).boolean {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroTrueBytes)?.boolean {
             XCTAssert(value, "Value should be true.")
         } else {
             XCTAssert(false, "Failed. Nil value")
         }
 
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroFalseBytes).boolean {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroFalseBytes)?.boolean {
             XCTAssert(!value, "Value should be false.")
         } else {
             XCTAssert(false, "Failed. Nil value")
@@ -111,7 +111,7 @@ class AvroValueTests: XCTestCase {
         let expected: [Int64] = [3, 27]
         let jsonSchema = "{ \"type\" : \"array\", \"items\" : \"long\" }"
 
-        if let values = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).array {
+        if let values = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.array {
             XCTAssertEqual(values.count, 2, "Wrong number of elements in array.")
             for idx in 0...1 {
                 if let value = values[idx].long {
@@ -130,7 +130,7 @@ class AvroValueTests: XCTestCase {
         let expected: [Int64] = [27]
         let jsonSchema = "{ \"type\" : \"map\", \"values\" : \"long\" }"
 
-        if let pairs = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).map {
+        if let pairs = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.map {
             XCTAssertEqual(pairs.count, 1, "Wrong number of elements in map.")
 
             if let value = pairs["foo"]?.long {
@@ -147,15 +147,11 @@ class AvroValueTests: XCTestCase {
     func testUnionValue() {
         let avroBytes: [UInt8] = [0x02, 0x02, 0x61]
         let jsonSchema = "{\"type\" : [\"null\",\"string\"] }"
-        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes).string {
+        if let value = AvroValue(jsonSchema: jsonSchema, withBytes: avroBytes)?.string {
             XCTAssertEqual(value, "a", "Unexpected string value.")
         } else {
             XCTAssert(false, "Failed. Nil value")
         }
 
-    }
-    func testPerformanceStub() {
-        self.measure() {
-        }
     }
 }
