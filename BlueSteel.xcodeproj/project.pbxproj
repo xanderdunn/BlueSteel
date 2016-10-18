@@ -18,6 +18,11 @@
 		3B03138E1DB571DF00AAA59D /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0313841DB571DF00AAA59D /* Schema.swift */; };
 		3B03138F1DB571DF00AAA59D /* Varint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0313851DB571DF00AAA59D /* Varint.swift */; };
 		3B90590D1DAECB5200B4EEC0 /* BlueSteel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9059031DAECB5200B4EEC0 /* BlueSteel.framework */; };
+		3BA3EC311DB651FD00E4F888 /* AvroDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3EC2C1DB651FD00E4F888 /* AvroDecoderTests.swift */; };
+		3BA3EC321DB651FD00E4F888 /* AvroSchemaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3EC2D1DB651FD00E4F888 /* AvroSchemaTests.swift */; };
+		3BA3EC331DB651FD00E4F888 /* AvroValueEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3EC2E1DB651FD00E4F888 /* AvroValueEncodingTests.swift */; };
+		3BA3EC341DB651FD00E4F888 /* AvroValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3EC2F1DB651FD00E4F888 /* AvroValueTests.swift */; };
+		3BA3EC351DB651FD00E4F888 /* VarintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA3EC301DB651FD00E4F888 /* VarintTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 		3B9059291DAECB9E00B4EEC0 /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		3B90592B1DAECD9800B4EEC0 /* Info-Framework.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Framework.plist"; sourceTree = "<group>"; };
 		3B90592C1DAECD9800B4EEC0 /* Info-Tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Tests.plist"; sourceTree = "<group>"; };
+		3BA3EC2C1DB651FD00E4F888 /* AvroDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroDecoderTests.swift; sourceTree = "<group>"; };
+		3BA3EC2D1DB651FD00E4F888 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
+		3BA3EC2E1DB651FD00E4F888 /* AvroValueEncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueEncodingTests.swift; sourceTree = "<group>"; };
+		3BA3EC2F1DB651FD00E4F888 /* AvroValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueTests.swift; sourceTree = "<group>"; };
+		3BA3EC301DB651FD00E4F888 /* VarintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarintTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				3B03137B1DB571DF00AAA59D /* Sources */,
+				3BA3EC2B1DB651FD00E4F888 /* Tests */,
 				3B90591D1DAECB9E00B4EEC0 /* BuildControl */,
 				3B9059041DAECB5200B4EEC0 /* Products */,
 			);
@@ -126,6 +137,18 @@
 				3B9059291DAECB9E00B4EEC0 /* Tests.xcconfig */,
 			);
 			path = config;
+			sourceTree = "<group>";
+		};
+		3BA3EC2B1DB651FD00E4F888 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3BA3EC2C1DB651FD00E4F888 /* AvroDecoderTests.swift */,
+				3BA3EC2D1DB651FD00E4F888 /* AvroSchemaTests.swift */,
+				3BA3EC2E1DB651FD00E4F888 /* AvroValueEncodingTests.swift */,
+				3BA3EC2F1DB651FD00E4F888 /* AvroValueTests.swift */,
+				3BA3EC301DB651FD00E4F888 /* VarintTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +279,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BA3EC331DB651FD00E4F888 /* AvroValueEncodingTests.swift in Sources */,
+				3BA3EC321DB651FD00E4F888 /* AvroSchemaTests.swift in Sources */,
+				3BA3EC311DB651FD00E4F888 /* AvroDecoderTests.swift in Sources */,
+				3BA3EC351DB651FD00E4F888 /* VarintTests.swift in Sources */,
+				3BA3EC341DB651FD00E4F888 /* AvroValueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

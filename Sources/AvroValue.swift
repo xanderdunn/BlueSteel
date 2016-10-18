@@ -383,7 +383,7 @@ public enum AvroValue {
 
         case .avroEnumSchema(_, let enumValues) :
             if let index = decoder.decodeInt() {
-                if Int(index) > enumValues.count - 1 {
+                if Int(index) < enumValues.count {
                     self = .avroEnumValue(Int(index), enumValues[Int(index)])
                     return
                 }
