@@ -205,7 +205,10 @@ public enum AvroValue {
         return pairs
     }
 
-    public func encode(_ encoder: AvroEncoder) -> [UInt8]? {
+    @discardableResult
+    public func encode(_ encoder: AvroEncoder)
+        -> [UInt8]?
+    {
         switch self {
         case .avroNullValue :
             encoder.encodeNull()
@@ -229,7 +232,7 @@ public enum AvroValue {
         case .avroArrayValue(let values) :
             encoder.encodeLong(Int64(values.count))
             for value in values {
-                _ = value.encode(encoder)
+                value.encode(encoder)
             }
             encoder.encodeLong(0)
 
@@ -238,7 +241,7 @@ public enum AvroValue {
             for key in pairs.keys {
                 encoder.encodeString(key)
                 if let value = pairs[key] {
-                    _ = value.encode(encoder)
+                    value.encode(encoder)
                 } else {
                     return nil
                 }
@@ -248,7 +251,7 @@ public enum AvroValue {
             for key in pairs.keys {
                 encoder.encodeString(key)
                 if let value = pairs[key] {
-                    _ = value.encode(encoder)
+                    value.encode(encoder)
                 } else {
                     return nil
                 }
@@ -259,7 +262,7 @@ public enum AvroValue {
 
         case .avroUnionValue(let index, let box) :
             encoder.encodeLong(Int64(index))
-            _ = box.value.encode(encoder)
+            box.value.encode(encoder)
         default :
             return nil
         }

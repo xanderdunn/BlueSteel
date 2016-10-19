@@ -299,7 +299,7 @@ class AvroSchemaTests: XCTestCase {
         XCTAssertNotNil(schema)
 
         var existingTypes:[String] = []
-        _ = schema!.parsingCanonicalForm(&existingTypes)
+        schema!.parsingCanonicalForm(&existingTypes)
 
         if let fp = schema!.fingerprint() {
             var hexString = ""

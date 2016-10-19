@@ -98,7 +98,10 @@ public enum Schema {
 
     }
 
-    public func parsingCanonicalForm(_ existingTypes: inout [String]) -> String? {
+    @discardableResult
+    public func parsingCanonicalForm(_ existingTypes: inout [String])
+        -> String?
+    {
         switch self {
         case .avroNullSchema :
             return "\"null\""

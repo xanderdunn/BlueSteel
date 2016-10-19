@@ -14,7 +14,7 @@ public extension AvroValue {
     /**
     AvroValue binary encoding.
 
-    :param schemaData Avro JSON schema as NSData.
+    :param schemaData Avro JSON schema as a `Data` instance.
 
     :returns Avro binary encoding as byte array. Nil if encoding fails.
     */
