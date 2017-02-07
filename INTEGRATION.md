@@ -9,12 +9,12 @@ BlueSteel is designed as a *universal Swift framework* with support for the foll
 
 Platform|Latest supported OS|Oldest supported OS
 --------|-------------------|-------------------
-iPhone/iPad|iOS 10.2|iOS 8.0
+iPhone/iPad|iOS 10.3|iOS 8.0
 Macintosh|macOS 10.12|macOS 10.10
-Apple TV|tvOS 10.1|tvOS 9.0
-Apple Watch|watchOS 3.1|watchOS 2.0
+Apple TV|tvOS 10.2|tvOS 9.0
+Apple Watch|watchOS 3.2|watchOS 2.0
 
-BlueSteel uses **Swift 3.0.2** and **requires Xcode 8.2** to compile.
+**This is the `xcode-8.3` branch of BlueSteel.** It uses **Swift 3.1** and **requires Xcode 8.3 beta 2** to compile.
 
 ### Options for integration
 
@@ -107,7 +107,7 @@ Select the appropriate Build Scheme for your Target, and press `⌘-B` to try to
 
 ### You're done!
 
-Once properly integrated, you can make use of [the API](https://rawgit.com/gilt/BlueSteel/master/Documentation/API/index.html) provided by BlueSteel using the statement:
+Once properly integrated, you can make use of [the API](https://rawgit.com/gilt/BlueSteel/xcode-8.3/Documentation/API/index.html) provided by BlueSteel using the statement:
 
 ```swift
 import BlueSteel
@@ -162,7 +162,7 @@ Select the appropriate Build Scheme for your Target, and press `⌘-B` to try to
 
 ### You're done!
 
-Once properly integrated, you can make use of [the API](https://rawgit.com/gilt/BlueSteel/master/Documentation/API/index.html) provided by BlueSteel using the statement:
+Once properly integrated, you can make use of [the API](https://rawgit.com/gilt/BlueSteel/xcode-8.3/Documentation/API/index.html) provided by BlueSteel using the statement:
 
 ```swift
 import BlueSteel
@@ -170,6 +170,6 @@ import BlueSteel
 
 ## Further Reading
 
-Want to learn more about BlueSteel? Check out [the README](https://github.com/gilt/BlueSteel/blob/master/README.md) or [the API documentation](https://rawgit.com/gilt/BlueSteel/master/Documentation/API/index.html).
+Want to learn more about BlueSteel? Check out [the README](https://github.com/gilt/BlueSteel/blob/xcode-8.3/README.md) or [the API documentation](https://rawgit.com/gilt/BlueSteel/xcode-8.3/Documentation/API/index.html).
 
 **_Happy coding!_**
