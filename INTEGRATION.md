@@ -9,8 +9,8 @@ BlueSteel is designed as a *universal Swift framework* with support for the foll
 
 Platform|Latest supported OS|Oldest supported OS
 --------|-------------------|-------------------
-iPhone/iPad|iOS 10.3|iOS 8.0
-Macintosh|macOS 10.12|macOS 10.10
+iPhone/iPad|iOS 10.3|iOS 9.0
+Macintosh|macOS 10.12|macOS 10.11
 Apple TV|tvOS 10.2|tvOS 9.0
 Apple Watch|watchOS 3.2|watchOS 2.0
 
