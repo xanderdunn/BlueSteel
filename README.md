@@ -41,7 +41,7 @@ The simplest way to integrate BlueSteel is with the [Carthage](https://github.co
 First, add this line to your [`Cartfile`](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
 
 ```
-github "gilt/BlueSteel" ~> 1.2.0
+github "gilt/BlueSteel" ~> 1.3.0
 ```
 
 Then, use the `carthage` command to [update your dependencies](https://github.com/Carthage/Carthage#upgrading-frameworks).
