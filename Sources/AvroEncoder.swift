@@ -40,7 +40,7 @@ open class AvroEncoder {
     func encodeFloat(_ value: Float) {
         let bits = value.bitPattern
 
-        let encodedFloat = [UInt8(0xff & bits),
+        let encodedFloat: [UInt8] = [UInt8(0xff & bits),
             UInt8(0xff & (bits >> 8)),
             UInt8(0xff & (bits >> 16)),
             UInt8(0xff & (bits >> 24))]
@@ -52,7 +52,7 @@ open class AvroEncoder {
     func encodeDouble(_ value: Double) {
         let bits = value.bitPattern
 
-        let encodedDouble = [UInt8(0xff & bits),
+        let encodedDouble: [UInt8] = [UInt8(0xff & bits),
             UInt8(0xff & (bits >> 8)),
             UInt8(0xff & (bits >> 16)),
             UInt8(0xff & (bits >> 24)),
