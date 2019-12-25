@@ -1,0 +1,50 @@
+{
+    "type": "record",
+    "name": "gps",
+    "fields": [
+        {
+            "name": "time",
+            "type": "double"
+        },
+        {
+            "name": "workoutTime",
+            "type": "double"
+        },
+        {
+            "name": "latitude",
+            "type": "double"
+        },
+        {
+            "name": "longitude",
+            "type": "double"
+        },
+        {
+            "name": "altitude",
+            "type": "double"
+        },
+        {
+            "name": "speed",
+            "type": "double"
+        },
+        {
+            "name": "horizontalAccuracy",
+            "type": "double"
+        },
+        {
+            "name": "verticalAccuracy",
+            "type": "double"
+        },
+        {
+            "name": "distance",
+            "type": "double"
+        },
+        {
+            "name": "course",
+            "type": "double"
+        },
+        {
+            "name": "floor",
+            "type": "int"
+        }
+    ]
+}
