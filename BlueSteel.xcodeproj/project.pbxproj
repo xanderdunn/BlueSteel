@@ -14,7 +14,6 @@
 		3B03138A1DB571DF00AAA59D /* AvroValueEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0313801DB571DF00AAA59D /* AvroValueEncoding.swift */; };
 		3B03138B1DB571DF00AAA59D /* BlueSteel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0313811DB571DF00AAA59D /* BlueSteel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B03138C1DB571DF00AAA59D /* Boxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0313821DB571DF00AAA59D /* Boxes.swift */; };
-		3B03138D1DB571DF00AAA59D /* CCWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B0313831DB571DF00AAA59D /* CCWrapper.c */; };
 		3B03138E1DB571DF00AAA59D /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0313841DB571DF00AAA59D /* Schema.swift */; };
 		3B03138F1DB571DF00AAA59D /* Varint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0313851DB571DF00AAA59D /* Varint.swift */; };
 		3B90590D1DAECB5200B4EEC0 /* BlueSteel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9059031DAECB5200B4EEC0 /* BlueSteel.framework */; };
@@ -36,16 +35,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3B03137C1DB571DF00AAA59D /* AvroConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroConvertible.swift; sourceTree = "<group>"; };
-		3B03137D1DB571DF00AAA59D /* AvroDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroDecoder.swift; sourceTree = "<group>"; };
-		3B03137E1DB571DF00AAA59D /* AvroEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroEncoder.swift; sourceTree = "<group>"; };
-		3B03137F1DB571DF00AAA59D /* AvroValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValue.swift; sourceTree = "<group>"; };
-		3B0313801DB571DF00AAA59D /* AvroValueEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueEncoding.swift; sourceTree = "<group>"; };
-		3B0313811DB571DF00AAA59D /* BlueSteel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueSteel.h; sourceTree = "<group>"; };
-		3B0313821DB571DF00AAA59D /* Boxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Boxes.swift; sourceTree = "<group>"; };
-		3B0313831DB571DF00AAA59D /* CCWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CCWrapper.c; sourceTree = "<group>"; };
-		3B0313841DB571DF00AAA59D /* Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
-		3B0313851DB571DF00AAA59D /* Varint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Varint.swift; sourceTree = "<group>"; };
+		3B03137C1DB571DF00AAA59D /* AvroConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroConvertible.swift; path = BlueSteel/AvroConvertible.swift; sourceTree = "<group>"; };
+		3B03137D1DB571DF00AAA59D /* AvroDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroDecoder.swift; path = BlueSteel/AvroDecoder.swift; sourceTree = "<group>"; };
+		3B03137E1DB571DF00AAA59D /* AvroEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroEncoder.swift; path = BlueSteel/AvroEncoder.swift; sourceTree = "<group>"; };
+		3B03137F1DB571DF00AAA59D /* AvroValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroValue.swift; path = BlueSteel/AvroValue.swift; sourceTree = "<group>"; };
+		3B0313801DB571DF00AAA59D /* AvroValueEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroValueEncoding.swift; path = BlueSteel/AvroValueEncoding.swift; sourceTree = "<group>"; };
+		3B0313811DB571DF00AAA59D /* BlueSteel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlueSteel.h; path = ../BuildControl/BlueSteel.h; sourceTree = "<group>"; };
+		3B0313821DB571DF00AAA59D /* Boxes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Boxes.swift; path = BlueSteel/Boxes.swift; sourceTree = "<group>"; };
+		3B0313841DB571DF00AAA59D /* Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Schema.swift; path = BlueSteel/Schema.swift; sourceTree = "<group>"; };
+		3B0313851DB571DF00AAA59D /* Varint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Varint.swift; path = BlueSteel/Varint.swift; sourceTree = "<group>"; };
 		3B9059031DAECB5200B4EEC0 /* BlueSteel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BlueSteel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B90590C1DAECB5200B4EEC0 /* BlueSteelUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueSteelUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B9059251DAECB9E00B4EEC0 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -53,11 +51,11 @@
 		3B9059281DAECB9E00B4EEC0 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		3B9059291DAECB9E00B4EEC0 /* Tests.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Tests.xcconfig; sourceTree = "<group>"; };
 		3B90592C1DAECD9800B4EEC0 /* Info-Tests.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Tests.plist"; sourceTree = "<group>"; };
-		3BA3EC2C1DB651FD00E4F888 /* AvroDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroDecoderTests.swift; sourceTree = "<group>"; };
-		3BA3EC2D1DB651FD00E4F888 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroSchemaTests.swift; sourceTree = "<group>"; };
-		3BA3EC2E1DB651FD00E4F888 /* AvroValueEncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueEncodingTests.swift; sourceTree = "<group>"; };
-		3BA3EC2F1DB651FD00E4F888 /* AvroValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvroValueTests.swift; sourceTree = "<group>"; };
-		3BA3EC301DB651FD00E4F888 /* VarintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VarintTests.swift; sourceTree = "<group>"; };
+		3BA3EC2C1DB651FD00E4F888 /* AvroDecoderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroDecoderTests.swift; path = BlueSteelTests/AvroDecoderTests.swift; sourceTree = "<group>"; };
+		3BA3EC2D1DB651FD00E4F888 /* AvroSchemaTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroSchemaTests.swift; path = BlueSteelTests/AvroSchemaTests.swift; sourceTree = "<group>"; };
+		3BA3EC2E1DB651FD00E4F888 /* AvroValueEncodingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroValueEncodingTests.swift; path = BlueSteelTests/AvroValueEncodingTests.swift; sourceTree = "<group>"; };
+		3BA3EC2F1DB651FD00E4F888 /* AvroValueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AvroValueTests.swift; path = BlueSteelTests/AvroValueTests.swift; sourceTree = "<group>"; };
+		3BA3EC301DB651FD00E4F888 /* VarintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VarintTests.swift; path = BlueSteelTests/VarintTests.swift; sourceTree = "<group>"; };
 		3BDB18291F15D93400803117 /* Info-Target.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Target.plist"; sourceTree = "<group>"; };
 		3BDB182A1F15D94100803117 /* Target.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Target.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +89,6 @@
 				3B0313801DB571DF00AAA59D /* AvroValueEncoding.swift */,
 				3B0313811DB571DF00AAA59D /* BlueSteel.h */,
 				3B0313821DB571DF00AAA59D /* Boxes.swift */,
-				3B0313831DB571DF00AAA59D /* CCWrapper.c */,
 				3B0313841DB571DF00AAA59D /* Schema.swift */,
 				3B0313851DB571DF00AAA59D /* Varint.swift */,
 			);
@@ -208,30 +205,31 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Gilt Groupe";
 				TargetAttributes = {
 					3B9059021DAECB5200B4EEC0 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = MTP6A36P8K;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 					3B90590B1DAECB5200B4EEC0 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = MTP6A36P8K;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = 3B9058FD1DAECB5200B4EEC0 /* Build configuration list for PBXProject "BlueSteel" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				English,
 				en,
+				Base,
 			);
 			mainGroup = 3B9058F91DAECB5200B4EEC0;
 			productRefGroup = 3B9059041DAECB5200B4EEC0 /* Products */;
@@ -273,7 +271,6 @@
 				3B0313861DB571DF00AAA59D /* AvroConvertible.swift in Sources */,
 				3B03138F1DB571DF00AAA59D /* Varint.swift in Sources */,
 				3B0313891DB571DF00AAA59D /* AvroValue.swift in Sources */,
-				3B03138D1DB571DF00AAA59D /* CCWrapper.c in Sources */,
 				3B03138A1DB571DF00AAA59D /* AvroValueEncoding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +303,7 @@
 			baseConfigurationReference = 3B9059271DAECB9E00B4EEC0 /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -365,6 +363,7 @@
 			baseConfigurationReference = 3B9059271DAECB9E00B4EEC0 /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -423,7 +422,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -438,7 +437,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -447,7 +446,7 @@
 			baseConfigurationReference = 3B9059291DAECB9E00B4EEC0 /* Tests.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -457,7 +456,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

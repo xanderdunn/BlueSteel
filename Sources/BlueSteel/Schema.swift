@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CommonCrypto
 
 public enum AvroType {
     // Primitives
@@ -136,7 +137,7 @@ public enum Schema {
             }
 
         case .avroEnumSchema(let name, let enumValues) :
-            if existingTypes.index(of: name) != nil {
+            if existingTypes.firstIndex(of: name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -155,7 +156,7 @@ public enum Schema {
             }
 
         case .avroRecordSchema(let name, let fields) :
-            if existingTypes.index(of: name) != nil {
+            if existingTypes.firstIndex(of: name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -185,7 +186,7 @@ public enum Schema {
             }
 
         case .avroFixedSchema(let name, let size) :
-            if existingTypes.index(of: name) != nil {
+            if existingTypes.firstIndex(of: name) != nil {
                 return "\"" + name + "\""
             } else {
                 existingTypes.append(name)
@@ -222,7 +223,7 @@ public enum Schema {
             if let cString = pcf.cString(using: String.Encoding.utf8) {
                 // Compute hash of PCF string without the NULL terminator.
 
-                BlueSteel_SHA256(cString, UInt32(cString.count - 1), &hash)
+                CC_SHA256(cString, UInt32(cString.count - 1), &hash)
                 return hash
             }
         }
