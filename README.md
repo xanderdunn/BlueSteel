@@ -34,6 +34,8 @@ BlueSteel is provided for your use—free-of-charge—on an as-is basis. We make
 
 ### Adding BlueSteel to your project
 
+#### Carthage
+
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 The simplest way to integrate BlueSteel is with the [Carthage](https://github.com/Carthage/Carthage) dependency manager.
@@ -47,6 +49,22 @@ github "gilt/BlueSteel" ~> 2.0.0
 Then, use the `carthage` command to [update your dependencies](https://github.com/Carthage/Carthage#upgrading-frameworks).
 
 Finally, you’ll need to [integrate BlueSteel into your project](https://github.com/gilt/BlueSteel/blob/master/INTEGRATION.md) in order to use [the API](https://rawgit.com/gilt/BlueSteel/master/Documentation/API/index.html) it provides.
+
+#### Swift Package Manager
+
+[![Swift Package Manager](https://rawgit.com/jlyonsmith/artwork/master/SwiftPackageManager/swiftpackagemanager-compatible.svg)](https://swift.org/package-manager/)
+
+Simply add BlueSteel to your `Package.swift`:
+
+```
+dependencies: [
+    .package(url: "https://github.com/Myotest/BlueSteel.git", from: "3.1.0")
+]
+```
+
+Version 3.1.0 is the first version supported in Swift Package Manager.
+
+#### Use
 
 Once successfully integrated, just add the following statement to any Swift file where you want to use BlueSteel:
 
