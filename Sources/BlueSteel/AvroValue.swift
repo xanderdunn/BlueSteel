@@ -273,8 +273,7 @@ public enum AvroValue {
     }
 
     public init?(jsonSchema: String, withBytes bytes: [UInt8]) {
-        let avroData = Data(bytes: UnsafeRawPointer(bytes), count: bytes.count)
-
+        let avroData = Data(bytes)
         self.init(jsonSchema: jsonSchema, withData: avroData)
     }
 
@@ -285,8 +284,7 @@ public enum AvroValue {
     }
 
     public init(schema: Schema, withBytes bytes: [UInt8]) {
-        let avroData = Data(bytes: UnsafeRawPointer(bytes) , count: bytes.count)
-
+        let avroData = Data(bytes)
         self.init(schema: schema, withData: avroData)
     }
 
