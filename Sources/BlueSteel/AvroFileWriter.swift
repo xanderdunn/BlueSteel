@@ -31,7 +31,7 @@ open class AvroFileWriter {
         var sync : [UInt8] = []
         sync.reserveCapacity(16)
         for _ in 0...15 {
-            sync.append(UInt8(arc4random_uniform(255)))
+            sync.append(UInt8.random(in: 0...255))
         }
         return sync
     }
